@@ -8,4 +8,4 @@
 - 데이터 수집 관련 이슈 참고 (https://github.com/Paul-scpark/AI-dev-course-prj/issues/9)
 
 ### 브랜치 생성 방법
-- feature/#이슈 번호 - 이니셜 => ex) `feature/#9 - PSC`
+- feature/#이슈 번호 - 이니셜 => ex) `feature/#9-PSC`
