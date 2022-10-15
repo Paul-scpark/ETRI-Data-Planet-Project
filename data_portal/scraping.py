@@ -5,10 +5,7 @@ from selenium.webdriver.common.by import By
 import pandas as pd
 import time
 
-url = "https://www.data.go.kr/tcs/dss/selectDataSetList.do?" \
-      "dType=FILE&keyword=&detailKeyword=&publicDataPk=&recmSe=&detailText=" \
-      "&relatedKeyword=&commaNotInData=&commaAndData=&commaOrData=&must_not=&tabId=&dataSetCoreTf=&coreDataNm=&sort=updtDt" \
-      "&relRadio=&orgFullName=&orgFilter=&org=&orgSearch=&currentPage=1&perPage=10&brm=&instt=&svcType=&kwrdArray=&extsn=&coreDataNmArray=&pblonsipScopeCode="
+url = "https://www.data.go.kr/tcs/dss/selectDataSetList.do?dType=FILE&keyword=&detailKeyword=&publicDataPk=&recmSe=&detailText=&relatedKeyword=&commaNotInData=&commaAndData=&commaOrData=&must_not=&tabId=&dataSetCoreTf=&coreDataNm=&sort=updtDt&relRadio=&orgFullName=&orgFilter=&org=&orgSearch=&currentPage=1&perPage=10&brm=&instt=&svcType=&kwrdArray=&extsn=&coreDataNmArray=&pblonsipScopeCode="
 options = webdriver.ChromeOptions()
 # 탭 간 이동 활성화
 options.add_argument("no-sandbox")
@@ -30,7 +27,7 @@ with webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=
     driver.implicitly_wait(5)
 
     page_num = 1
-    while page_num <= 1000:
+    while page_num <=5000:
         driver.implicitly_wait(5)
         for content_num in range(1, 11):
 
@@ -98,4 +95,4 @@ with webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=
                        "키워드": keyword_list
                        })
 
-    df.to_csv("./result.csv", encoding="utf-8")
+    df.to_csv("./result2.csv", encoding="utf-8")
