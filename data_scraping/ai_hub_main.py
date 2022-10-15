@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
-import csv, time, json, requests
+import csv, time, json, requests, warnings
 from tqdm import tqdm
 from bs4 import BeautifulSoup, NavigableString, Tag
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+warnings.filterwarnings('ignore')
 
 def get_json_using_bs4(URL, data):
     response = requests.post(URL, data)
