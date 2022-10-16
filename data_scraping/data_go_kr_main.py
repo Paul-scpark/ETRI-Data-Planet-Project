@@ -46,7 +46,13 @@ if __name__ == '__main__':
     ### 공공데이터 포털 홈페이지 각 페이지 별로 존재하는 데이터 소스의 href 주소를 href_lst에 append
     ## 데이터의 양이 많기 때문에 1번에 1개씩 처리하는게 아닌, multiprocessing을 이용하여 병렬로 다수의 jobs을 처리
     for i in tqdm(range(1, 1380)):
-        URL = f'https://www.data.go.kr/tcs/dss/selectDataSetList.do?dType=FILE&keyword=&detailKeyword=&publicDataPk=&recmSe=&detailText=&relatedKeyword=&commaNotInData=&commaAndData=&commaOrData=&must_not=&tabId=&dataSetCoreTf=&coreDataNm=&sort=updtDt&relRadio=&orgFullName=&orgFilter=&org=&orgSearch=&currentPage={i}&perPage=40&brm=&instt=&svcType=&kwrdArray=&extsn=&coreDataNmArray=&pblonsipScopeCode='
+        URL = f"""https://www.data.go.kr/tcs/dss/selectDataSetList.do?
+            dType=FILE&keyword=&detailKeyword=&publicDataPk=&recmSe=&detailText=&relatedKeyword=&commaNotInData
+            =&commaAndData=&commaOrData=&must_not=&tabId=&dataSetCoreTf=&coreDataNm=&sort=updtDt&relRadio
+            =&orgFullName=&orgFilter=&org=&orgSearch=&currentPage={i}&perPage=40&brm=&instt=&svcType
+            =&kwrdArray=&extsn=&coreDataNmArray=&pblonsipScopeCode=
+            """
+        
         p = multiprocessing.Process(target=get_href, args=(URL, href_lst))
         jobs1.append(p)
         p.start()
