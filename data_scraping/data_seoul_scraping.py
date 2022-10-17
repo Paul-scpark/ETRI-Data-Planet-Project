@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 import pandas as pd
 import time
 
+
 url = "https://data.seoul.go.kr/dataList/datasetList.do?datasetKind=1&searchFlag=M"
 options = webdriver.ChromeOptions()
 # 탭 간 이동 활성화
@@ -26,7 +27,7 @@ with webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=
     driver.implicitly_wait(5)
 
     page_num = 1
-    while page_num <= 2:
+    while page_num <= 550:
         driver.implicitly_wait(5)
         for content_num in range(1, 11):
             driver.implicitly_wait(5)
@@ -76,8 +77,12 @@ with webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=
             driver.implicitly_wait(5)
             scripts = driver.find_elements(By.CSS_SELECTOR,
                                            "form#frm div.box-base.renewal div.main-content-renewal02 div.main-content-txt")
+
+            temp_script_list = []
             for script in scripts:
-                script_list.append(script.text)
+                temp_script_list.append(script.text)
+                temp_script = ",".join(temp_script_list)
+            script_list.append(temp_script)
 
             keywords = driver.find_elements(By.CSS_SELECTOR,
                                             f"form#frm div:nth-child(10) div.tbl-base-d.align-l.only-d2 table tbody tr:nth-child(8) td a")
@@ -89,7 +94,6 @@ with webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=
 
             time.sleep(1)
             driver.back()
-            time.sleep(1)
 
         page_num += 1
         time.sleep(1)
@@ -97,15 +101,16 @@ with webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=
 
         time.sleep(1)
 
-    df = pd.DataFrame({"카테고리": label_list,
-                       "URL": link_list,
-                       "제공형식": form_list,
-                       "이름": name_list,
-                       "명세": script_list,
-                       "제공기관": provider_list,
-                       "제공부서": provider2_list,
-                       "수정일": date_list,
-                       "관련 태그": keyword_list
-                       })
 
-    df.to_csv("./result3.csv", encoding="utf-8")
+df = pd.DataFrame({"카테고리": label_list,
+                    "URL": link_list,
+                    "제공형식": form_list,
+                    "이름": name_list,
+                    "명세": script_list,
+                    "제공기관": provider_list,
+                    "제공부서": provider2_list,
+                    "수정일": date_list,
+                    "관련 태그": keyword_list
+                    })
+df.to_csv("./result3.csv", encoding="utf-8")
+
