@@ -69,7 +69,7 @@ if __name__ == '__main__':
         
     ### 위에서 수집한 data_lst를 이용하여 각 데이터셋의 세부 페이지로 접근하여 정보 수집하기 (selenium 활용)
     ## 세부 페이지는 위에서 수집한 data_lst 안에 있는 'dataSetSn' 값을 이용하여 접근 할 수 있음
-    for data_idx, i in enumerate(tqdm(data_lst[123+70:])):
+    for data_idx, i in enumerate(tqdm(data_lst)):
         with webdriver.Chrome(service=Service(ChromeDriverManager().install())) as driver:
             URL = f"https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=300&aihubDataSe=realm&dataSetSn={i['dataSetSn']}"
             soups = get_soup_using_selenium(URL, driver)
