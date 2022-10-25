@@ -244,3 +244,6 @@ fabric.properties
 .idea/*
 # for data file
 *.csv
+
+
+show_data.ipynb
