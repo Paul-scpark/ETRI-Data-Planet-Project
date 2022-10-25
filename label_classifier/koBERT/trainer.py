@@ -68,8 +68,8 @@ def train(config):
             optimizer.step()
             scheduler.step()  # Update learning rate schedule
             train_acc += calc_accuracy(out, label)
-            if batch_id % config.log_interval == 0:
-                print("epoch {} batch id {} loss {} train acc {}".format(e+1, batch_id+1, loss.data.cpu().numpy(), train_acc / (batch_id+1)))
+            # if batch_id % config.log_interval == 0:
+            #     print("epoch {} batch id {} loss {} train acc {}".format(e+1, batch_id+1, loss.data.cpu().numpy(), train_acc / (batch_id+1)))
         print("epoch {} train acc {}".format(e+1, train_acc / (batch_id+1)))
         model.eval()
         for batch_id, (token_ids, valid_length, segment_ids, label) in enumerate(tqdm(valid_dataloader)):

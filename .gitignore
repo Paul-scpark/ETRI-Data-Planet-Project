@@ -245,5 +245,7 @@ fabric.properties
 # for data file
 *.csv
 
+*.pt
+*.tar
 
 show_data.ipynb
