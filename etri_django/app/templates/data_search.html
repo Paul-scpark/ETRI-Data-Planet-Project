@@ -1,0 +1,1650 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <title>AI Dev course - Monthly Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static "assets/vendor/bootstrap/css/bootstrap.min.css" %}">
+    <link href="{% static "assets/vendor/fonts/circular-std/style.css" %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "assets/vendor/fonts/fontawesome/css/fontawesome-all.css" %}">
+    <link rel="stylesheet" href="{% static "assets/libs/css/style.css" %}">
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- main wrapper -->
+    <!-- ============================================================== -->
+    <div class="dashboard-main-wrapper">
+        <!-- ============================================================== -->
+        <!-- navbar -->
+        <!-- ============================================================== -->
+        <div class="dashboard-header">
+            <nav class="navbar navbar-expand-lg bg-white fixed-top">
+                <a class="navbar-brand" href="/">Database Archive</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto navbar-right-top">
+                        <li class="nav-item">
+                            <div id="custom-search" class="top-search-bar">
+                                <input class="form-control" type="text" placeholder="Search..">
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown notification">
+                            <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span class="indicator"></span></a>
+                            <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
+                                <li>
+                                    <div class="notification-title"> Notification</div>
+                                    <div class="notification-list">
+                                        <div class="list-group">
+                                            <a href="#" class="list-group-item list-group-item-action active">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="{% static "assets/images/avatar-2.jpg" %}" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy Rakestraw</span>accepted your invitation to join the team.
+                                                        <div class="notification-date">2 min ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="{% static "assets/images/avatar-4.jpg" %}" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Monaan Pechi</span> is watching your main repository
+                                                        <div class="notification-date">2 min ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="{% static "assets/images/avatar-5.jpg" %}" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Jessica Caruso</span>accepted your invitation to join the team.
+                                                        <div class="notification-date">2 min ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="list-footer"> <a href="#">View all notifications</a></div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown connection">
+                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-fw fa-th"></i> </a>
+                            <ul class="dropdown-menu dropdown-menu-right connection-dropdown">
+                                <li class="connection-list">
+                                    <a href="https://programmers.co.kr/" class="connection-item">
+                                        <img src="{% static "assets/images/programmers.png" %}" style="width: 250px">
+                                        <span>프로그래머스 인공지능 데브코스 4기</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="conntection-footer"><a href="#">More</a></div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown nav-user">
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{% static "assets/images/user-removebg.png" %}" alt="" class="user-avatar-md rounded-circle"></a>
+                            <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+                                <div class="nav-user-info">
+                                    <h5 class="mb-0 text-white nav-user-name">[4기-A] 박성찬</h5>
+                                    <span class="status"></span><span class="ml-2">Available</span>
+                                </div>
+                                <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end navbar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- left sidebar -->
+        <!-- ============================================================== -->
+        <div class="nav-left-sidebar sidebar-dark">
+            <div class="menu-list">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav flex-column">
+                            <li class="nav-divider">
+                                Menu
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="/" data-target="#submenu-1" aria-controls="submenu-1"><i class="fab fa-fw fa-wpforms"></i>Overview <span class="badge badge-success">6</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fas fa-fw fa-database"></i>Data Details <span class="badge badge-success">6</span></a>
+                                <div id="submenu-2" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="data_schema.html">Data Schema</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="data_eda.html">Data EDA</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3"><i class="fas fa-fw fa-search"></i>Data Search <span class="badge badge-success">6</span></a>
+                                <div id="submenu-3" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="data_search.html">Data</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="data_platform_search.html">Data Platform</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="community.html" data-target="#submenu-4" aria-controls="submenu-4"><i class="fas fa-fw fa-comment-dots"></i>Coummnity</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end left sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- wrapper  -->
+        <!-- ============================================================== -->
+        <div class="dashboard-wrapper">
+            <div class="container-fluid dashboard-content">
+                    <div class="row">
+                        <div class="col-xl-10">
+                            <!-- ============================================================== -->
+                            <!-- pageheader  -->
+                            <!-- ============================================================== -->
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="page-header" id="top">
+                                        <h2 class="pageheader-title">Data Search Engine</h2>
+                                        <div class="page-breadcrumb">
+                                            <nav aria-label="breadcrumb">
+                                                <ol class="breadcrumb">
+                                                    <li class="breadcrumb-item"><a class="breadcrumb-link">Data Search</a></li>
+                                                    <li class="breadcrumb-item"><a class="breadcrumb-link">Data Search Engine</a></li>
+                                                </ol>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- end pageheader  -->
+                            <!-- ============================================================== -->
+                            <!-- ============================================================== -->
+                            <!-- overview  -->
+                            <!-- ============================================================== -->
+                            <div class="page-section" id="overview">
+                                <div class="row">
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <h1>다양한 소스에 흩어진 데이터 한번에 검색 🔎</h1>
+                                        <br/><br/>
+                                        <p style="font-weight:400" class="lead">
+                                            이 페이지에서는 다양한 소스에 흩어져 있는 데이터를 수집하여, 스키마를 통일시킨 데이터를 조회할 수 있습니다. <br/>
+                                            군집화를 통해 도출된 약 13개 정도의 데이터의 Label을 기준으로 해당 기준에 따라 데이터 조회가 가능합니다. <br/>
+                                            각 Label을 클릭하면, 그에 대한 데이터가 조회 가능하고 각 데이터에 대한 설명도 확인 가능합니다. <br/>
+                                            또한 특정 데이터를 조회하게 되면, 데이터를 다운 받을 수 있도록 링크로 연결되며 유사한 데이터도 함께 보여줍니다.
+                                            <br/><br/>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-11 col-lg-12 col-md-12 col-sm-12 col-12 mb-5">
+                            <div class="section-block">
+                                {% comment %} <h5 class="section-title">Vertical tabs</h5>
+                                <p>Takes the basic nav from above and adds the .nav-tabs class to generate a tabbed interface..</p> {% endcomment %}
+                            </div>
+                            <div class="tab-vertical">
+                                <ul class="nav nav-tabs" id="myTab3" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="vertical-tab-1" data-toggle="tab" href="#vertical-1" role="tab" aria-controls="home" aria-selected="true">행정법률</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="vertical-tab-2" data-toggle="tab" href="#vertical-2" role="tab" aria-controls="profile" aria-selected="false">경제금융</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="vertical-tab-3" data-toggle="tab" href="#vertical-3" role="tab" aria-controls="contact" aria-selected="false">문화관광</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="vertical-tab-4" data-toggle="tab" href="#vertical-4" role="tab" aria-controls="contact" aria-selected="false">환경기상</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="vertical-tab-5" data-toggle="tab" href="#vertical-5" role="tab" aria-controls="contact" aria-selected="false">제조소비</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="vertical-tab-6" data-toggle="tab" href="#vertical-6" role="tab" aria-controls="contact" aria-selected="false">교통물류</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="vertical-tab-7" data-toggle="tab" href="#vertical-7" role="tab" aria-controls="contact" aria-selected="false">교육과학</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="vertical-tab-8" data-toggle="tab" href="#vertical-8" role="tab" aria-controls="contact" aria-selected="false">식품건강</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="vertical-tab-9" data-toggle="tab" href="#vertical-9" role="tab" aria-controls="contact" aria-selected="false">재난안전</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="vertical-tab-10" data-toggle="tab" href="#vertical-10" role="tab" aria-controls="contact" aria-selected="false">보건의료</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="vertical-tab-11" data-toggle="tab" href="#vertical-11" role="tab" aria-controls="contact" aria-selected="false">사회복지</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="vertical-tab-12" data-toggle="tab" href="#vertical-12" role="tab" aria-controls="contact" aria-selected="false">주택토지</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="vertical-tab-13" data-toggle="tab" href="#vertical-13" role="tab" aria-controls="contact" aria-selected="false">통일외교안보</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="myTabContent3">
+                                    <div class="tab-pane fade show active" id="vertical-1" role="tabpanel" aria-labelledby="vertical-tab-1">
+                                        <div class="row">
+                                            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+                                                <div class="card">
+                                                    <h5 class="card-header" style="font-weight:bold">전체 데이터 (19,552건)</h5>
+                                                    <div class="card-body">
+                                                        <div class="list-group">
+                                                            <a href="data_search_detail1.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">행정안전부 지방공공요금 현황</h5>
+                                                                    {% comment %} <p>1120</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">전체시도 지방공공요금, 평균요금,  전철료(카드, 현금), 시내버스(카드, 현금), 택시비, 도시가스료, 상수도료...</p>
+                                                                <small>행정안전부 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">주택도시보증공사 융자업무 현황</h5>
+                                                                    {% comment %} <p>238</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">주택도시보증공사의 융자업무 현황에 대한 정보로서 융자연월, 지점, 잔액(건수 및 금액), 융자금이자수입...</p>
+                                                                <small>주택도시보증공사 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">한국전력공사 계약종별 전력사용현황 서비스</h5>
+                                                                    {% comment %} <p>3729</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">한국전력공사 계약종별 사용현황에 대한 데이터입니다. 연도, 시도, 시군구, 계약종별, 1/2/3월에 대한 데이터...</p>
+                                                                <small>한국전력공사 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">한국재정정보원 재정통계 BRIEF 국세수입</h5>
+                                                                    {% comment %} <p>300</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">2008년부터 2021년 까지 내국세, 국세수입 증가율, GDP 증가율 등을 포함한 국세수입 추이 데이터 등을...</p>
+                                                                <small>한국재정정보원 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">한국소비자원 소비자 피해구제 정보</h5>
+                                                                    {% comment %} <p>1484</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">한국소비자원에 접수된 소비자 피해구제 데이터 현황으로 접수일자, 성별, 연령대, 지역, 물품명 등의 항목을...</p>
+                                                                <small>한국소비자원 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">서울시 열린데이터광장 Open API 현황</h5>
+                                                                    {% comment %} <p>109257</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">열린데이터광장에서 제공하는 OpenAPI 목록 서비스입니다.</p>
+                                                                <small>서울특별시 디지털정책관 빅데이터담당관 | Open API</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">서울시 마포구 중앙도서관 방문자(IoT) 측정정보</h5>
+                                                                    {% comment %} <p>109261</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">마포중앙도서관에 설치된 사물인터넷 센서를 통해 수집되는 도서관 내 유동인구수 정보입니다. 센싱데이터는..</p>
+                                                                <small>서울특별시 디지털정책관 디지털정책담당관 | Open API, SHEET, FILE</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">서울연구원 세입세출결산서</h5>
+                                                                    {% comment %} <p>110742</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">서울연구원의 예산(수입 및 지출예산 총괄표),결산(재무상태표,손익계산서) 정보입니다.</p>
+                                                                <small>서울연구원 재무팀 | LINK</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">서울시 다산콜센터 자주묻는질문 FAQ 상세 조회</h5>
+                                                                    {% comment %} <p>110717</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">서울시 및 자치구에서 수행하는 정책, 민원업무 등에 대한 업무개요, 접수처, 신고기한, 신청방법, 과태료...</p>
+                                                                <small>120 다산콜재단 시스템관리팀 | Open API</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">서울시 강남구 공공와이파이 서비스 위치 정보</h5>
+                                                                    {% comment %} <p>111222</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">강남구의 서울시와 이동통신3사가 협력, 공동으로 구축하여 제공해 주는 누구나 사용이 가능한 무선인터넷 서비스...</p>
+                                                                <small>강남구 스마트도시정책관 정보통신보안담당관 | Open API, SHEET</small>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="btn btn-secondary">More</a>
+                                    </div>
+                                    <div class="tab-pane fade" id="vertical-2" role="tabpanel" aria-labelledby="vertical-tab-2">
+                                        <div class="row">
+                                            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+                                                <div class="card">
+                                                    <h5 class="card-header" style="font-weight:bold">전체 데이터 (14,934건)</h5>
+                                                    <div class="card-body">
+                                                        <div class="list-group">
+                                                            <a href="data_search_detail1.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">한국주택금융공사 연차보고서 예금은행 대출 가중평균금리</h5>
+                                                                    {% comment %} <p>191</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">2021년도 연차보고서에 포함된 예금은행 대출 가중평균금리 현황에 대한 자료입니다. 대출 가중평균금리, CD...</p>
+                                                                <small>한국주택금융공사 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">신용보증기금 지역 및 월별 부실률 현황</h5>
+                                                                    {% comment %} <p>204</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">해당 데이터는 신용보증기금 이용고객의 2012년부터 2022년 8월까지 지역별, 월별 부실률 현황 자료입니다.</p>
+                                                                <small>신용보증기금 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">한국환경산업기술원 환경정책자금지원시스템 연도별 환경정책자금 지원 실적</h5>
+                                                                    {% comment %} <p>2442</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">본 데이터는 2009~2021년도 환경정책자금 유형별 지원 실적에 대한 정보 (지원연도, 자금구분, 신청업체 수...</p>
+                                                                <small>한국환경산업기술원 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">우체국금융개발원 연구보고서</h5>
+                                                                    {% comment %} <p>9437</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">기관 연구 부서 연구원들이 분기별로 자체 선행 연구를 통해서 제작하는 금융시장 동향, 최신 이슈 및 트랜드...</p>
+                                                                <small>우체국금융개발원 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">서울특별시 중구 금융기관 현황</h5>
+                                                                    {% comment %} <p>13817</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">서울특별시 중구 금융기관 현황 데이터로, 한국은행, 시중은행, 지방은행, 특수은행, 기타 등 각 금융기관의...</p>
+                                                                <small>서울특별시 중구 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">2022 퇴직연금 외 보유 연금성 상품</h5>
+                                                                    {% comment %} <p>67194</p> {% endcomment %}
+                                                                    <small>빅데이터지도</small>
+                                                                </div>
+                                                                <p class="mb-1">성, 연령, 소득, Life stage 등 인구통계학적 응답자 특성 및 금융 이용 특성 별로 분석한 통계표입니다.</p>
+                                                                <small>금융데이터거래소 | XLSX</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">경기도 일자리 일자리지원사업 추가항목</h5>
+                                                                    {% comment %} <p>70738</p> {% endcomment %}
+                                                                    <small>빅데이터지도</small>
+                                                                </div>
+                                                                <p class="mb-1">경기도 일자리 관련하여 수집하고 가공한 일자리 청년취업 취업 사업신청 항목 정보입니다.</p>
+                                                                <small>지역경제 | CSV</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">서울시 용산구 대부업 현황</h5>
+                                                                    {% comment %} <p>112547</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">자치구에 등록된 대부업 및 대부중개업으로 등록된 업체 정보로 상호, 사업장 소재, 운영여부, 연락처 등이...</p>
+                                                                <small>용산구 용산구 행정지원국 전산정보과 | Open API, SHEET</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">서울시 무료직업소개소 인허가 정보</h5>
+                                                                    {% comment %} <p>109790</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">무료로 구인 또는 구직의 신청을 받아 구인자와 구직자 간에 고용계약이 성립되도록 알선하는 업소정보...</p>
+                                                                <small>서울특별시 경제정책실 경제일자리기획관 일자리정책과 | Open API, SHEET</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">서울시 영등포구 노동조합 현황	</h5>
+                                                                    {% comment %} <p>112541</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">자치구에 등록된 노동조합단체 정보로 허가번호, 단체명, 사업장명, 소재지 등이 제공됩니다.</p>
+                                                                <small>영등포구 영등포구 기획재정국 징수과 | Open API, SHEET</small>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="btn btn-secondary">More</a>
+                                    </div>
+                                    <div class="tab-pane fade" id="vertical-3" role="tabpanel" aria-labelledby="vertical-tab-3">
+                                        <div class="row">
+                                            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+                                                <div class="card">
+                                                    <h5 class="card-header" style="font-weight:bold">전체 데이터 (12,989건)</h5>
+                                                    <div class="card-body">
+                                                        <div class="list-group">
+                                                            <a href="data_search_detail1.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>1120</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">전체시도 지방공공요금, 평균요금,  전철료(카드, 현금), 시내버스(카드, 현금), 택시비, 도시가스료, 상수도료...</p>
+                                                                <small>행정안전부 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>238</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">주택도시보증공사의 융자업무 현황에 대한 정보로서 융자연월, 지점, 잔액(건수 및 금액), 융자금이자수입...</p>
+                                                                <small>주택도시보증공사 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>3729</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">한국전력공사 계약종별 사용현황에 대한 데이터입니다. 연도, 시도, 시군구, 계약종별, 1/2/3월에 대한 데이터...</p>
+                                                                <small>한국전력공사 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>300</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">2008년부터 2021년 까지 내국세, 국세수입 증가율, GDP 증가율 등을 포함한 국세수입 추이 데이터 등을...</p>
+                                                                <small>한국재정정보원 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>1484</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">한국소비자원에 접수된 소비자 피해구제 데이터 현황으로 접수일자, 성별, 연령대, 지역, 물품명 등의 항목을...</p>
+                                                                <small>한국소비자원 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>109257</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">열린데이터광장에서 제공하는 OpenAPI 목록 서비스입니다.</p>
+                                                                <small>서울특별시 디지털정책관 빅데이터담당관 | Open API</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>109261</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">마포중앙도서관에 설치된 사물인터넷 센서를 통해 수집되는 도서관 내 유동인구수 정보입니다. 센싱데이터는..</p>
+                                                                <small>서울특별시 디지털정책관 디지털정책담당관 | Open API, SHEET, FILE</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>110742</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">서울연구원의 예산(수입 및 지출예산 총괄표),결산(재무상태표,손익계산서) 정보입니다.</p>
+                                                                <small>서울연구원 재무팀 | LINK</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>110717</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">서울시 및 자치구에서 수행하는 정책, 민원업무 등에 대한 업무개요, 접수처, 신고기한, 신청방법, 과태료...</p>
+                                                                <small>120 다산콜재단 시스템관리팀 | Open API</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>111222</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">강남구의 서울시와 이동통신3사가 협력, 공동으로 구축하여 제공해 주는 누구나 사용이 가능한 무선인터넷 서비스...</p>
+                                                                <small>강남구 스마트도시정책관 정보통신보안담당관 | Open API, SHEET</small>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="btn btn-secondary">More</a>
+                                    </div>
+                                    <div class="tab-pane fade" id="vertical-4" role="tabpanel" aria-labelledby="vertical-tab-4">
+                                        <div class="row">
+                                            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+                                                <div class="card">
+                                                    <h5 class="card-header" style="font-weight:bold">전체 데이터 (11,785건)</h5>
+                                                    <div class="card-body">
+                                                        <div class="list-group">
+                                                            <a href="data_search_detail1.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>1120</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">전체시도 지방공공요금, 평균요금,  전철료(카드, 현금), 시내버스(카드, 현금), 택시비, 도시가스료, 상수도료...</p>
+                                                                <small>행정안전부 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>238</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">주택도시보증공사의 융자업무 현황에 대한 정보로서 융자연월, 지점, 잔액(건수 및 금액), 융자금이자수입...</p>
+                                                                <small>주택도시보증공사 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>3729</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">한국전력공사 계약종별 사용현황에 대한 데이터입니다. 연도, 시도, 시군구, 계약종별, 1/2/3월에 대한 데이터...</p>
+                                                                <small>한국전력공사 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>300</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">2008년부터 2021년 까지 내국세, 국세수입 증가율, GDP 증가율 등을 포함한 국세수입 추이 데이터 등을...</p>
+                                                                <small>한국재정정보원 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>1484</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">한국소비자원에 접수된 소비자 피해구제 데이터 현황으로 접수일자, 성별, 연령대, 지역, 물품명 등의 항목을...</p>
+                                                                <small>한국소비자원 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>109257</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">열린데이터광장에서 제공하는 OpenAPI 목록 서비스입니다.</p>
+                                                                <small>서울특별시 디지털정책관 빅데이터담당관 | Open API</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>109261</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">마포중앙도서관에 설치된 사물인터넷 센서를 통해 수집되는 도서관 내 유동인구수 정보입니다. 센싱데이터는..</p>
+                                                                <small>서울특별시 디지털정책관 디지털정책담당관 | Open API, SHEET, FILE</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>110742</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">서울연구원의 예산(수입 및 지출예산 총괄표),결산(재무상태표,손익계산서) 정보입니다.</p>
+                                                                <small>서울연구원 재무팀 | LINK</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>110717</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">서울시 및 자치구에서 수행하는 정책, 민원업무 등에 대한 업무개요, 접수처, 신고기한, 신청방법, 과태료...</p>
+                                                                <small>120 다산콜재단 시스템관리팀 | Open API</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>111222</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">강남구의 서울시와 이동통신3사가 협력, 공동으로 구축하여 제공해 주는 누구나 사용이 가능한 무선인터넷 서비스...</p>
+                                                                <small>강남구 스마트도시정책관 정보통신보안담당관 | Open API, SHEET</small>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="btn btn-secondary">More</a>
+                                    </div>
+                                    <div class="tab-pane fade" id="vertical-5" role="tabpanel" aria-labelledby="vertical-tab-5">
+                                        <div class="row">
+                                            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+                                                <div class="card">
+                                                    <h5 class="card-header" style="font-weight:bold">전체 데이터 (11,213건)</h5>
+                                                    <div class="card-body">
+                                                        <div class="list-group">
+                                                            <a href="data_search_detail1.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>1120</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">전체시도 지방공공요금, 평균요금,  전철료(카드, 현금), 시내버스(카드, 현금), 택시비, 도시가스료, 상수도료...</p>
+                                                                <small>행정안전부 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>238</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">주택도시보증공사의 융자업무 현황에 대한 정보로서 융자연월, 지점, 잔액(건수 및 금액), 융자금이자수입...</p>
+                                                                <small>주택도시보증공사 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>3729</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">한국전력공사 계약종별 사용현황에 대한 데이터입니다. 연도, 시도, 시군구, 계약종별, 1/2/3월에 대한 데이터...</p>
+                                                                <small>한국전력공사 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>300</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">2008년부터 2021년 까지 내국세, 국세수입 증가율, GDP 증가율 등을 포함한 국세수입 추이 데이터 등을...</p>
+                                                                <small>한국재정정보원 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>1484</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">한국소비자원에 접수된 소비자 피해구제 데이터 현황으로 접수일자, 성별, 연령대, 지역, 물품명 등의 항목을...</p>
+                                                                <small>한국소비자원 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>109257</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">열린데이터광장에서 제공하는 OpenAPI 목록 서비스입니다.</p>
+                                                                <small>서울특별시 디지털정책관 빅데이터담당관 | Open API</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>109261</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">마포중앙도서관에 설치된 사물인터넷 센서를 통해 수집되는 도서관 내 유동인구수 정보입니다. 센싱데이터는..</p>
+                                                                <small>서울특별시 디지털정책관 디지털정책담당관 | Open API, SHEET, FILE</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>110742</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">서울연구원의 예산(수입 및 지출예산 총괄표),결산(재무상태표,손익계산서) 정보입니다.</p>
+                                                                <small>서울연구원 재무팀 | LINK</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>110717</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">서울시 및 자치구에서 수행하는 정책, 민원업무 등에 대한 업무개요, 접수처, 신고기한, 신청방법, 과태료...</p>
+                                                                <small>120 다산콜재단 시스템관리팀 | Open API</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>111222</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">강남구의 서울시와 이동통신3사가 협력, 공동으로 구축하여 제공해 주는 누구나 사용이 가능한 무선인터넷 서비스...</p>
+                                                                <small>강남구 스마트도시정책관 정보통신보안담당관 | Open API, SHEET</small>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="btn btn-secondary">More</a>
+                                    </div>
+                                    <div class="tab-pane fade" id="vertical-6" role="tabpanel" aria-labelledby="vertical-tab-6">
+                                        <div class="row">
+                                            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+                                                <div class="card">
+                                                    <h5 class="card-header" style="font-weight:bold">전체 데이터 (10,470건)</h5>
+                                                    <div class="card-body">
+                                                        <div class="list-group">
+                                                            <a href="data_search_detail1.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>1120</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">전체시도 지방공공요금, 평균요금,  전철료(카드, 현금), 시내버스(카드, 현금), 택시비, 도시가스료, 상수도료...</p>
+                                                                <small>행정안전부 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>238</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">주택도시보증공사의 융자업무 현황에 대한 정보로서 융자연월, 지점, 잔액(건수 및 금액), 융자금이자수입...</p>
+                                                                <small>주택도시보증공사 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>3729</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">한국전력공사 계약종별 사용현황에 대한 데이터입니다. 연도, 시도, 시군구, 계약종별, 1/2/3월에 대한 데이터...</p>
+                                                                <small>한국전력공사 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>300</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">2008년부터 2021년 까지 내국세, 국세수입 증가율, GDP 증가율 등을 포함한 국세수입 추이 데이터 등을...</p>
+                                                                <small>한국재정정보원 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>1484</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">한국소비자원에 접수된 소비자 피해구제 데이터 현황으로 접수일자, 성별, 연령대, 지역, 물품명 등의 항목을...</p>
+                                                                <small>한국소비자원 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>109257</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">열린데이터광장에서 제공하는 OpenAPI 목록 서비스입니다.</p>
+                                                                <small>서울특별시 디지털정책관 빅데이터담당관 | Open API</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>109261</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">마포중앙도서관에 설치된 사물인터넷 센서를 통해 수집되는 도서관 내 유동인구수 정보입니다. 센싱데이터는..</p>
+                                                                <small>서울특별시 디지털정책관 디지털정책담당관 | Open API, SHEET, FILE</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>110742</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">서울연구원의 예산(수입 및 지출예산 총괄표),결산(재무상태표,손익계산서) 정보입니다.</p>
+                                                                <small>서울연구원 재무팀 | LINK</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>110717</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">서울시 및 자치구에서 수행하는 정책, 민원업무 등에 대한 업무개요, 접수처, 신고기한, 신청방법, 과태료...</p>
+                                                                <small>120 다산콜재단 시스템관리팀 | Open API</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>111222</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">강남구의 서울시와 이동통신3사가 협력, 공동으로 구축하여 제공해 주는 누구나 사용이 가능한 무선인터넷 서비스...</p>
+                                                                <small>강남구 스마트도시정책관 정보통신보안담당관 | Open API, SHEET</small>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="btn btn-secondary">More</a>
+                                    </div>
+                                    <div class="tab-pane fade" id="vertical-7" role="tabpanel" aria-labelledby="vertical-tab-7">
+                                        <div class="row">
+                                            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+                                                <div class="card">
+                                                    <h5 class="card-header" style="font-weight:bold">전체 데이터 (8,088건)</h5>
+                                                    <div class="card-body">
+                                                        <div class="list-group">
+                                                            <a href="data_search_detail1.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>1120</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">전체시도 지방공공요금, 평균요금,  전철료(카드, 현금), 시내버스(카드, 현금), 택시비, 도시가스료, 상수도료...</p>
+                                                                <small>행정안전부 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>238</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">주택도시보증공사의 융자업무 현황에 대한 정보로서 융자연월, 지점, 잔액(건수 및 금액), 융자금이자수입...</p>
+                                                                <small>주택도시보증공사 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>3729</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">한국전력공사 계약종별 사용현황에 대한 데이터입니다. 연도, 시도, 시군구, 계약종별, 1/2/3월에 대한 데이터...</p>
+                                                                <small>한국전력공사 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>300</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">2008년부터 2021년 까지 내국세, 국세수입 증가율, GDP 증가율 등을 포함한 국세수입 추이 데이터 등을...</p>
+                                                                <small>한국재정정보원 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>1484</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">한국소비자원에 접수된 소비자 피해구제 데이터 현황으로 접수일자, 성별, 연령대, 지역, 물품명 등의 항목을...</p>
+                                                                <small>한국소비자원 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>109257</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">열린데이터광장에서 제공하는 OpenAPI 목록 서비스입니다.</p>
+                                                                <small>서울특별시 디지털정책관 빅데이터담당관 | Open API</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>109261</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">마포중앙도서관에 설치된 사물인터넷 센서를 통해 수집되는 도서관 내 유동인구수 정보입니다. 센싱데이터는..</p>
+                                                                <small>서울특별시 디지털정책관 디지털정책담당관 | Open API, SHEET, FILE</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>110742</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">서울연구원의 예산(수입 및 지출예산 총괄표),결산(재무상태표,손익계산서) 정보입니다.</p>
+                                                                <small>서울연구원 재무팀 | LINK</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>110717</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">서울시 및 자치구에서 수행하는 정책, 민원업무 등에 대한 업무개요, 접수처, 신고기한, 신청방법, 과태료...</p>
+                                                                <small>120 다산콜재단 시스템관리팀 | Open API</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>111222</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">강남구의 서울시와 이동통신3사가 협력, 공동으로 구축하여 제공해 주는 누구나 사용이 가능한 무선인터넷 서비스...</p>
+                                                                <small>강남구 스마트도시정책관 정보통신보안담당관 | Open API, SHEET</small>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="btn btn-secondary">More</a>
+                                    </div>
+                                    <div class="tab-pane fade" id="vertical-8" role="tabpanel" aria-labelledby="vertical-tab-8">
+                                        <div class="row">
+                                            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+                                                <div class="card">
+                                                    <h5 class="card-header" style="font-weight:bold">전체 데이터 (7,922건)</h5>
+                                                    <div class="card-body">
+                                                        <div class="list-group">
+                                                            <a href="data_search_detail1.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>1120</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">전체시도 지방공공요금, 평균요금,  전철료(카드, 현금), 시내버스(카드, 현금), 택시비, 도시가스료, 상수도료...</p>
+                                                                <small>행정안전부 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>238</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">주택도시보증공사의 융자업무 현황에 대한 정보로서 융자연월, 지점, 잔액(건수 및 금액), 융자금이자수입...</p>
+                                                                <small>주택도시보증공사 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>3729</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">한국전력공사 계약종별 사용현황에 대한 데이터입니다. 연도, 시도, 시군구, 계약종별, 1/2/3월에 대한 데이터...</p>
+                                                                <small>한국전력공사 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>300</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">2008년부터 2021년 까지 내국세, 국세수입 증가율, GDP 증가율 등을 포함한 국세수입 추이 데이터 등을...</p>
+                                                                <small>한국재정정보원 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>1484</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">한국소비자원에 접수된 소비자 피해구제 데이터 현황으로 접수일자, 성별, 연령대, 지역, 물품명 등의 항목을...</p>
+                                                                <small>한국소비자원 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>109257</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">열린데이터광장에서 제공하는 OpenAPI 목록 서비스입니다.</p>
+                                                                <small>서울특별시 디지털정책관 빅데이터담당관 | Open API</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>109261</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">마포중앙도서관에 설치된 사물인터넷 센서를 통해 수집되는 도서관 내 유동인구수 정보입니다. 센싱데이터는..</p>
+                                                                <small>서울특별시 디지털정책관 디지털정책담당관 | Open API, SHEET, FILE</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>110742</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">서울연구원의 예산(수입 및 지출예산 총괄표),결산(재무상태표,손익계산서) 정보입니다.</p>
+                                                                <small>서울연구원 재무팀 | LINK</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>110717</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">서울시 및 자치구에서 수행하는 정책, 민원업무 등에 대한 업무개요, 접수처, 신고기한, 신청방법, 과태료...</p>
+                                                                <small>120 다산콜재단 시스템관리팀 | Open API</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>111222</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">강남구의 서울시와 이동통신3사가 협력, 공동으로 구축하여 제공해 주는 누구나 사용이 가능한 무선인터넷 서비스...</p>
+                                                                <small>강남구 스마트도시정책관 정보통신보안담당관 | Open API, SHEET</small>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="btn btn-secondary">More</a>
+                                    </div>
+                                    <div class="tab-pane fade" id="vertical-9" role="tabpanel" aria-labelledby="vertical-tab-9">
+                                        <div class="row">
+                                            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+                                                <div class="card">
+                                                    <h5 class="card-header" style="font-weight:bold">전체 데이터 (6,053건)</h5>
+                                                    <div class="card-body">
+                                                        <div class="list-group">
+                                                            <a href="data_search_detail1.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>1120</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">전체시도 지방공공요금, 평균요금,  전철료(카드, 현금), 시내버스(카드, 현금), 택시비, 도시가스료, 상수도료...</p>
+                                                                <small>행정안전부 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>238</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">주택도시보증공사의 융자업무 현황에 대한 정보로서 융자연월, 지점, 잔액(건수 및 금액), 융자금이자수입...</p>
+                                                                <small>주택도시보증공사 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>3729</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">한국전력공사 계약종별 사용현황에 대한 데이터입니다. 연도, 시도, 시군구, 계약종별, 1/2/3월에 대한 데이터...</p>
+                                                                <small>한국전력공사 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>300</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">2008년부터 2021년 까지 내국세, 국세수입 증가율, GDP 증가율 등을 포함한 국세수입 추이 데이터 등을...</p>
+                                                                <small>한국재정정보원 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>1484</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">한국소비자원에 접수된 소비자 피해구제 데이터 현황으로 접수일자, 성별, 연령대, 지역, 물품명 등의 항목을...</p>
+                                                                <small>한국소비자원 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>109257</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">열린데이터광장에서 제공하는 OpenAPI 목록 서비스입니다.</p>
+                                                                <small>서울특별시 디지털정책관 빅데이터담당관 | Open API</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>109261</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">마포중앙도서관에 설치된 사물인터넷 센서를 통해 수집되는 도서관 내 유동인구수 정보입니다. 센싱데이터는..</p>
+                                                                <small>서울특별시 디지털정책관 디지털정책담당관 | Open API, SHEET, FILE</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>110742</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">서울연구원의 예산(수입 및 지출예산 총괄표),결산(재무상태표,손익계산서) 정보입니다.</p>
+                                                                <small>서울연구원 재무팀 | LINK</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>110717</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">서울시 및 자치구에서 수행하는 정책, 민원업무 등에 대한 업무개요, 접수처, 신고기한, 신청방법, 과태료...</p>
+                                                                <small>120 다산콜재단 시스템관리팀 | Open API</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>111222</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">강남구의 서울시와 이동통신3사가 협력, 공동으로 구축하여 제공해 주는 누구나 사용이 가능한 무선인터넷 서비스...</p>
+                                                                <small>강남구 스마트도시정책관 정보통신보안담당관 | Open API, SHEET</small>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="btn btn-secondary">More</a>
+                                    </div>
+                                    <div class="tab-pane fade" id="vertical-10" role="tabpanel" aria-labelledby="vertical-tab-10">
+                                        <div class="row">
+                                            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+                                                <div class="card">
+                                                    <h5 class="card-header" style="font-weight:bold">전체 데이터 (4,563건)</h5>
+                                                    <div class="card-body">
+                                                        <div class="list-group">
+                                                            <a href="data_search_detail1.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>1120</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">전체시도 지방공공요금, 평균요금,  전철료(카드, 현금), 시내버스(카드, 현금), 택시비, 도시가스료, 상수도료...</p>
+                                                                <small>행정안전부 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>238</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">주택도시보증공사의 융자업무 현황에 대한 정보로서 융자연월, 지점, 잔액(건수 및 금액), 융자금이자수입...</p>
+                                                                <small>주택도시보증공사 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>3729</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">한국전력공사 계약종별 사용현황에 대한 데이터입니다. 연도, 시도, 시군구, 계약종별, 1/2/3월에 대한 데이터...</p>
+                                                                <small>한국전력공사 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>300</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">2008년부터 2021년 까지 내국세, 국세수입 증가율, GDP 증가율 등을 포함한 국세수입 추이 데이터 등을...</p>
+                                                                <small>한국재정정보원 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>1484</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">한국소비자원에 접수된 소비자 피해구제 데이터 현황으로 접수일자, 성별, 연령대, 지역, 물품명 등의 항목을...</p>
+                                                                <small>한국소비자원 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>109257</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">열린데이터광장에서 제공하는 OpenAPI 목록 서비스입니다.</p>
+                                                                <small>서울특별시 디지털정책관 빅데이터담당관 | Open API</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>109261</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">마포중앙도서관에 설치된 사물인터넷 센서를 통해 수집되는 도서관 내 유동인구수 정보입니다. 센싱데이터는..</p>
+                                                                <small>서울특별시 디지털정책관 디지털정책담당관 | Open API, SHEET, FILE</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>110742</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">서울연구원의 예산(수입 및 지출예산 총괄표),결산(재무상태표,손익계산서) 정보입니다.</p>
+                                                                <small>서울연구원 재무팀 | LINK</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>110717</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">서울시 및 자치구에서 수행하는 정책, 민원업무 등에 대한 업무개요, 접수처, 신고기한, 신청방법, 과태료...</p>
+                                                                <small>120 다산콜재단 시스템관리팀 | Open API</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>111222</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">강남구의 서울시와 이동통신3사가 협력, 공동으로 구축하여 제공해 주는 누구나 사용이 가능한 무선인터넷 서비스...</p>
+                                                                <small>강남구 스마트도시정책관 정보통신보안담당관 | Open API, SHEET</small>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="btn btn-secondary">More</a>
+                                    </div>
+                                    <div class="tab-pane fade" id="vertical-11" role="tabpanel" aria-labelledby="vertical-tab-11">
+                                        <div class="row">
+                                            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+                                                <div class="card">
+                                                    <h5 class="card-header" style="font-weight:bold">전체 데이터 (3,909건)</h5>
+                                                    <div class="card-body">
+                                                        <div class="list-group">
+                                                            <a href="data_search_detail1.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>1120</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">전체시도 지방공공요금, 평균요금,  전철료(카드, 현금), 시내버스(카드, 현금), 택시비, 도시가스료, 상수도료...</p>
+                                                                <small>행정안전부 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>238</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">주택도시보증공사의 융자업무 현황에 대한 정보로서 융자연월, 지점, 잔액(건수 및 금액), 융자금이자수입...</p>
+                                                                <small>주택도시보증공사 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>3729</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">한국전력공사 계약종별 사용현황에 대한 데이터입니다. 연도, 시도, 시군구, 계약종별, 1/2/3월에 대한 데이터...</p>
+                                                                <small>한국전력공사 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>300</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">2008년부터 2021년 까지 내국세, 국세수입 증가율, GDP 증가율 등을 포함한 국세수입 추이 데이터 등을...</p>
+                                                                <small>한국재정정보원 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>1484</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">한국소비자원에 접수된 소비자 피해구제 데이터 현황으로 접수일자, 성별, 연령대, 지역, 물품명 등의 항목을...</p>
+                                                                <small>한국소비자원 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>109257</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">열린데이터광장에서 제공하는 OpenAPI 목록 서비스입니다.</p>
+                                                                <small>서울특별시 디지털정책관 빅데이터담당관 | Open API</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>109261</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">마포중앙도서관에 설치된 사물인터넷 센서를 통해 수집되는 도서관 내 유동인구수 정보입니다. 센싱데이터는..</p>
+                                                                <small>서울특별시 디지털정책관 디지털정책담당관 | Open API, SHEET, FILE</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>110742</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">서울연구원의 예산(수입 및 지출예산 총괄표),결산(재무상태표,손익계산서) 정보입니다.</p>
+                                                                <small>서울연구원 재무팀 | LINK</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>110717</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">서울시 및 자치구에서 수행하는 정책, 민원업무 등에 대한 업무개요, 접수처, 신고기한, 신청방법, 과태료...</p>
+                                                                <small>120 다산콜재단 시스템관리팀 | Open API</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>111222</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">강남구의 서울시와 이동통신3사가 협력, 공동으로 구축하여 제공해 주는 누구나 사용이 가능한 무선인터넷 서비스...</p>
+                                                                <small>강남구 스마트도시정책관 정보통신보안담당관 | Open API, SHEET</small>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="btn btn-secondary">More</a>
+                                    </div>
+                                    <div class="tab-pane fade" id="vertical-12" role="tabpanel" aria-labelledby="vertical-tab-12">
+                                        <div class="row">
+                                            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+                                                <div class="card">
+                                                    <h5 class="card-header" style="font-weight:bold">전체 데이터 (2,837건)</h5>
+                                                    <div class="card-body">
+                                                        <div class="list-group">
+                                                            <a href="data_search_detail1.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>1120</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">전체시도 지방공공요금, 평균요금,  전철료(카드, 현금), 시내버스(카드, 현금), 택시비, 도시가스료, 상수도료...</p>
+                                                                <small>행정안전부 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>238</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">주택도시보증공사의 융자업무 현황에 대한 정보로서 융자연월, 지점, 잔액(건수 및 금액), 융자금이자수입...</p>
+                                                                <small>주택도시보증공사 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>3729</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">한국전력공사 계약종별 사용현황에 대한 데이터입니다. 연도, 시도, 시군구, 계약종별, 1/2/3월에 대한 데이터...</p>
+                                                                <small>한국전력공사 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>300</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">2008년부터 2021년 까지 내국세, 국세수입 증가율, GDP 증가율 등을 포함한 국세수입 추이 데이터 등을...</p>
+                                                                <small>한국재정정보원 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>1484</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">한국소비자원에 접수된 소비자 피해구제 데이터 현황으로 접수일자, 성별, 연령대, 지역, 물품명 등의 항목을...</p>
+                                                                <small>한국소비자원 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>109257</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">열린데이터광장에서 제공하는 OpenAPI 목록 서비스입니다.</p>
+                                                                <small>서울특별시 디지털정책관 빅데이터담당관 | Open API</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>109261</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">마포중앙도서관에 설치된 사물인터넷 센서를 통해 수집되는 도서관 내 유동인구수 정보입니다. 센싱데이터는..</p>
+                                                                <small>서울특별시 디지털정책관 디지털정책담당관 | Open API, SHEET, FILE</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>110742</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">서울연구원의 예산(수입 및 지출예산 총괄표),결산(재무상태표,손익계산서) 정보입니다.</p>
+                                                                <small>서울연구원 재무팀 | LINK</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>110717</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">서울시 및 자치구에서 수행하는 정책, 민원업무 등에 대한 업무개요, 접수처, 신고기한, 신청방법, 과태료...</p>
+                                                                <small>120 다산콜재단 시스템관리팀 | Open API</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>111222</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">강남구의 서울시와 이동통신3사가 협력, 공동으로 구축하여 제공해 주는 누구나 사용이 가능한 무선인터넷 서비스...</p>
+                                                                <small>강남구 스마트도시정책관 정보통신보안담당관 | Open API, SHEET</small>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="btn btn-secondary">More</a>
+                                    </div>
+                                    <div class="tab-pane fade" id="vertical-13" role="tabpanel" aria-labelledby="vertical-tab-13">
+                                        <div class="row">
+                                            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+                                                <div class="card">
+                                                    <h5 class="card-header" style="font-weight:bold">전체 데이터 (326건)</h5>
+                                                    <div class="card-body">
+                                                        <div class="list-group">
+                                                            <a href="data_search_detail1.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>1120</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">전체시도 지방공공요금, 평균요금,  전철료(카드, 현금), 시내버스(카드, 현금), 택시비, 도시가스료, 상수도료...</p>
+                                                                <small>행정안전부 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>238</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">주택도시보증공사의 융자업무 현황에 대한 정보로서 융자연월, 지점, 잔액(건수 및 금액), 융자금이자수입...</p>
+                                                                <small>주택도시보증공사 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>3729</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">한국전력공사 계약종별 사용현황에 대한 데이터입니다. 연도, 시도, 시군구, 계약종별, 1/2/3월에 대한 데이터...</p>
+                                                                <small>한국전력공사 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>300</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">2008년부터 2021년 까지 내국세, 국세수입 증가율, GDP 증가율 등을 포함한 국세수입 추이 데이터 등을...</p>
+                                                                <small>한국재정정보원 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>1484</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">한국소비자원에 접수된 소비자 피해구제 데이터 현황으로 접수일자, 성별, 연령대, 지역, 물품명 등의 항목을...</p>
+                                                                <small>한국소비자원 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>109257</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">열린데이터광장에서 제공하는 OpenAPI 목록 서비스입니다.</p>
+                                                                <small>서울특별시 디지털정책관 빅데이터담당관 | Open API</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>109261</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">마포중앙도서관에 설치된 사물인터넷 센서를 통해 수집되는 도서관 내 유동인구수 정보입니다. 센싱데이터는..</p>
+                                                                <small>서울특별시 디지털정책관 디지털정책담당관 | Open API, SHEET, FILE</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>110742</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">서울연구원의 예산(수입 및 지출예산 총괄표),결산(재무상태표,손익계산서) 정보입니다.</p>
+                                                                <small>서울연구원 재무팀 | LINK</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>110717</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">서울시 및 자치구에서 수행하는 정책, 민원업무 등에 대한 업무개요, 접수처, 신고기한, 신청방법, 과태료...</p>
+                                                                <small>120 다산콜재단 시스템관리팀 | Open API</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">수정하기</h5>
+                                                                    {% comment %} <p>111222</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">강남구의 서울시와 이동통신3사가 협력, 공동으로 구축하여 제공해 주는 누구나 사용이 가능한 무선인터넷 서비스...</p>
+                                                                <small>강남구 스마트도시정책관 정보통신보안담당관 | Open API, SHEET</small>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="btn btn-secondary">More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <div class="footer" style="position: absolute; bottom: 0;">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            <div class="text-md-right footer-links d-none d-sm-block">
+                                <a href="https://github.com/Paul-scpark">Github</a>
+                                <a href="https://paul-scpark.github.io/">Blog</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end footer -->
+            <!-- ============================================================== -->
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end main wrapper -->
+    <!-- ============================================================== -->
+    <!-- Optional JavaScript -->
+    <script src="{% static "assets/vendor/jquery/jquery-3.3.1.min.js" %}"></script>
+    <script src="{% static "assets/vendor/bootstrap/js/bootstrap.bundle.js" %}"></script>
+    <script src="{% static "assets/vendor/slimscroll/jquery.slimscroll.js" %}"></script>
+    <script src="{% static "assets/libs/js/main-js.js" %}"></script>
+</body>
+</html>

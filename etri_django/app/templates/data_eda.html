@@ -1,0 +1,319 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <title>AI Dev course - Monthly Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static "assets/vendor/bootstrap/css/bootstrap.min.css" %}">
+    <link href="{% static "assets/vendor/fonts/circular-std/style.css" %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "assets/vendor/fonts/fontawesome/css/fontawesome-all.css" %}">
+    <link rel="stylesheet" href="{% static "assets/libs/css/style.css" %}">
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- main wrapper -->
+    <!-- ============================================================== -->
+    <div class="dashboard-main-wrapper">
+        <!-- ============================================================== -->
+        <!-- navbar -->
+        <!-- ============================================================== -->
+        <div class="dashboard-header">
+            <nav class="navbar navbar-expand-lg bg-white fixed-top">
+                <a class="navbar-brand" href="/">Database Archive</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto navbar-right-top">
+                        <li class="nav-item">
+                            <div id="custom-search" class="top-search-bar">
+                                <input class="form-control" type="text" placeholder="Search..">
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown notification">
+                            <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span class="indicator"></span></a>
+                            <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
+                                <li>
+                                    <div class="notification-title"> Notification</div>
+                                    <div class="notification-list">
+                                        <div class="list-group">
+                                            <a href="#" class="list-group-item list-group-item-action active">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="{% static "assets/images/avatar-2.jpg" %}" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy Rakestraw</span>accepted your invitation to join the team.
+                                                        <div class="notification-date">2 min ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="{% static "assets/images/avatar-4.jpg" %}" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Monaan Pechi</span> is watching your main repository
+                                                        <div class="notification-date">2 min ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="{% static "assets/images/avatar-5.jpg" %}" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Jessica Caruso</span>accepted your invitation to join the team.
+                                                        <div class="notification-date">2 min ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="list-footer"> <a href="#">View all notifications</a></div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown connection">
+                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-fw fa-th"></i> </a>
+                            <ul class="dropdown-menu dropdown-menu-right connection-dropdown">
+                                <li class="connection-list">
+                                    <a href="https://programmers.co.kr/" class="connection-item">
+                                        <img src="{% static "assets/images/programmers.png" %}" style="width: 250px">
+                                        <span>프로그래머스 인공지능 데브코스 4기</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="conntection-footer"><a href="#">More</a></div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown nav-user">
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{% static "assets/images/user-removebg.png" %}" alt="" class="user-avatar-md rounded-circle"></a>
+                            <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+                                <div class="nav-user-info">
+                                    <h5 class="mb-0 text-white nav-user-name">[4기-A] 박성찬</h5>
+                                    <span class="status"></span><span class="ml-2">Available</span>
+                                </div>
+                                <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end navbar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- left sidebar -->
+        <!-- ============================================================== -->
+        <div class="nav-left-sidebar sidebar-dark">
+            <div class="menu-list">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav flex-column">
+                            <li class="nav-divider">
+                                Menu
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="/" data-target="#submenu-1" aria-controls="submenu-1"><i class="fab fa-fw fa-wpforms"></i>Overview <span class="badge badge-success">6</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fas fa-fw fa-database"></i>Data Details <span class="badge badge-success">6</span></a>
+                                <div id="submenu-2" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="data_schema.html">Data Schema</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="data_eda.html">Data EDA</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3"><i class="fas fa-fw fa-search"></i>Data Search <span class="badge badge-success">6</span></a>
+                                <div id="submenu-3" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="data_search.html">Data</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="data_platform_search.html">Data Platform</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="community.html" data-target="#submenu-4" aria-controls="submenu-4"><i class="fas fa-fw fa-comment-dots"></i>Coummnity</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end left sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- wrapper  -->
+        <!-- ============================================================== -->
+        <div class="dashboard-wrapper">
+            <div class="container-fluid dashboard-content ">
+                <div class="row">
+                    <div class="col-xl-10">
+                        <!-- ============================================================== -->
+                        <!-- pageheader  -->
+                        <!-- ============================================================== -->
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="page-header" id="top">
+                                    <h2 class="pageheader-title">Data Visualization</h2>
+                                    <div class="page-breadcrumb">
+                                        <nav aria-label="breadcrumb">
+                                            <ol class="breadcrumb">
+                                                <li class="breadcrumb-item"><a class="breadcrumb-link">Data Details</a></li>
+                                                <li class="breadcrumb-item"><a class="breadcrumb-link">Data EDA</a></li>
+                                                <li class="breadcrumb-item"><a class="breadcrumb-link">Data Visualization</a></li>
+                                            </ol>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- end pageheader  -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- overview  -->
+                        <!-- ============================================================== -->
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-5">
+                                <h1>수집한 데이터 EDA 📈</h1>
+                                <br/>
+                                <p style="font-weight:400" class="lead">
+                                    이 페이지에서는 다양한 소스로부터 수집한 데이터를 가지고, EDA를 진행해보고자 합니다. <br/>
+                                    공공데이터포털, 통합 데이터지도, 서울 열린데이터 광장, AI Hub 페이지 등에서 데이터를 수집했고,<br/>
+                                    약 11만개의 데이터를 통해 확인된 결과를 시각화로 표현하여 데이터를 확인해봅니다.
+                                    <br/><br/><br/><br/>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-5">
+                                <h2 id="data_source">1. 각 데이터 제공처로부터 수집한 데이터의 비율</h2>
+                                <p style="font-weight:400" class="lead">
+                                    우리나라에는 정부 및 지자체를 비롯하여, 개별 사기업 역시 데이터 포털을 운영하고 있는데요, <br/>
+                                    이 데이터들은 공공데이터포털, 통합 데이터지도, 서울 열린데이터 광장, AI Hub 페이지에서 수집했습니다. <br/>
+                                    앞서 이야기 했듯 약 11만개의 데이터를 수집할 수 있었고, 데이터의 출처를 각각 pie chart로 구분했습니다. <br/>
+                                    통합 데이터지도에서의 데이터가 62.4%로 가장 많고, 공공데이터포털, 서울 열린데이터 광장, AI Hub 순입니다.
+                                    <br/>
+                                </p>
+                                <iframe class="mb-5" width="950" height="600" frameborder="0" scrolling="no" src="//plotly.com/~Paul-scpark/18.embed"></iframe>
+                                <h2 id="overview">2. 데이터에서 제공하고 있는 Label을 Sector 단위로 구분하여 표현한 treemap</h2>
+                                <p style="font-weight:400" class="lead">
+                                    앞서 소개한 다양한 소스에서는 해당 데이터들이 어떤 유형인지를 나타내는 Label 값을 가지고 있습니다. <br/>
+                                    행정, 법률, 문화, 교통, 환경 등 다양한 분야에 대해 데이터가 존재하고 있음을 확인할 수 있습니다. <br/>
+                                    하지만 데이터마다 기준이 통일되어 있지 않아 같은 데이터임에도 Label 값이 달랐다는 문제를 확인했습니다. <br/>
+                                    이를 위해 주어진 데이터들과 '한국표준산업분류표' 등을 참고하여 약 13개 정도의 통일된 Label을 정의했습니다. <br/>
+                                    이 기준들이 데이터를 제공하는 공급자 입장에서도 통일된 기준으로 자리 잡아 구조화 된 데이터를 활용할 수 있습니다.
+                                    <br/>
+                                </p>
+                                <iframe class="mb-5" width="950" height="800" frameborder="0" scrolling="no" src="//plotly.com/~Paul-scpark/11.embed"></iframe>
+                                <h2 id="issued">3. 데이터 공개 시기에 따른 시계열 추이 트랜드</h2>
+                                <p style="font-weight:400" class="lead">
+                                    일부 데이터의 경우에는 해당 데이터들이 언제 공개되었는지 담겨 있습니다. <br/>
+                                    따라서 이 데이터를 활용하여 시기 별로 언제, 얼마나 데이터가 공개 되었는지를 그래프를 통해 확인해볼 수 있습니다. <br/>
+                                    시계열 그래프를 통해서 확인해볼 수 있듯이, 2019년까지는 데이터 개방이 많이 되어 있지 않았지만, <br/>
+                                    2019년을 기준으로 급격히 데이터들이 많이 개방된 것을 확인할 수 있습니다.
+                                    <br/>
+                                </p>
+                                <iframe class="mb-5" width="950" height="500" frameborder="0" scrolling="no" src="//plotly.com/~Paul-scpark/14.embed"></iframe>
+                                <h2 id="view_download">4. 데이터 조회 및 다운로드 횟수에 따른 시계열 추이 트랜드</h2>
+                                <p style="font-weight:400" class="lead">
+                                    그렇다면, 이렇게 공개되어 있는 많은 데이터들을 실제 사용자들은 얼마나 사용하고 있을까요? <br/>
+                                    이를 알기 위해 개별 데이터들이 얼마나 조회 및 다운로드 되었는지를 그래프를 통해 확인해보려고 합니다. <br/>
+                                    앞선 공개 시기 그래프와 동일하게 2012년부터 2022년까지의 데이터들의 추이를 아래와 같이 확인할 수 있습니다. <br/>
+                                    특히, 데이터 조회에 대한 그래프 결과는 앞선 공개 시기 그래프와 형태가 유사하다는 것을 확인할 수 있습니다. <br/>
+                                    한편, 데이터 다운로드는 공개 시기나 조회 그래프와 달리 거의 대부분의 시기동안 비슷한 결과를 보이고 있습니다. <br/>
+                                    또한 한 가지 더 확인할 수 있는 부분은 2022년은 데이터 공개는 상당히 많이 되었는데, <br/>
+                                    데이터 조회나 다운로드 횟수는 급격히 감소하는 것을 확인할 수도 있습니다.
+                                    <br/>
+                                </p>
+                                <iframe class="mb-5" width="950" height="500" frameborder="0" scrolling="no" src="//plotly.com/~Paul-scpark/16.embed"></iframe>
+                                <h2 id="wordcloud">5. 일부 데이터를 추출하여 데이터 설명을 워드클라우드로 표현</h2>
+                                <p style="font-weight:400" class="lead">
+                                    마지막으로는 수집된 데이터의 일부를 추출하여 데이터의 설명에 대한 것을 워드클라우드로 표현해봅니다. <br/>
+                                    약 11만개의 데이터에 대한 설명 모두를 워드클라우드로 표현하면 더 좋았겠지만, <br/>
+                                    각 데이터에 대한 설명 text가 약 30자 이상이 되기 때문에 컴퓨팅 파워 등의 이유로 표현이 어려웠습니다. <br/>
+                                    따라서 앞서 설명한 4개 데이터 출처들에서 일부 데이터를 랜덤으로 추출하여 워드클라우드를 확인할 수 있습니다. <br/>
+                                    가장 크게 눈에 들어오는 단어들은 '정보, 제공, 데이터, 자료, 좌표, 위치, 인구' 등으로 확인 가능합니다. <br/>
+                                    전반적으로 데이터를 설명할 때 많이 사용되는 단어다보니 이러한 결과들이 나온 것 같습니다. <br/>
+                                    추가적으로 전처리를 통해 원하고자 하는 내용들을 더 자세히 확인할 수 있을 것입니다.
+                                    <br/>
+                                </p>
+                                <figure>
+                                    <img src="{% static "assets/images/wordcloud-removebg-preview.png" %}" style="display: block; margin-left: auto; margin-right: auto; margin-bottom: 10px; width: 80%;">
+                                    <figcaption align="center">데이터 설명에 대한 text를 워드클라우드로 표현</figcaption>
+                                </figure> 
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!--  sidebar nav fixed  -->
+                    <!-- ============================================================== -->
+                    <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12 col-12" style="left:15px">
+                        <div class="sidebar-nav-fixed">
+                            <ul class="list-unstyled">
+                                <li><a href="#data_source" class="active">1. Data sources</a></li>
+                                <li><a href="#overview" >2. Label Sector</a></li>
+                                <li><a href="#issued">3. Issued</a></li>
+                                <li><a href="#view_download">4. View & Download</a></li>
+                                <li><a href="#wordcloud">5. Worcloud</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!--  end sidebar nav fixed  -->
+                    <!-- ============================================================== -->
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <div class="footer" style="position: absolute; bottom: 0;">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            <div class="text-md-right footer-links d-none d-sm-block">
+                                <a href="https://github.com/Paul-scpark">Github</a>
+                                <a href="https://paul-scpark.github.io/">Blog</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end footer -->
+            <!-- ============================================================== -->
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end main wrapper -->
+    <!-- ============================================================== -->
+    <!-- Optional JavaScript -->
+    <script src="{% static "assets/vendor/jquery/jquery-3.3.1.min.js" %}"></script>
+    <script src="{% static "assets/vendor/bootstrap/js/bootstrap.bundle.js" %}"></script>
+    <script src="{% static "assets/vendor/slimscroll/jquery.slimscroll.js" %}"></script>
+    <script src="{% static "assets/libs/js/main-js.js" %}"></script>
+</body>
+</html>
