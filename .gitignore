@@ -245,6 +245,10 @@ fabric.properties
 # for data file
 *.csv
 
+pytorch_model.bin
+vocab.korean.rawtext.list
+bert_config.json
+
 *.pt
 *.tar
 
