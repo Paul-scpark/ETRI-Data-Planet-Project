@@ -23,6 +23,9 @@ def get_data_eda(request):
 def get_data_search(request):
     return render(request, 'data_search.html')
 
+def get_data_search_result(request):
+    return render(request, 'data_search_result.html')
+
 def get_data_search_detail1(request):
     return render(request, 'data_search_detail1.html')
 
