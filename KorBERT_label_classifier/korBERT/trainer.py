@@ -89,12 +89,9 @@ def train(config):
 
 
     PATH = './korBERT/korBERT_model/'
-    torch.save(model, PATH + '_' + config.model_name + '.pt')  
+    torch.save(model, PATH + config.model_name + '.pt')
     torch.save(model.state_dict(), PATH + config.model_name + '_state_dict.pt')  
-    torch.save({
-        'model': model.state_dict(),
-        'optimizer': optimizer.state_dict()
-    }, PATH + config.model_name + 'all.tar') 
+
 
 
 
