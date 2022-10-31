@@ -8,6 +8,7 @@ urlpatterns = [
     re_path(r'^.*\.html', views.get_data_search, name='data_search'),
     re_path(r'^.*\.html', views.get_data_search_result, name='data_search_result'),
     re_path(r'^.*\.html', views.get_data_search_detail1, name='data_search_detail1'),
+    re_path(r'^.*\.html', views.get_data_search_detail2, name='data_search_detail2'),
     re_path(r'^.*\.html', views.get_data_platform_search, name='data_platform_search'),
     re_path(r'^.*\.html', views.get_community, name='community'),
     path('', views.index, name='index'),

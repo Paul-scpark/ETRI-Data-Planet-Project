@@ -29,6 +29,9 @@ def get_data_search_result(request):
 def get_data_search_detail1(request):
     return render(request, 'data_search_detail1.html')
 
+def get_data_search_detail2(request):
+    return render(request, 'data_search_detail2.html')
+
 def get_data_platform_search(request):
     return render(request, 'data_platform_search.html')
 
