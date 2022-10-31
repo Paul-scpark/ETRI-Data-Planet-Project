@@ -1,0 +1,603 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <title>AI Dev course - Monthly Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static "assets/vendor/bootstrap/css/bootstrap.min.css" %}">
+    <link href="{% static "assets/vendor/fonts/circular-std/style.css" %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "assets/vendor/fonts/fontawesome/css/fontawesome-all.css" %}">
+    <link rel="stylesheet" href="{% static "assets/libs/css/style.css" %}">
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- main wrapper -->
+    <!-- ============================================================== -->
+    <div class="dashboard-main-wrapper">
+        <!-- ============================================================== -->
+        <!-- navbar -->
+        <!-- ============================================================== -->
+        <div class="dashboard-header">
+            <nav class="navbar navbar-expand-lg bg-white fixed-top">
+                <a class="navbar-brand" href="/">Data Planet</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto navbar-right-top">
+                        <li class="nav-item">
+                            <div id="custom-search" class="top-search-bar">
+                                <input class="form-control" type="text" placeholder="Search..">
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown notification">
+                            <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span class="indicator"></span></a>
+                            <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
+                                <li>
+                                    <div class="notification-title"> Notification</div>
+                                    <div class="notification-list">
+                                        <div class="list-group">
+                                            <a href="#" class="list-group-item list-group-item-action active">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="{% static "assets/images/avatar-2.jpg" %}" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy Rakestraw</span>accepted your invitation to join the team.
+                                                        <div class="notification-date">2 min ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="{% static "assets/images/avatar-4.jpg" %}" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Monaan Pechi</span> is watching your main repository
+                                                        <div class="notification-date">2 min ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="{% static "assets/images/avatar-5.jpg" %}" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Jessica Caruso</span>accepted your invitation to join the team.
+                                                        <div class="notification-date">2 min ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="list-footer"> <a href="#">View all notifications</a></div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown connection">
+                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-fw fa-th"></i> </a>
+                            <ul class="dropdown-menu dropdown-menu-right connection-dropdown">
+                                <li class="connection-list">
+                                    <a href="https://programmers.co.kr/" class="connection-item">
+                                        <img src="{% static "assets/images/programmers.png" %}" style="width: 250px">
+                                        <span>프로그래머스 인공지능 데브코스 4기</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="conntection-footer"><a href="#">More</a></div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown nav-user">
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{% static "assets/images/user-removebg.png" %}" alt="" class="user-avatar-md rounded-circle"></a>
+                            <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+                                <div class="nav-user-info">
+                                    <h5 class="mb-0 text-white nav-user-name">[4기-A] 박성찬</h5>
+                                    <span class="status"></span><span class="ml-2">Available</span>
+                                </div>
+                                <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end navbar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- left sidebar -->
+        <!-- ============================================================== -->
+        <div class="nav-left-sidebar sidebar-dark">
+            <div class="menu-list">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav flex-column">
+                            <li class="nav-divider">
+                                Menu
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="/" data-target="#submenu-1" aria-controls="submenu-1"><i class="fab fa-fw fa-wpforms"></i>Overview <span class="badge badge-success">6</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fas fa-fw fa-database"></i>Data Details <span class="badge badge-success">6</span></a>
+                                <div id="submenu-2" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="data_schema.html">Data Schema</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="data_eda.html">Data EDA</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3"><i class="fas fa-fw fa-search"></i>Data Search <span class="badge badge-success">6</span></a>
+                                <div id="submenu-3" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="data_search.html">Data</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="data_platform_search.html">Data Platform</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="community.html" data-target="#submenu-4" aria-controls="submenu-4"><i class="fas fa-fw fa-comment-dots"></i>Coummnity</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end left sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- wrapper  -->
+        <!-- ============================================================== -->
+        <div class="dashboard-wrapper">
+            <div class="container-fluid dashboard-content">
+                    <div class="row">
+                        <div class="col-xl-10">
+                            <!-- ============================================================== -->
+                            <!-- pageheader  -->
+                            <!-- ============================================================== -->
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="page-header" id="top">
+                                        <h2 class="pageheader-title">Data Search Engine</h2>
+                                        <div class="page-breadcrumb">
+                                            <nav aria-label="breadcrumb">
+                                                <ol class="breadcrumb">
+                                                    <li class="breadcrumb-item"><a class="breadcrumb-link">Data Search</a></li>
+                                                    <li class="breadcrumb-item"><a class="breadcrumb-link">Data Search Engine</a></li>
+                                                </ol>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- end pageheader  -->
+                            <!-- ============================================================== -->
+                            <!-- ============================================================== -->
+                            <!-- overview  -->
+                            <!-- ============================================================== -->
+                            <div class="page-section" id="overview">
+                                <div class="row">
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <h1>검색 결과 ⭐️</h1>
+                                        <br/><br/>
+                                        <p style="font-weight:400" class="lead">
+                                            검색한 키워드에 대하여 다양한 소스로부터 흩어져 있는 데이터를 쉽게 확인할 수 있습니다.
+                                            <br/><br/>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-11 col-lg-6 col-md-6 col-sm-6 col-6" style="margin-bottom: -35px">
+                            <div class="card">
+                                <div class="card-body">
+                                    <form>
+                                        <input class="form-control form-control-lg" type="search" placeholder="인공지능" aria-label="Search">
+                                        <a href="data_search_result.html" class="btn btn-primary search-btn">Search</a>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-11 col-lg-12 col-md-12 col-sm-12 col-12 mb-1">
+                            <div class="section-block">
+                                {% comment %} <h5 class="section-title">Vertical tabs</h5>
+                                <p>Takes the basic nav from above and adds the .nav-tabs class to generate a tabbed interface..</p> {% endcomment %}
+                            </div>
+                            <div class="tab-vertical">
+                                <div class="tab-content" id="myTabContent3">
+                                    <div class="tab-pane fade show active" id="vertical-1" role="tabpanel" aria-labelledby="vertical-tab-1">
+                                        <div class="row">
+                                            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+                                                <div class="card">
+                                                    <h5 class="card-header" style="font-weight:bold">전체 데이터 (180건)</h5>
+                                                    <div class="card-body">
+                                                        <div class="list-group">
+                                                            <a href="data_search_detail2.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">문화체육관광부 문화중심도시육성 (인공지능 활용 콘텐츠 창작랩 구축 운영) 교육 프로그램 정보</h5>
+                                                                    {% comment %} <p>1814</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">인공지능 활용 콘텐츠 창작랩 구축 운영 사업 교육 프로그램 정보(사업명, 담당부처, 운영교육기관명, 교육제목, 교육내용, 교육시작일, 교육종료일...</p>
+                                                                <small>문화체육관광부 | 텍스트 | 문화관광</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">중소기업기술정보진흥원 인공지능 (AI) 제조 데이터셋</h5>
+                                                                    {% comment %} <p>4155</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">민관협력을 통해 "중소벤처 제조 플랫폼 (KAMP)"에 개방한 중소 제조기업이 인공지능 (AI) 분석에 활용할 수 있는 24종의 제조 AI 데이터셋 정보...</p>
+                                                                <small>중소기업기술정보진흥원 | 텍스트 | 제조소비</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">(주) 강원랜드 호텔 무인영업장 인공지능 커피로봇 이용현황</h5>
+                                                                    {% comment %} <p>5193</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">한국전력공사 계약종별 사용현황에 대한 데이터입니다. 연도, 시도, 시군구, 계약종별, 1/2/3월에 대한 데이터...</p>
+                                                                <small>(주)강원랜드 | 텍스트 | 문화관광</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">한전KDN(주) 정보기술분야 교육계획</h5>
+                                                                    {% comment %} <p>6768</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">정보기술분야 교육계획에 대한 자료입니다. 교육과정명, 시간, 교육인원, 일정 등에 대한 데이터입니다. 빅데이터, 인공지능, 엔지니어링과 관련된...</p>
+                                                                <small>한전KDN(주) | 텍스트 | 교육과학</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">한국데이터산업진흥원 국내 데이터 솔루션 제품 정보</h5>
+                                                                    {% comment %} <p>15113</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">2019년 7월 12일 기준 빅데이터, DBMS, 데이터 품질, 데이터모델링, 데이터보안, 인공지능 등 국내 데이터 솔루션 제품 정보를 제공합니다. 해당...</p>
+                                                                <small>한국데이터산업진흥원 | 텍스트 | 교육과학</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">AI 학습용 데이터 구축용 원천데이터 - 예능 보이스퀸 (음악)</h5>
+                                                                    {% comment %} <p>44700</p> {% endcomment %}
+                                                                    <small>빅데이터지도</small>
+                                                                </div>
+                                                                <p class="mb-1">대용량 동영상 콘텐츠 AI 원천 데이터 MBN 보도, 교양, 예능 원천 데이터를 활용하여 인공지능 학습용 테이터 구축 할 수 있게 객체 별 동영상 제공...</p>
+                                                                <small>문화체육 | CSV | 문화관광</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">AMI 시간대별 AI 학습 데이터</h5>
+                                                                    {% comment %} <p>71028</p> {% endcomment %}
+                                                                    <small>빅데이터지도</small>
+                                                                </div>
+                                                                <p class="mb-1">AMI (Advanced Metering Infrastructure) 아파트 수용가에 대한 시간대별 전력사용 데이터를 인공지능 학습용으로 가공한 데이터입니다.</p>
+                                                                <small>건설에너지 | CSV | 주택토지</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">출조 시기 선정을 위한 해양정보 데이터 셋</h5>
+                                                                    {% comment %} <p>77134</p> {% endcomment %}
+                                                                    <small>빅데이터지도</small>
+                                                                </div>
+                                                                <p class="mb-1">낚시 초보들이 낚싯배 선장이나 고급자들에게 물어보지 않아도 낚시 일정을 계획하는데 도움을 줄 수 있도록 해양정보인 물때, 조위, 수온 등의 과거...</p>
+                                                                <small>농수산식품 | CSV, XML, JSON | 식품건강</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">서울시 금천구 불법주차 (IoT) 측정정보</h5>
+                                                                    {% comment %} <p>109997</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">불법주정차 IoT 측정정보는 불법 주정차로 꽉 막힌 긴급차량 통행로를 지키는 인공지능 서비스로 소방도로 내 불법주정차 감지 데이터입니다. 참고...</p>
+                                                                <small>도시관리 | OPEN API, SHEET, FILE | 주택토지</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">서울시 금천구 보행자 알림 (IoT) 측정정보</h5>
+                                                                    {% comment %} <p>110003</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">인공지능 보행자 알리미 서비스는 골목길 우회전 모퉁이 구간에 설치된 인공지능 CCTV가 보행자를 감지하면 LED 전광판에 ‘보행자 감지’ 문구를...</p>
+                                                                <small>도시관리 | OPEN API, SHEET, FILE | 주택토지</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">소아 흉부 이미지 데이터</h5>
+                                                                    {% comment %} <p>109049</p> {% endcomment %}
+                                                                    <small>AI Hub</small>
+                                                                </div>
+                                                                <p class="mb-1">신생아에서 15세 청소년에 이르기까지 연령별 흉부 주요발병 질환별로 소아흉부 X-ray 영상과 폐 영역 및 병변 부위를 마스킹한 인공지능 학습용 영상...</p>
+                                                                <small>고려대구로병원 외 8개 병원 (참여기관) | 이미지 | 보건의료</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">주거 및 공용 공간 내 이상행동 영상</h5>
+                                                                    {% comment %} <p>109178</p> {% endcomment %}
+                                                                    <small>AI Hub</small>
+                                                                </div>
+                                                                <p class="mb-1">주거 및 공용공간 내 CCTV 또는 보안 카메라로부터 입력되는 동영상에서 이상행동을 탐지하는 지능형 영상 인식 인공지능 의 학습 개발에 활용하기...</p>
+                                                                <small>자체 수집 | 비디오 | 재난안전</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">전북 장수 사과 당도 품질 데이터</h5>
+                                                                    {% comment %} <p>109178</p> {% endcomment %}
+                                                                    <small>AI Hub</small>
+                                                                </div>
+                                                                <p class="mb-1">전북 장수 사과의 크기 및 수확량을 인공지능 기술을 통해 예측하고 비파괴 샘플링 방식보다 정확한 인공지능 당도 측정으로 당도 측정기술을 정밀화...</p>
+                                                                <small>자체 수집 | 이미지 | 식품건강</small>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="btn btn-secondary">More</a>
+                                    </div>
+                                    <div class="tab-pane fade" id="vertical-12" role="tabpanel" aria-labelledby="vertical-tab-12">
+                                        <div class="row">
+                                            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+                                                <div class="card">
+                                                    <h5 class="card-header" style="font-weight:bold">전체 데이터 (2,837건)</h5>
+                                                    <div class="card-body">
+                                                        <div class="list-group">
+                                                            <a href="data_search_detail1.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">한국부동산원 공동주택 단지 식별정보 동정보</h5>
+                                                                    {% comment %} <p>409</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">한국부동산원 (구.한국감정원)에서 제공하는 공동주택 단지 식별정보 중 동정보 데이터입니다. 단지고유번호...</p>
+                                                                <small>한국부동산원 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">한국국토정보공사 보유 드론 현황</h5>
+                                                                    {% comment %} <p>634</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">2022년 한국국토정보공사에서 보유, 운영 중인 드론 현황 정보입니다. 제조사, 모델명, 제조국, 기체종류...</p>
+                                                                <small>한국국토정보공사 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">행정중심복합도시건설청 행복도시 지구단위계획 수립현황</h5>
+                                                                    {% comment %} <p>296</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">행정중심복합도시건설청의 행복도시 도시계획 업무에 대한 데이터 자료로써, 행복도시 지구단위계획 수립현황입니다.</p>
+                                                                <small>행정중심복합도시건설청 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">행정중심복합도시건설청 행정중심복합도시 주택분양계획 및 실적</h5>
+                                                                    {% comment %} <p>776</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">행정중심복합도시건설청에서 2022년까지 행복도시 분양정보 (위치, 유형, 공고일)입니다. 2019년 이후 세종시청으로...</p>
+                                                                <small>행정중심복합도시건설청 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">국토교통부 국토지리정보원 공간객체등록번호부여 갱신정보통계</h5>
+                                                                    {% comment %} <p>9309</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">행정안전부 국가기준데이터에서 연계 수집된 정보를 공간객채등록번호부여시스템 정보와 매핑하여 갱신정보통계...</p>
+                                                                <small>국토교통부 국토지리정보원 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">경기주택도시공사 공급용지 입찰공고 및 개찰결과 내역</h5>
+                                                                    {% comment %} <p>4240</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">GH에서 공급하는 택지의 입찰공고 및 개찰결과 내역으로써 사업지구명, 공고명, 공급방법, 모집공고일, 접수시작일...</p>
+                                                                <small>경기주택도시공사 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">서울시설공단 공영주차장 일별 주차현황</h5>
+                                                                    {% comment %} <p>109261</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">서울시설공단에서 운영하는 공영주차장의 일별 주차현황 데이터입니다. 공영주차장의 일별 입차대수와 출차대수...</p>
+                                                                <small>서울시설공단 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">서울시 건축허가대장 건축물 석면 정보</h5>
+                                                                    {% comment %} <p>109263</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">건축허가대장의 건축물의 석면으로 천장재 함유 유무, 단열재 함유 유무, 지붕재 함유 유무, 보온재 함유 유무 등...</p>
+                                                                <small>서울특별시 주택정책실 주택공급기획관 주택정책과 | OPEN API, SHEET</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">서울시 공동체주택 플랫폼 아카데미 정보</h5>
+                                                                    {% comment %} <p>109254</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">서울시 공동체주택 추진절차, 금융지원 등 제도 등과 관련한 공동체주택 아카데미의 운영 정보를 볼 수 있도록 제공하는...</p>
+                                                                <small>서울특별시 도시계획국 도시관리과 | Open API, SHEET</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">서울시 주택관리 현황	</h5>
+                                                                    {% comment %} <p>111222</p> {% endcomment %}
+                                                                    <small>열린데이터광장</small>
+                                                                </div>
+                                                                <p class="mb-1">SH공사에서 관리중인 임대주택현황 정보입니다.</p>
+                                                                <small>SH공사 센터운영관리부 | FILE</small>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="btn btn-secondary">More</a>
+                                    </div>
+                                    <div class="tab-pane fade" id="vertical-13" role="tabpanel" aria-labelledby="vertical-tab-13">
+                                        <div class="row">
+                                            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+                                                <div class="card">
+                                                    <h5 class="card-header" style="font-weight:bold">전체 데이터 (326건)</h5>
+                                                    <div class="card-body">
+                                                        <div class="list-group">
+                                                            <a href="data_search_detail1.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">한국국제협력단 혁신적개발협력 진행사업 목록</h5>
+                                                                    {% comment %} <p>759</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">개발협력사업의 원조효과성을 제고하고, 개도국의 민간부문 역량강화를 도모하기 위하여, 새롭고 다양한 분야의...</p>
+                                                                <small>한국국제협력단 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">통일부 북한이탈주민 재북 출신지역별 현황</h5>
+                                                                    {% comment %} <p>1918</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">통일부 북한이탈주민이 북한에 거주할 당시 출신지역에 대한 통계 데이터로 출신지역별 인원수, 성별 인원수, 합계...</p>
+                                                                <small>통일부 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">병무청 병역판정검사 현역 처분</h5>
+                                                                    {% comment %} <p>3729</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">병역판정검사 결과 현역 처분 현황에 대한 데이터로 1999년~2019년 수검인원 현역처분 현황을...</p>
+                                                                <small>병무청 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">외교부 국가 (지역)별 우리나라와의 관계</h5>
+                                                                    {% comment %} <p>11545</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">외교부 홈페이지에 공개 중인 각 국가별 약황 정보 중 우리나라와의 관계 정보를 CSV 형식으로 제공 합니다.</p>
+                                                                <small>외교부 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">한국국제교류재단 한미미래비전네트워크 사업 추진 실적</h5>
+                                                                    {% comment %} <p>15011</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">한국국제교류재단이 지원한 한미미래비전 네트워크사업과 관련한 사업연도, 연구소명, 사업명에 대한 항목을...</p>
+                                                                <small>한국국제교류재단 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">대국민공개용 민군기술협력사업 과제목록</h5>
+                                                                    {% comment %} <p>36787</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">열린정보마당 (인터넷 DTiMS)에서 제공 중인 대국민 공개용 민군기술협력사업 과제 목록입니다.</p>
+                                                                <small>국방기술품질원 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">재외동포재단 재외동포 단체 정보 한인회</h5>
+                                                                    {% comment %} <p>14322</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">재외동포 한인회 단체 정보로 단체명, 대륙, 국가, 관할공관, 홈페이지, 주소 (국외), 단체유형, 대표자, 단체소개...</p>
+                                                                <small>재외동포재단 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">한아프리카재단 아프리카혁신 스타트업 디렉터리</h5>
+                                                                    {% comment %} <p>20236</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">아프리카혁신스타트업디렉터리 목록 조회: 한글 국가명 또는 ISO국가코드를 이용하여 아프리카혁신 스타트업...</p>
+                                                                <small>한아프리카재단 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">통일연구원 정기간행물 체크인 목록</h5>
+                                                                    {% comment %} <p>110717</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">통일연구원 구독 정기간행물 체크인 데이터입니다.</p>
+                                                                <small>통일연구원 | 텍스트</small>
+                                                            </a>
+                                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">제주특별자치도 제주시 국제우호협력도시현황</h5>
+                                                                    {% comment %} <p>111222</p> {% endcomment %}
+                                                                    <small>공공데이터포털</small>
+                                                                </div>
+                                                                <p class="mb-1">제주특별자치도 제주시 국제 우호협력도시 현황 데이터입니다. (항목: 국가명, 도시명, 체결일자, 면적...</p>
+                                                                <small>제주특별자치도 제주시 | 텍스트</small>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="btn btn-secondary">More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <div class="footer" style="position: absolute; bottom: 0;">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            <div class="text-md-right footer-links d-none d-sm-block">
+                                <a href="https://github.com/Paul-scpark">Github</a>
+                                <a href="https://paul-scpark.github.io/">Blog</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end footer -->
+            <!-- ============================================================== -->
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end main wrapper -->
+    <!-- ============================================================== -->
+    <!-- Optional JavaScript -->
+    <script src="{% static "assets/vendor/jquery/jquery-3.3.1.min.js" %}"></script>
+    <script src="{% static "assets/vendor/bootstrap/js/bootstrap.bundle.js" %}"></script>
+    <script src="{% static "assets/vendor/slimscroll/jquery.slimscroll.js" %}"></script>
+    <script src="{% static "assets/libs/js/main-js.js" %}"></script>
+</body>
+</html>
