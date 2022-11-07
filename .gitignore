@@ -254,3 +254,5 @@ bert_config.json
 *.npy
 
 show_data.ipynb
+
+data/
