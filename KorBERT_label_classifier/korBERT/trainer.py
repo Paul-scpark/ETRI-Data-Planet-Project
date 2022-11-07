@@ -3,11 +3,10 @@ from torch import nn
 from torch.utils.data import DataLoader
 import gluonnlp as nlp
 from tqdm import tqdm
-from sklearn.model_selection import train_test_split
 
 
 from korBERT.loader import korBERTDataset
-from korBERT.utils import data_preprocess, calc_accuracy
+from korBERT.utils import data_preprocess, calc_accuracy, EarlyStopping
 from korBERT.korBERT_model.model import korBERTClassifier
 from pytorch_pretrained_bert.tokenization import BertTokenizer
 from pytorch_pretrained_bert.modeling import BertModel, BertConfig
@@ -55,11 +54,12 @@ def train(config):
     t_total = len(train_dataloader) * config.num_epochs
     warmup_step = int(t_total * config.warmup_ratio)
     scheduler = get_cosine_schedule_with_warmup(optimizer, num_warmup_steps=warmup_step, num_training_steps=t_total)
-
+    early_stopping = EarlyStopping(patience = 3, verbose = True)
 
     for e in range(config.num_epochs):
         train_acc = 0.0
         test_acc = 0.0
+        test_loss = 0.0
         model.train()
         for batch_id, (token_ids, valid_length, segment_ids, label) in enumerate(tqdm(train_dataloader)):
             optimizer.zero_grad()
@@ -84,17 +84,15 @@ def train(config):
             valid_length= valid_length
             label = label.long().to(device)
             out = model(token_ids, valid_length, segment_ids)
+            temp_test_loss = loss_fn(out, label)
+            test_loss += temp_test_loss.item()    
             test_acc += calc_accuracy(out, label)
         print("epoch {} valid acc {}".format(e+1, test_acc / (batch_id+1)))
+        early_stopping(test_loss, model)
+        if early_stopping.early_stop:
+            break
 
 
     PATH = './korBERT/korBERT_model/'
-    torch.save(model, PATH + '_' + config.model_name + '.pt')  
+    torch.save(model, PATH + config.model_name + '.pt')
     torch.save(model.state_dict(), PATH + config.model_name + '_state_dict.pt')  
-    torch.save({
-        'model': model.state_dict(),
-        'optimizer': optimizer.state_dict()
-    }, PATH + config.model_name + 'all.tar') 
-
-
-

@@ -251,5 +251,6 @@ bert_config.json
 
 *.pt
 *.tar
+*.npy
 
 show_data.ipynb
