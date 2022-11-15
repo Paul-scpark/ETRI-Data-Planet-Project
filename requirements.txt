@@ -45,3 +45,17 @@ kobert @ git+https://git@github.com/SKTBrain/KoBERT.git@47a69af87928fc24e20f571f
 kobert-tokenizer @ git+https://github.com/SKTBrain/KoBERT.git@47a69af87928fc24e20f571fe10c3cc9dd9af9a3#subdirectory=kobert_hf
 kobert-transformers==0.5.1
 huggingface-hub==0.0.12
+asgiref==3.5.2
+bootstrap4==0.1.0
+dj-database-url==1.0.0
+Django==4.1.2
+django-on-heroku==1.1.2
+gunicorn==20.1.0
+numpy==1.23.4
+pandas==1.5.1
+psycopg2-binary==2.9.4
+python-dateutil==2.8.2
+pytz==2022.5
+six==1.16.0
+sqlparse==0.4.3
+whitenoise==6.2.0
