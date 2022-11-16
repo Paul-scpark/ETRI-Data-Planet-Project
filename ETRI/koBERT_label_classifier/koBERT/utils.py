@@ -3,9 +3,10 @@ import numpy as np
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 
-def calc_accuracy(X,Y):
+
+def calc_accuracy(X, Y):
     max_vals, max_indices = torch.max(X, 1)
-    train_acc = (max_indices == Y).sum().data.cpu().numpy()/max_indices.size()[0]
+    train_acc = (max_indices == Y).sum().data.cpu().numpy() / max_indices.size()[0]
     return train_acc
 
 
@@ -20,9 +21,9 @@ def data_preprocess(path):
     encoder = LabelEncoder()
     encoder.fit(items)
     result["label"] = encoder.transform(result["label"])
- 
+
     data_list = []
-    for sentence, label in zip(result['description'], result['label']):
+    for sentence, label in zip(result["description"], result["label"]):
         data = []
         data.append(sentence)
         data.append(str(label))
@@ -31,10 +32,9 @@ def data_preprocess(path):
     return data_list, encoder.classes_
 
 
-
-def new_softmax(a) : 
-    c = np.max(a) 
-    exp_a = np.exp(a-c) 
+def new_softmax(a):
+    c = np.max(a)
+    exp_a = np.exp(a - c)
     sum_exp_a = np.sum(exp_a)
     y = (exp_a / sum_exp_a) * 100
     return np.round(y, 3)

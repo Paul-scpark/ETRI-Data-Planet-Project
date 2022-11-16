@@ -1,5 +1,5 @@
 """
-WSGI config for monthly_prj project.
+WSGI config for Data_Planet project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "monthly_prj.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Data_Planet.settings")
 
 application = get_wsgi_application()

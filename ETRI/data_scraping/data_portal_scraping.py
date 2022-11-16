@@ -22,33 +22,61 @@ view_list = []
 download_list = []
 keyword_list = []
 
-with webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options) as driver:
+with webdriver.Chrome(
+    service=Service(ChromeDriverManager().install()), options=options
+) as driver:
     driver.get(url)
     driver.implicitly_wait(5)
 
     page_num = 1
-    while page_num <=5000:
+    while page_num <= 5000:
         driver.implicitly_wait(5)
         for content_num in range(1, 11):
 
-            labels = driver.find_elements(By.CSS_SELECTOR, f"div.result-list li:nth-child({content_num}) p.tag-area")
-            links = driver.find_elements(By.CSS_SELECTOR, f"div.result-list li:nth-child({content_num}) dl a")
-            forms = driver.find_elements(By.CSS_SELECTOR, f"div.result-list li:nth-child({content_num}) dl a span.tagset")
-            names = driver.find_elements(By.CSS_SELECTOR, f"div.result-list li:nth-child({content_num}) dl a span.title")
-            scripts = driver.find_elements(By.CSS_SELECTOR, f"div.result-list li:nth-child({content_num}) dl dd")
-            providers = driver.find_elements(By.CSS_SELECTOR,
-                                             f"div.result-list li:nth-child({content_num}) div.info-data p:first-child span.data")
-            dates = driver.find_elements(By.CSS_SELECTOR, f"div.result-list li:nth-child({content_num}) div.info-data p:nth-child(2) span.data")
-            views = driver.find_elements(By.CSS_SELECTOR, f"div.result-list li:nth-child({content_num}) div.info-data p:nth-child(3) span.data")
-            downloads = driver.find_elements(By.CSS_SELECTOR,
-                                             f"div.result-list li:nth-child({content_num}) div.info-data p:nth-child(4) span.data")
-            keywords = driver.find_elements(By.CSS_SELECTOR, f"div.result-list li:nth-child({content_num}) div.info-data p:last-child")
+            labels = driver.find_elements(
+                By.CSS_SELECTOR,
+                f"div.result-list li:nth-child({content_num}) p.tag-area",
+            )
+            links = driver.find_elements(
+                By.CSS_SELECTOR, f"div.result-list li:nth-child({content_num}) dl a"
+            )
+            forms = driver.find_elements(
+                By.CSS_SELECTOR,
+                f"div.result-list li:nth-child({content_num}) dl a span.tagset",
+            )
+            names = driver.find_elements(
+                By.CSS_SELECTOR,
+                f"div.result-list li:nth-child({content_num}) dl a span.title",
+            )
+            scripts = driver.find_elements(
+                By.CSS_SELECTOR, f"div.result-list li:nth-child({content_num}) dl dd"
+            )
+            providers = driver.find_elements(
+                By.CSS_SELECTOR,
+                f"div.result-list li:nth-child({content_num}) div.info-data p:first-child span.data",
+            )
+            dates = driver.find_elements(
+                By.CSS_SELECTOR,
+                f"div.result-list li:nth-child({content_num}) div.info-data p:nth-child(2) span.data",
+            )
+            views = driver.find_elements(
+                By.CSS_SELECTOR,
+                f"div.result-list li:nth-child({content_num}) div.info-data p:nth-child(3) span.data",
+            )
+            downloads = driver.find_elements(
+                By.CSS_SELECTOR,
+                f"div.result-list li:nth-child({content_num}) div.info-data p:nth-child(4) span.data",
+            )
+            keywords = driver.find_elements(
+                By.CSS_SELECTOR,
+                f"div.result-list li:nth-child({content_num}) div.info-data p:last-child",
+            )
 
             for label in labels:
                 label_list.append(label.text)
 
             for link in links:
-                link_list.append(link.get_attribute('href'))
+                link_list.append(link.get_attribute("href"))
 
             temp_form_list = []
             for form in forms:
@@ -79,20 +107,23 @@ with webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=
 
         page_num += 1
         time.sleep(1)
-        driver.execute_script(f'updatePage({page_num}); return false;')
+        driver.execute_script(f"updatePage({page_num}); return false;")
 
         time.sleep(1)
 
-    df = pd.DataFrame({"분류체계": label_list,
-                       "URL": link_list,
-                       "제공형식": form_list,
-                       "이름": name_list,
-                       "명세": script_list,
-                       "제공기관": provider_list,
-                       "수정일": date_list,
-                       "조회수": view_list,
-                       "다운로드": download_list,
-                       "키워드": keyword_list
-                       })
+    df = pd.DataFrame(
+        {
+            "분류체계": label_list,
+            "URL": link_list,
+            "제공형식": form_list,
+            "이름": name_list,
+            "명세": script_list,
+            "제공기관": provider_list,
+            "수정일": date_list,
+            "조회수": view_list,
+            "다운로드": download_list,
+            "키워드": keyword_list,
+        }
+    )
 
     df.to_csv("./result2.csv", encoding="utf-8")

@@ -15,18 +15,27 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, re_path, path
-from app.views import get_data, get_data_eda, get_data_search, get_data_search_result, get_data_platform_search, get_community, get_data_search_detail1, get_data_search_detail2
+from app.views import (
+    get_data,
+    get_data_eda,
+    get_data_search,
+    get_data_search_result,
+    get_data_platform_search,
+    get_community,
+    get_data_search_detail1,
+    get_data_search_detail2,
+)
 
 urlpatterns = [
-    path('data_schema/', get_data), 
-    path('data_eda/', get_data_eda), 
-    path('data_search/', get_data_search), 
-    path('data_search_result/', get_data_search_result), 
-    path('data_search_detail1/', get_data_search_detail1), 
-    path('data_search_detail2/', get_data_search_detail2), 
-    path('data_platform_search/', get_data_platform_search), 
-    path('community/', get_community), 
-    re_path(r'^admin/', admin.site.urls),
-    re_path(r'^app/', include('app.urls')),
-    re_path(r'^', include('app.urls')),
+    path("data_schema/", get_data),
+    path("data_eda/", get_data_eda),
+    path("data_search/", get_data_search),
+    path("data_search_result/", get_data_search_result),
+    path("data_search_detail1/", get_data_search_detail1),
+    path("data_search_detail2/", get_data_search_detail2),
+    path("data_platform_search/", get_data_platform_search),
+    path("community/", get_community),
+    re_path(r"^admin/", admin.site.urls),
+    re_path(r"^app/", include("app.urls")),
+    re_path(r"^", include("app.urls")),
 ]
