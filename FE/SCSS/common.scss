@@ -130,8 +130,8 @@ header {
   background-color: #f6f5f0;
   border-bottom: 1px solid #c8c8c8;
 
-  /* position: relative; */
-  position: fixed;
+  position: relative;
+
   top: 0;
   z-index: 9;
 
@@ -244,6 +244,22 @@ header {
         padding: 10px 20px 34px 20px;
         font-family: Arial, sans-serif;
         font-size: 13px;
+
+        a:link {
+          text-decoration: none;
+          color: #333;
+        }
+
+        a:visited {
+          text-decoration: none;
+          color: #333;
+        }
+
+        &:hover a {
+          text-decoration: none;
+          color: #669900;
+        }
+
       }
 
       &:hover .item__name {
@@ -251,6 +267,9 @@ header {
         color: #669900;
         border-radius: 6px 6px 0 0;
       }
+
+
+
 
       .item__contents {
         /* viewport를 기준으로 하기에 주변 요소에 상관없이 출력됨 */
