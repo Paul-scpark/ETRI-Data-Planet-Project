@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- 오픈 그래프 : 카톡과 같은 메신저에서 띄워주는 정보 -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Data Planet" />
+  <meta property="og:title" content="Data Planet" />
+  <meta property="og:description" content="데이터 플래닛" />
+  <!--  <meta property="og:image" content=" />-->
+  <!--  <meta property="og:url" content="" />-->
+
+  <!-- 트위터 카드 : 트위터와 같은 소셜 미디어로 공유될 때 우선적으로 활용되는 정보 -->
+  <meta property="twitter:card" content="summary" />
+  <meta property="twitter:site" content="Data Planet" />
+  <meta property="twitter:title" content="Data Planet" />
+  <meta property="twitter:description" content="데이터 플래닛" />
+  <!--  <meta property="twitter:image" content="" />-->
+  <!--  <meta property="twitter:url" content="" />-->
+  <title>Data Planet</title>
+  <!-- 아이콘을 고해상도 png파일로 띄울 때 link로 -->
+  <!-- 따로 링크를 걸어놓지 않으면 프로젝트의 루트 경로에서 favicon.ico를 찾아서 자동으로 띄움 -->
+  <!--  <link rel="icon" href="./favicon.png" />-->
+
+  <!-- reset css -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"/>
+  <!-- 폰트 불러오기(google font) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- material icon을 사용할 수 있게 함 -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- main.css는 가급적 맨 밑에 위치하게 함 -->
+  <link rel="stylesheet" href="../SCSS/common.scss" />
+  <link rel="stylesheet" href="../SCSS/signup.scss" />
+
+
+  <!-- defer : html이 준비가 되면 그때 실행 -->
+  <script defer src="../js/common.js"></script>
+  <script defer src="../js/main.js"></script>
+</head>
+
+<body>
+<!-- Header -->
+
+  <header>
+    <div class="inner">
+      <div class="sub-menu">
+        <ul class="menu">
+          <li><a href="/login/index.html">로그인</a></li>
+          <li><a href="javascript:void(0)">회원가입</a></li>
+        </ul>
+      </div>
+
+      <ul class="main-menu">
+        <li class="item">
+          <div class="item__name">Overview</div>
+          <div class="item__contents">
+            <div class="contents__menu">
+              <ul class="inner">
+                <li>
+                  <h4>플랫폼 및 서비스 소개</h4>
+                </li>
+                <li>
+                  <h4>데이터 플랫폼 리스트 소개</h4>
+                </li>
+                <li>
+                  <h4>수집 데이터 EDA</h4>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="item">
+          <div class="item__name">Search</div>
+          <div class="item__contents">
+            <div class="contents__menu">
+              <ul class="inner">
+                <li>
+                  <h4>카테고리 별 검색</h4>
+                </li>
+                <li>
+                  <h4>세부 데이터 검색</h4>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+
+
+        <li class="item">
+          <div class="item__name">
+            <a href="../community/index.html">Community</a>
+          </div>
+          <div class="item__contents">
+            <div class="contents__menu">
+              <ul class="inner">
+                <li>
+                  <h4>커뮤니티 홈</h4>
+                </li>
+                <li>
+                  <h4>글 작성하기</h4>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+
+        <li class="item">
+          <div class="item__name">고객지원</div>
+          <div class="item__contents">
+            <div class="contents__menu">
+              <ul class="inner">
+                <li>
+                  <h4>문의하기</h4>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+
+  </header>
+
+  <div>
+
+    <section class="signup">
+      <div class="signup__card">
+        <h1>
+          <strong>Welcome!</strong> 데이터 플래닛에 오신걸 환영합니다
+        </h1>
+
+
+        <h2>아이디
+          <input type="text" placeholder="아이디를 입력하세요."/>
+        </h2>
+
+        <h2>이메일
+          <input type="text" placeholder="이메일 입력하세요."/>
+        </h2>
+
+        <h2>비밀번호
+          <input type="password" placeholder="비밀번호를 입력하세요."/>
+        </h2>
+
+        <h2>비밀번호 확인
+          <input type="password" placeholder="비밀번호를 한번 더 입력하세요."/>
+        </h2>
+
+        <h2>생년월일
+          <input type="date" placeholder="비밀번호를 한번 더 입력하세요."/>
+        </h2>
+
+
+        <h2>성별
+          <select>
+            <option>성별</option>
+            <option value="M">남성</option>
+            <option value="W">여성</option>
+          </select>
+        </h2>
+
+        <h2>
+          <input type="submit" placeholder="로그인"/>
+        </h2>
+
+      </div>
+
+
+    </section>
+  </div>
+</body>
+</html>
