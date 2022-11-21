@@ -50,3 +50,9 @@ def support(request):
         request,
         'apps/support.html'
     )
+
+def signup(request):
+    return render(
+        request,
+        'apps/signup.html'
+    )
