@@ -26,3 +26,27 @@ def search_list(request):
         request,
         'apps/search_list'
     )
+
+def search_result(request):
+    return render(
+        request,
+        'apps/serach_result'
+    )
+
+def profile(request):
+    return render(
+        request,
+        'apps/profile.html'
+    )
+
+def community(request):
+    return render(
+        request,
+        'apps/community.html'
+    )
+
+def support(request):
+    return render(
+        request,
+        'apps/support.html'
+    )
