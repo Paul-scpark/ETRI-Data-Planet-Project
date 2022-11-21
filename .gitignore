@@ -255,4 +255,8 @@ bert_config.json
 
 show_data.ipynb
 
+node_modules/
+dist/
+.cache/
+
 data/
