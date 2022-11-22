@@ -15,22 +15,34 @@ def overview(request):
         'apps/overview.html'
     )
 
+def overview_platform(request):
+    return render(
+        request,
+        'apps/overview_platform.html'
+    )
+
+def overview_eda(request):
+    return render(
+        request,
+        'apps/overview_eda.html'
+    )
+
 def login(request):
     return render(
         request,
         'apps/login.html'
     )
 
-def search_list(request):
+def search_category(request):
     return render(
         request,
-        'apps/search_list'
+        'apps/search_category.html'
     )
 
-def search_result(request):
+def search_detail(request):
     return render(
         request,
-        'apps/serach_result'
+        'apps/search_detail.html'
     )
 
 def profile(request):
@@ -45,8 +57,20 @@ def community(request):
         'apps/community.html'
     )
 
+def community_create(request):
+    return render(
+        request,
+        'apps/community_create.html'
+    )
+
 def support(request):
     return render(
         request,
         'apps/support.html'
+    )
+
+def signup(request):
+    return render(
+        request,
+        'apps/signup.html'
     )
