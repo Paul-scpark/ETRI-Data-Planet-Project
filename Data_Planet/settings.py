@@ -11,17 +11,20 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import environ
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+env = environ.Env()
+environ.Env.read_env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-)u@2=_-2f^e0tufsbdur^j0)$)^42g$h7emattsy0fpaf&mkb2"
+SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -78,11 +81,11 @@ WSGI_APPLICATION = "Data_Planet.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'data_planet_db',
-        'USER': 'root',
-        'PASSWORD' : 'password',
-        'HOST' : 'localhost',
-        'PORT' :'',
+        'NAME': env("DB_NAME"),
+        'USER': env("DB_USER"),
+        'PASSWORD' : env("DB_PASSWORD"),
+        'HOST' : env("DB_HOST"),
+        'PORT' : env("DB_PORT"),
     }
 }
 
