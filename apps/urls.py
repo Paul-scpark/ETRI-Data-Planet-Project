@@ -13,5 +13,5 @@ urlpatterns = [
     path('community/', views.community),
     path('community/create', views.community_create),
     path('support/', views.support),
-    path('signup/', views.signup)
+    path('signup/', views.signup),
 ]

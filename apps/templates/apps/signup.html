@@ -3,99 +3,80 @@
 {% load static %}
 
 <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- 오픈 그래프 : 카톡과 같은 메신저에서 띄워주는 정보 -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Data Planet" />
+    <meta property="og:title" content="Data Planet" />
+    <meta property="og:description" content="데이터 플래닛" />
+    <!--  <meta property="og:image" content=" />-->
+    <!--  <meta property="og:url" content="" />-->
+
+    <!-- 트위터 카드 : 트위터와 같은 소셜 미디어로 공유될 때 우선적으로 활용되는 정보 -->
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:site" content="Data Planet" />
+    <meta property="twitter:title" content="Data Planet" />
+    <meta property="twitter:description" content="데이터 플래닛" />
+    <!--  <meta property="twitter:image" content="" />-->
+    <!--  <meta property="twitter:url" content="" />-->
+    <title>Data Planet</title>
+    <!-- 아이콘을 고해상도 png파일로 띄울 때 link로 -->
+    <!-- 따로 링크를 걸어놓지 않으면 프로젝트의 루트 경로에서 favicon.ico를 찾아서 자동으로 띄움 -->
+    <!--  <link rel="icon" href="./favicon.png" />-->
+
+    <!-- reset css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"/>
+    <!-- 폰트 불러오기(google font) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- material icon을 사용할 수 있게 함 -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- main.css는 가급적 맨 밑에 위치하게 함 -->
     <link rel="stylesheet" href="{% static 'css/signup.css' %}" />
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
-  <meta charset="UTF-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <!-- 오픈 그래프 : 카톡과 같은 메신저에서 띄워주는 정보 -->
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Data Planet" />
-  <meta property="og:title" content="Data Planet" />
-  <meta property="og:description" content="데이터 플래닛" />
-  <!--  <meta property="og:image" content=" />-->
-  <!--  <meta property="og:url" content="" />-->
-
-  <!-- 트위터 카드 : 트위터와 같은 소셜 미디어로 공유될 때 우선적으로 활용되는 정보 -->
-  <meta property="twitter:card" content="summary" />
-  <meta property="twitter:site" content="Data Planet" />
-  <meta property="twitter:title" content="Data Planet" />
-  <meta property="twitter:description" content="데이터 플래닛" />
-  <!--  <meta property="twitter:image" content="" />-->
-  <!--  <meta property="twitter:url" content="" />-->
-  <title>Data Planet</title>
-  <!-- 아이콘을 고해상도 png파일로 띄울 때 link로 -->
-  <!-- 따로 링크를 걸어놓지 않으면 프로젝트의 루트 경로에서 favicon.ico를 찾아서 자동으로 띄움 -->
-  <!--  <link rel="icon" href="./favicon.png" />-->
-
-  <!-- reset css -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"/>
-  <!-- 폰트 불러오기(google font) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
-
-  <!-- material icon을 사용할 수 있게 함 -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-  <!-- main.css는 가급적 맨 밑에 위치하게 함 -->
-  <link rel="stylesheet" href="../CSS/common.css" />
-  <link rel="stylesheet" href="../CSS/signup.css" />
 
 
-  <!-- defer : html이 준비가 되면 그때 실행 -->
-  <script defer src="../js/common.js"></script>
-  <script defer src="../js/main.js"></script>
+    <!-- defer : html이 준비가 되면 그때 실행 -->
+    <script defer src="../js/common.js"></script>
+    <script defer src="../js/main.js"></script>
 </head>
 
 <body>
-    {% include 'apps/navbar.html' %}
-  <div>
+{% include 'apps/navbar.html' %}
+<div>
 
     <section class="signup">
-      <div class="signup__card">
-        <h1>
-          <strong>Welcome!</strong> 데이터 플래닛에 오신걸 환영합니다
-        </h1>
+        <div class="signup__card">
+            <h1>
+                <strong>Welcome!</strong> 데이터 플래닛에 오신걸 환영합니다
+            </h1>
 
+            <form method="POST">
+                {% csrf_token %}
+                <label for="name">이름</label>
+                <input type="text" name="name" placeholder="이름을 입력하세요."/>
 
-        <h2>아이디
-          <input type="text" placeholder="아이디를 입력하세요."/>
-        </h2>
+                <label for="email">이메일</label>
+                <input type="text" name="email" placeholder="이메일 입력하세요."/>
 
-        <h2>이메일
-          <input type="text" placeholder="이메일 입력하세요."/>
-        </h2>
+                <label for="password">비밀번호</label>
+                <input type="password" name="password" placeholder="비밀번호를 입력하세요."/>
 
-        <h2>비밀번호
-          <input type="password" placeholder="비밀번호를 입력하세요."/>
-        </h2>
+                <label for="password_check">비밀번호 확인</label>
+                <input type="password" name="password_check" placeholder="비밀번호를 한번 더 입력하세요."/>
 
-        <h2>비밀번호 확인
-          <input type="password" placeholder="비밀번호를 한번 더 입력하세요."/>
-        </h2>
+                <input type="submit" placeholder="로그인"/>
+            </form>
 
-        <h2>생년월일
-          <input type="date" placeholder="비밀번호를 한번 더 입력하세요."/>
-        </h2>
-
-
-        <h2>성별
-          <select>
-            <option>성별</option>
-            <option value="M">남성</option>
-            <option value="W">여성</option>
-          </select>
-        </h2>
-
-        <h2>
-          <input type="submit" placeholder="로그인"/>
-        </h2>
-
-      </div>
+        </div>
 
 
     </section>
-  </div>
+</div>
 </body>
 </html>
