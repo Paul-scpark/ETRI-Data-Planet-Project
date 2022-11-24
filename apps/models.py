@@ -13,3 +13,7 @@ class User(models.Model):
     is_admin = models.BooleanField(default=False, verbose_name='관리자')
     create_dt = models.DateField(auto_now_add=True, verbose_name='가입 날짜')
     is_authenticated = models.BooleanField(default=False, verbose_name='이메일 인증 여부')
+
+    class Meta:
+        # 테이블 이름 설정
+        db_table = 'User'
