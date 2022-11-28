@@ -1,0 +1,35 @@
+{% extends 'home.html '%}
+
+{% block content %}
+<div class="col-md-6 m-auto p-4 text-white" style="justify-content: center; align-items: center">
+<p>Account</p>
+
+<form method="post">
+    {% csrf_token %}
+    {%for field in account_form %}
+    <p>
+        {{field.label_tag}}
+        {{field}}
+    </p>
+    {% if field.help_text %}
+        <small style="color:grey;">{{field.help_text}}</small>
+        {% endif %}
+     {% endfor %}
+    {%for field in account_form %}
+        {% for error in field.errors %}
+            <p style="color:red">{{error}}</p>
+        {% endfor %}
+    {% endfor %}
+
+    {% if account_form.non_field_errors %}
+        <div style="color: red">
+            <p>{{account_form.non_field_errors}}</p>
+        </div>
+        {% endif %}
+    <button type="submit" class="btn btn-primary" >Save Changes</button>
+    <a href="{% url 'home' %}" class="btn btn-success"> HOME</a>
+
+</form>
+
+{% endblock %}
+</div>

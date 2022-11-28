@@ -1,0 +1,21 @@
+{% extends 'home.html' %}
+
+{%block title %}Register{% endblock  %}
+
+{% block content %}
+
+    <div class="container jumbotron">
+    {% if registered %}
+        <strong>Thank You for Registering with Us.</strong>
+        <a href="{% url 'index' %}" class="btn-link btn">Return to the HomePage</a><br>
+    {% else %}
+        <strong class="display-3 mb-4">Register Here... </strong>
+        <form action="{% url 'register' %}" class="pt-3" method="POST">
+            {% csrf_token %}
+            {{ registration_form.as_p }}
+            <input type="submit" name="submit" value="Register" class="btn btn-success">
+            <p class="p-2 m-1">Already a Member? <a href="{% url 'login' %}">Sign In Here...</a></p>
+        </form>
+    {% endif %}
+    </div>
+{% endblock %}
