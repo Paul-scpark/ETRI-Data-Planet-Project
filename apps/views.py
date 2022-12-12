@@ -85,7 +85,7 @@ def signup(request):
         password = request.POST['password']
         password_check = request.POST['password_check']
 
-        if User.objects.filter(email=email) .exists():
+        if User.objects.filter(email=email).exists():
             # return JsonResponse({'message': 'ALREADY_EXISTS'}, status=400)
             return HttpResponse("<script>alert('이미 존재하는 이메일입니다.\\n회원 가입 페이지로 돌아갑니다.');"
                                 "location.href='/signup';</script>")
