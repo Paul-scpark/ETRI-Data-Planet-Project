@@ -85,7 +85,7 @@ def signup(request):
         password = request.POST['password']
         password_check = request.POST['password_check']
 
-        if User.objects.filter(email=email).exists():
+        if User.objects.filter(email=email) .exists():
             # return JsonResponse({'message': 'ALREADY_EXISTS'}, status=400)
             return HttpResponse("<script>alert('이미 존재하는 이메일입니다.\\n회원 가입 페이지로 돌아갑니다.');"
                                 "location.href='/signup';</script>")
@@ -104,7 +104,7 @@ def signup(request):
         password_encode = password.encode('utf-8')
         password_crypt = bcrypt.hashpw(password_encode, bcrypt.gensalt()).decode('utf-8')
 
-        User.objects.create(name=name, mail=email, password=password_crypt)
+        User.objects.create(name=name, email=email, password=password_crypt)
         # return JsonResponse({'message': 'SUCCESS!'}, status=201)
         return HttpResponse("<script>alert('회원가입 완료.\\n메인 페이지로 돌아갑니다.');"
                             "location.href='/';</script>")
