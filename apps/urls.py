@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+# from .views import activate
 
 urlpatterns = [
     path('', views.main),
@@ -14,4 +15,5 @@ urlpatterns = [
     path('community/create', views.community_create),
     path('support/', views.support),
     path('signup/', views.signup),
+    path('activate/<str:uidb64>/<str:token>', views.activate.as_view()),
 ]
