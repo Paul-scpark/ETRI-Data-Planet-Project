@@ -4,14 +4,11 @@ from django.http import JsonResponse, HttpResponse
 from .models import User
 
 from django.contrib.sites.shortcuts import get_current_site
-from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
 from django.core.mail import EmailMessage
 from .tokens import account_activation_token
 from django.utils.encoding import force_bytes
 from django.utils.encoding import force_str
-from django.contrib.auth.tokens import PasswordResetTokenGenerator
-from six import text_type
 from .text import message
 from django.views import View
 from django.core.exceptions import ValidationError
@@ -48,10 +45,40 @@ def overview_eda(request):
     )
 
 def login(request):
-    return render(
-        request,
-        'apps/login.html'
-    )
+    if request.method == "GET":
+        return render(request, 'apps/login.html')
+
+    elif request.method == "POST":
+        inputId = request.POST['email']
+        inputPassword = request.POST['password']
+
+        ### 1. 사용자의 ID (이메일)이 DB 상에서 존재하는지 여부 확인
+        if User.objects.filter(email=inputId).exists():
+            getUser = User.objects.get(email=inputId)
+            ### 2. ID가 존재한다면, 입력 받은 password와 일치 여부 확인
+            ## 사용자의 user_id 값으로 JWT 발급
+            if bcrypt.checkpw(inputPassword.encode('utf-8'), getUser.password.encode('utf-8')):
+                payload = {'id': getUser.user_id}
+                access_token = jwt.encode(payload, 'secret', 'HS256')
+                print(access_token)
+
+                return HttpResponse(
+                    "<script>alert('로그인에 성공하셨습니다.');"
+                    "location.href='/';</script>"
+                )
+
+            else:
+                return HttpResponse(
+                    "<script>alert('아이디 또는 비밀번호가 일치하지 않습니다.');"
+                    "location.href='/login';</script>"
+                )
+
+
+def logout(request):
+    if request.session.get('user'):
+        del(request.session['user'])
+
+    return redirect('/')
 
 def search_category(request):
     return render(
