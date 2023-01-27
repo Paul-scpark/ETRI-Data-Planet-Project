@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-import json, bcrypt, re
+import  bcrypt, re
 from django.http import JsonResponse, HttpResponse
 from .models import User
 
@@ -12,6 +12,8 @@ from django.utils.encoding import force_str
 from .text import message
 from django.views import View
 from django.core.exceptions import ValidationError
+from django.contrib import auth
+from django.contrib.auth import authenticate
 
 
 import environ
@@ -48,6 +50,28 @@ def login(request):
     if request.method == "GET":
         return render(request, 'apps/login.html')
 
+    elif request.method == "POST":
+        input_email = request.POST['email']
+        input_password = request.POST['password']
+        
+        # 모든 칸 채우기
+        if not (input_email and input_password):
+            return HttpResponse("<script>alert('올바르게 입력해주세요.'); location.href='/login';</script>")
+
+        # DB에 이메일이 존재하는지 확인
+        if User.objects.filter(email=input_email).exists():
+            user = User.objects.get(email=input_email)
+        else:
+            return HttpResponse("<script>alert('존재하지 않는 이메일입니다.'); location.href='/login';</script>")
+
+        # 패스워드 일치 여부 확인
+        if not bcrypt.checkpw(input_password.encode('utf-8'), user.password.encode('utf-8')):
+            return HttpResponse("<script>alert('비밀번호 불일치!'); location.href='/login';</script>")
+        else:
+            request.session['name'] = user.name
+
+        return HttpResponse("<script>alert('로그인 성공.\\n메인 페이지로 돌아갑니다.');"
+                            "location.href='/';</script>")
 
 def logout(request):
     if request.session.get('user'):
