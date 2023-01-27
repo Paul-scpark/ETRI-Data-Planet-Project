@@ -68,7 +68,7 @@ def login(request):
         if not bcrypt.checkpw(input_password.encode('utf-8'), user.password.encode('utf-8')):
             return HttpResponse("<script>alert('비밀번호 불일치!'); location.href='/login';</script>")
         else:
-            request.session['name'] = user.name
+            request.session['user'] = user.name
 
         return HttpResponse("<script>alert('로그인 성공.\\n메인 페이지로 돌아갑니다.');"
                             "location.href='/';</script>")
