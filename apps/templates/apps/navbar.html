@@ -1,10 +1,11 @@
 <!-- Header -->
 <header>
     <div class="inner">
-        {% if request.session %}
+        {% if request.session.user %}
             <div class="sub-menu">
                 <ul class="menu">
-                    <li>{{ request.session.name }} 님 환영합니다.</li>
+                    <li>{{ request.session.user }} 님 환영합니다.</li>
+                    <li><a href="/logout">로그아웃</a> </li>
                 </ul>
             </div>
         {% else %}
