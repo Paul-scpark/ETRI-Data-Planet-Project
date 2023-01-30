@@ -174,7 +174,7 @@ class activate(View):
             if account_activation_token.check_token(user, token):
                 user.is_authenticated = True
                 user.save()
-                return redirect('/')
+                return HttpResponse("<script>alert('이메일 인증 완료!'); location.href='/';</script>")
 
             return JsonResponse({"message": "AUTH FAIL"}, status=400)
 
