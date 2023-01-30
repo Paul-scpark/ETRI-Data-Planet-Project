@@ -64,11 +64,15 @@ def login(request):
         else:
             return HttpResponse("<script>alert('존재하지 않는 이메일입니다.'); location.href='/login';</script>")
 
+        if user.is_authenticated == False:
+            return HttpResponse("<script>alert('이메일 인증이 필요합니다.'); location.href='/login';</script>")
+
         # 패스워드 일치 여부 확인
         if not bcrypt.checkpw(input_password.encode('utf-8'), user.password.encode('utf-8')):
             return HttpResponse("<script>alert('비밀번호 불일치!'); location.href='/login';</script>")
         else:
             request.session['user'] = user.name
+            request.session['email'] = user.email
 
         return HttpResponse("<script>alert('로그인 성공.\\n메인 페이지로 돌아갑니다.');"
                             "location.href='/';</script>")
@@ -170,7 +174,7 @@ class activate(View):
             if account_activation_token.check_token(user, token):
                 user.is_authenticated = True
                 user.save()
-                return redirect('/')
+                return HttpResponse("<script>alert('이메일 인증 완료!'); location.href='/';</script>")
 
             return JsonResponse({"message": "AUTH FAIL"}, status=400)
 
