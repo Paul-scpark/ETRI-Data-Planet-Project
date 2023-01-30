@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "apps",
     "rest_framework",
-    "rest_framework_simplejwt",
 ]
 
 # Email 인증 설정
