@@ -17,3 +17,29 @@ class User(models.Model):
     class Meta:
         # 테이블 이름 설정
         db_table = 'User'
+
+class DataPlatform(models.Model):
+    data_platform_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=32, verbose_name='플랫폼 이름')
+    des = models.CharField(max_length=1024, verbose_name='플랫폼 설명')
+    url = models.CharField(max_length=1024, verbose_name='사이트 주소')
+    total_num = models.IntegerField(default=0)
+
+    class Meta:
+        db_table = 'DataPlatfrom'
+
+class Data(models.Model):
+    data_id = models.AutoField(primary_key=True)
+    data_platform_id = models.ForeignKey("DataPlatform", on_delete=models.CASCADE)
+    title = models.CharField(max_length=512 ,verbose_name='데이터 이름')
+    des = models.CharField(max_length=1024, verbose_name='데이터 설명')
+    url = models.CharField(max_length=1024, verbose_name='데이터 주소')
+    type = models.CharField(max_length=32, verbose_name='데이터 타입')
+    source = models.CharField(max_length=32, verbose_name='source')
+    ori_label = models.CharField(max_length=32, verbose_name='ori_label')
+    ori_source = models.CharField(max_length=32, verbose_name='ori_source')
+    label = models.CharField(max_length=32, verbose_name='label')
+
+    class Meta:
+        db_table = 'Data'
+
