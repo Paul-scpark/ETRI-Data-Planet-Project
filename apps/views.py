@@ -80,6 +80,7 @@ def login(request):
 def logout(request):
     if request.session.get('user'):
         del(request.session['user'])
+        del(request.session['email'])
 
     return redirect('/')
 
