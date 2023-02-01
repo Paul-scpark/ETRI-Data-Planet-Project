@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 {% load static %}
-
 <html lang="ko">
 
 <head>
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}"/>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -27,9 +25,9 @@
     <!-- 아이콘을 고해상도 png파일로 띄울 때 link로 -->
     <!-- 따로 링크를 걸어놓지 않으면 프로젝트의 루트 경로에서 favicon.ico를 찾아서 자동으로 띄움 -->
     <!--  <link rel="icon" href="./favicon.png" />-->
+
     <!-- reset css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"/>
-
     <!-- 폰트 불러오기(google font) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,39 +37,30 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- main.css는 가급적 맨 밑에 위치하게 함 -->
-    <link rel="stylesheet" href="../CSS/common.css"/>
-    <link rel="stylesheet" href="../CSS/main.css"/>
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}"/>
 
 
     <!-- defer : html이 준비가 되면 그때 실행 -->
-    <script defer src="../js/common.js"></script>
-    <script defer src="../js/main.js"></script>
+    <script defer src="./js/common.js"></script>
+    <script defer src="./js/main.js"></script>
 </head>
 
 <body>
 {% include 'apps/navbar.html' %}
-{% for data in posts %}
-    <hr/>
-    <span>data id: {{ data.data_id }}</span>
-    <h2><a href="{{ data.data_id }}">{{ data.title }}</a></h2>
-    <h3>{{ data.des }}</h3>
-    <h4>{{ data.type }}</h4>
-    <h4>{{ data.ori_source }}</h4>
-    <h4>{{ data.label }}</h4>
-{% endfor %}
 
+<h2>title: {{ data.title }}</h2>
 <br>
-{% if posts.has_previous %}
-    <a href="?page=1">맨 앞으로</a>
-    <a href="?page={{ posts.previous_page_number }}">이전으로</a>
-{% endif %}
-<span>{{ posts.number }}</span>
-<span>/</span>
-<span>{{ posts.paginator.num_pages }}</span>
-{% if posts.has_next %}
-    <a href="?page={{ posts.next_page_number }}">다음으로</a>
-    <a href="?page={{ posts.paginator.num_pages }}">맨 뒤로</a>
-{% endif %}
+<p>des: {{ data.des }}</p>
+<br>
+<p>url: {{ data.url }}</p>
+<br>
+<p>type: {{ data.type }}</p>
+<br>
+<p>source: {{ data.source }}</p>
+<br>
+<p>ori_source: {{ data.ori_source }}</p>
+<br>
+<p>label: {{ data.label }}</p>
 
 <!-- VISUAL -->
 

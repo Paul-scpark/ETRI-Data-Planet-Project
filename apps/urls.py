@@ -11,6 +11,7 @@ urlpatterns = [
     path('logout/', views.logout),
     path('search/category/', views.search_category),
     path('search/detail/', views.search_detail),
+    path('search/detail/<int:pk>/', views.data_detail),
     path('profile/', views.profile),
     path('community/', views.community),
     path('community/create', views.community_create),

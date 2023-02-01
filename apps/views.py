@@ -89,19 +89,30 @@ def search_category(request):
     )
 
 def search_detail(request):
-    data = Data.objects
-    data_list = Data.objects.all()
-    paginator = Paginator(data_list, 20)
+    data_list = Data.objects.all().order_by('pk')
+    paginator = Paginator(data_list, 5)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
     return render(
         request,
         'apps/search_detail.html',
         {
-            'data': data,
+            'data': data_list,
             'posts': posts
         }
     )
+
+def data_detail(request, pk):
+    data = Data.objects.get(pk=pk)
+
+    return render(
+        request,
+        'apps/data_detail.html',
+        {
+            'data': data,
+        }
+    )
+
 
 def profile(request):
     return render(
