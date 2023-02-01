@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 import bcrypt, re
 from django.http import JsonResponse, HttpResponse
-from .models import User
+from .models import User, Data, DataPlatform
 
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
@@ -12,9 +12,7 @@ from django.utils.encoding import force_str
 from .text import message
 from django.views import View
 from django.core.exceptions import ValidationError
-from django.contrib import auth
-from django.contrib.auth import authenticate
-
+from django.core.paginator import Paginator
 
 import environ
 env = environ.Env()
@@ -91,10 +89,30 @@ def search_category(request):
     )
 
 def search_detail(request):
+    data_list = Data.objects.all().order_by('pk')
+    paginator = Paginator(data_list, 5)
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
     return render(
         request,
-        'apps/search_detail.html'
+        'apps/search_detail.html',
+        {
+            'data': data_list,
+            'posts': posts
+        }
     )
+
+def data_detail(request, pk):
+    data = Data.objects.get(pk=pk)
+
+    return render(
+        request,
+        'apps/data_detail.html',
+        {
+            'data': data,
+        }
+    )
+
 
 def profile(request):
     return render(
