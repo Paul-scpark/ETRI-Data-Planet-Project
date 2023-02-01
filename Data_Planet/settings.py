@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "apps",
     "rest_framework",
+    "django_extensions",
 ]
 
 # Email 인증 설정
