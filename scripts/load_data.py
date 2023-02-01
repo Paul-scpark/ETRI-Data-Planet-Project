@@ -1,3 +1,7 @@
+import os, django
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Data_Planet.settings")
+django.setup()
+
 from apps.models import DataPlatform, Data
 import pandas as pd
 from io import StringIO
@@ -11,7 +15,7 @@ def run():
         password='password',
         port=5432
     )
-    
+
     cursor = db.cursor()
     
     ## DataPlatform 테이블의 데이터가 없는 경우에, DB에 Dump
@@ -47,3 +51,5 @@ def run():
             cursor.close()
             return 1
         print("copy_from_stringio() done - Data")
+
+run()
