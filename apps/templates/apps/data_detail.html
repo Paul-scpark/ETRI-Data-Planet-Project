@@ -62,6 +62,19 @@
 <br>
 <p>label: {{ data.label }}</p>
 
+<br><br>
+<h2>추천 데이터 정보</h2>
+<br>
+
+{% for rec in recommend %}
+    <h2>title : {{ rec.title }}</h2>
+    <p>des: {{ rec.des }}</p>
+    <p>type: {{ rec.type }}</p>
+    <p>label: {{ rec.label }}</p>
+    <br><br>
+{% endfor %}
+
+
 <!-- VISUAL -->
 
 </body>

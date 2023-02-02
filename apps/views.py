@@ -102,14 +102,27 @@ def search_detail(request):
         }
     )
 
+import torch
+from sentence_transformers import util
+
 def data_detail(request, pk):
     data = Data.objects.get(pk=pk)
+
+    # 유사한 데이터 추천
+    des_emb = torch.load("data/des_embedding_SBERT.pt")
+    distance = util.cos_sim(des_emb[pk], des_emb)
+    sort_distance = distance[0].sort().indices[-6:-1].tolist()
+
+    recommend = []
+    for i in sort_distance:
+        recommend.append(Data.objects.get(pk=i))
 
     return render(
         request,
         'apps/data_detail.html',
         {
             'data': data,
+            'recommend': recommend,
         }
     )
 
