@@ -54,7 +54,7 @@
     <br>
     {% for data in best_view %}
         <hr>
-        <h2><a href="{{ data.data_id }}">{{ data.title }}</a></h2>
+        <h2><a href="/search/detail/{{ data.data_id }}">{{ data.title }}</a></h2>
         <br>
         <p>view: {{ data.view }}</p>
         <p>{{ data.des }}</p>
