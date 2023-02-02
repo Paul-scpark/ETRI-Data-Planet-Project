@@ -50,6 +50,21 @@
 <body>
     {% include 'apps/navbar.html' %}
 
+    <span>많은 사용자들이 찾은 데이터</span>
+    <br>
+    {% for data in best_view %}
+        <hr>
+        <h2><a href="{{ data.data_id }}">{{ data.title }}</a></h2>
+        <br>
+        <p>view: {{ data.view }}</p>
+        <p>{{ data.des }}</p>
+        <p>{{ data.type }}</p>
+        <p>{{ data.ori_source }}</p>
+        <p>{{ data.label }}</p>
+
+    {% endfor %}
+
+
 <!-- VISUAL -->
 
 </body>
