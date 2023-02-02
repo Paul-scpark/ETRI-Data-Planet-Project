@@ -67,7 +67,7 @@
 <br>
 
 {% for rec in recommend %}
-    <h2>title : {{ rec.title }}</h2>
+    <h2><a href="/search/detail/{{ rec.data_id }}">title : {{ rec.title }}</a></h2>
     <p>des: {{ rec.des }}</p>
     <p>type: {{ rec.type }}</p>
     <p>label: {{ rec.label }}</p>

@@ -51,6 +51,7 @@
 <body>
 {% include 'apps/navbar.html' %}
 {% for data in posts %}
+    <form method="post">
     <hr/>
     <span>data id: {{ data.data_id }}</span>
     <h2><a href="{{ data.data_id }}">{{ data.title }}</a></h2>
@@ -58,19 +59,20 @@
     <h4>{{ data.type }}</h4>
     <h4>{{ data.ori_source }}</h4>
     <h4>{{ data.label }}</h4>
+    </form>
 {% endfor %}
 
 <br>
 {% if posts.has_previous %}
-    <a href="?page=1">맨 앞으로</a>
-    <a href="?page={{ posts.previous_page_number }}">이전으로</a>
+    <a href="?page=1">맨 앞</a>
+    <a href="?page={{ posts.previous_page_number }}">이전</a>
 {% endif %}
 <span>{{ posts.number }}</span>
 <span>/</span>
 <span>{{ posts.paginator.num_pages }}</span>
 {% if posts.has_next %}
-    <a href="?page={{ posts.next_page_number }}">다음으로</a>
-    <a href="?page={{ posts.paginator.num_pages }}">맨 뒤로</a>
+    <a href="?page={{ posts.next_page_number }}">다음</a>
+    <a href="?page={{ posts.paginator.num_pages }}">맨 뒤</a>
 {% endif %}
 
 <!-- VISUAL -->
