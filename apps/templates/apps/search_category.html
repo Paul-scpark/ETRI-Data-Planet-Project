@@ -49,7 +49,7 @@
 
 <body>
     {% include 'apps/navbar.html' %}
-
+    <br><br>
     <span>많은 사용자들이 찾은 데이터</span>
     <br>
     {% for data in best_view %}
@@ -61,7 +61,19 @@
         <p>{{ data.type }}</p>
         <p>{{ data.ori_source }}</p>
         <p>{{ data.label }}</p>
-
+    {% endfor %}
+    <br><br>
+    <span>좋아요가 많은 데이터</span>
+    <br>
+    {% for data in best_like %}
+        <hr>
+        <h2><a href="/search/detail/{{ data.data_id }}">{{ data.title }}</a></h2>
+        <br>
+        <p>view: {{ data.like }}</p>
+        <p>{{ data.des }}</p>
+        <p>{{ data.type }}</p>
+        <p>{{ data.ori_source }}</p>
+        <p>{{ data.label }}</p>
     {% endfor %}
 
 

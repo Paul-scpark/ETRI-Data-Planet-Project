@@ -48,6 +48,12 @@
 <body>
 {% include 'apps/navbar.html' %}
 
+{% if messages %}
+    {% for message in messages %}
+        <script>alert('{{ message }}');</script>
+    {% endfor %}
+{% endif %}
+
 <h2>title: {{ data.title }}</h2>
 <br>
 <p>des: {{ data.des }}</p>
@@ -62,7 +68,22 @@
 <br>
 <p>label: {{ data.label }}</p>
 
+<br>
+
+{% if request.session.user %}
+    <form action="{% url 'like' data.pk %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="좋아요">
+    </form>
+
+    <form action="{% url 'dislike' data.pk %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="싫어요">
+    </form>
+{% endif %}
+
 <br><br>
+
 <h2>추천 데이터 정보</h2>
 <br>
 
