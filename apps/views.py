@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 import bcrypt, re
 from django.http import JsonResponse, HttpResponse
+from django.contrib import messages
 from .models import User, Data, DataPlatform
 
 from django.contrib.sites.shortcuts import get_current_site
@@ -84,12 +85,14 @@ def logout(request):
 
 def search_category(request):
     best_view = Data.objects.all().order_by('-view')[:5]
+    best_like = Data.objects.all().order_by('-like')[:5]
 
     return render(
         request,
         'apps/search_category.html',
         {
-            'best_view': best_view
+            'best_view': best_view,
+            'best_like': best_like
         }
     )
 
@@ -132,6 +135,22 @@ def data_detail(request, pk):
             'recommend': recommend,
         }
     )
+
+def data_like(request, pk):
+    if request.method == 'POST' and request.session.get('user'):
+        data = Data.objects.get(pk=pk)
+        data.like += 1
+        data.save()
+        messages.warning(request, "좋아요를 눌렀습니다.")
+        return redirect('data_detail', data.pk)
+
+def data_dislike(request, pk):
+    if request.method == 'POST' and request.session.get('user'):
+        data = Data.objects.get(pk=pk)
+        data.like -= 1
+        data.save()
+        messages.warning(request, "싫어요를 눌렀습니다.")
+        return redirect('data_detail', data.pk)
 
 
 def profile(request):

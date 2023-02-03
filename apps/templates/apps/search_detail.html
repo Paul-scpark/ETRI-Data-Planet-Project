@@ -51,7 +51,6 @@
 <body>
 {% include 'apps/navbar.html' %}
 {% for data in posts %}
-    <form method="post">
     <hr/>
     <span>data id: {{ data.data_id }}</span>
     <h2><a href="{{ data.data_id }}">{{ data.title }}</a></h2>
@@ -59,7 +58,6 @@
     <h4>{{ data.type }}</h4>
     <h4>{{ data.ori_source }}</h4>
     <h4>{{ data.label }}</h4>
-    </form>
 {% endfor %}
 
 <br>

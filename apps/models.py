@@ -40,6 +40,7 @@ class Data(models.Model):
     ori_source = models.CharField(max_length=32, verbose_name='ori_source')
     label = models.CharField(max_length=32, verbose_name='label')
     view = models.IntegerField(default=0)
+    like = models.IntegerField(default=0)
 
     class Meta:
         db_table = 'Data'
