@@ -10,10 +10,12 @@
 - 아래 코드를 통해 환경 셋팅 및 실행에 필요한 스크립트 활용 가능
 
 ```
-1. make run-server   # python manage.py runserver
-2. make freeze       # pip freeze > requirements.txt
-3. make install      # pip install -r requirements.txt
-4. make db-dump      # python manage.py runscript load_data
+1. make run          # python manage.py runserver
+2. make migrations   # python manage.py makemigrations
+3. make migrate      # python manage.py migrate
+4. make freeze       # pip freeze > requirements.txt
+5. make install      # pip install -r requirements.txt
+6. make dump         # python manage.py runscript load_data
 ```
 
 ## 🧭  Background
