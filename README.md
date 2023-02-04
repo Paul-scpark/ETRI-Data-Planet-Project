@@ -5,6 +5,17 @@
 
 ---
 
+## ⌨️  코드 실행
+- 주로 실행하는 스크립트를 `Makefile`을 통해 편리하게 관리함
+- 아래 코드를 통해 환경 셋팅 및 실행에 필요한 스크립트 활용 가능
+
+```
+1. make run-server   # python manage.py runserver
+2. make freeze       # pip freeze > requirements.txt
+3. make install      # pip install -r requirements.txt
+4. make db-dump      # python manage.py runscript load_data
+```
+
 ## 🧭  Background
 - 현재 검색할 수 있는 데이터 플랫폼 종류는 유형별, 지자체별로 나뉘어져 있음
   - 유형별: 금융, 헬스케어, 소방안전, 환경 빅데이터 플랫폼 등
