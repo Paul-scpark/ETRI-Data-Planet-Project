@@ -1,5 +1,11 @@
-run-server:
+run:
 	python manage.py runserver
+
+migrations:
+	python manage.py makemigrations
+
+migrate:
+	python manage.py migrate
 
 freeze:
 	pip freeze > requirements.txt
@@ -7,5 +13,5 @@ freeze:
 install:
 	pip install -r requirements.txt
 
-db-dump:
+dump:
 	python manage.py runscript load_data
