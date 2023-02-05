@@ -52,6 +52,7 @@
 {% include 'apps/navbar.html' %}
 
 {% if search_data %}
+    <h2> "{{ search_value }}" 검색 결과</h2>
     {% for data in search_data %}
         <hr/>
         <span>data id: {{ data.data_id }}</span>
@@ -65,10 +66,13 @@
     <form method="POST">
         {% csrf_token %}
         <br>
-        <label for="serach">검색 내용: {{ search_value }}</label><br><br>
         <input id="search" name="search" placeholder="검색어를 입력하세요">
         <button type="submit">검색</button>
     </form>
+
+    <br><br>
+    <a href="">돌아가기</a>
+    <br><br>
 
 {% else %}
     {% for data in posts %}
@@ -93,6 +97,12 @@
         <a href="?page={{ posts.next_page_number }}">다음</a>
         <a href="?page={{ posts.paginator.num_pages }}">맨 뒤</a>
     {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <input name="page_num" placeholder="페이지 번호 입력">
+        <input type="submit" value="페이지 이동">
+    </form>
 
     <form method="POST">
         {% csrf_token %}

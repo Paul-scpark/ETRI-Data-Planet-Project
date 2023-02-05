@@ -114,24 +114,29 @@ def search_detail(request):
             }
         )
     elif request.method == 'POST':
-        model = SentenceTransformer('snunlp/KR-SBERT-V40K-klueNLI-augSTS')
-        des_emb = torch.load("data/des_embedding_SBERT.pt")
-        search_value = request.POST['search']
-        emb = model.encode(search_value)
-        distance = util.cos_sim(emb, des_emb)
-        sort_distance = distance[0].sort().indices[-11:-1].tolist()
+        if request.POST.get('page_num'):
+            page_num = int(request.POST['page_num'])
+            if page_num < 1: page_num = 1
+            return redirect(f'/search/detail/?page={page_num}')
+        else:
+            model = SentenceTransformer('snunlp/KR-SBERT-V40K-klueNLI-augSTS')
+            des_emb = torch.load("data/title_emb_SBERT.pt")
+            search_value = request.POST['search']
+            emb = model.encode(search_value)
+            distance = util.cos_sim(emb, des_emb)
+            sort_distance = distance[0].sort().indices[-11:-1].tolist()
 
-        search_data = []
-        [search_data.append(Data.objects.get(pk=i)) for i in sort_distance]
+            search_data = []
+            [search_data.append(Data.objects.get(pk=i)) for i in sort_distance]
 
-        return render(
-            request,
-            'apps/search_detail.html',
-            {
-                'search_value': search_value,
-                'search_data': search_data,
-            }
-        )
+            return render(
+                request,
+                'apps/search_detail.html',
+                {
+                    'search_value': search_value,
+                    'search_data': search_data,
+                }
+            )
 
 
 def data_detail(request, pk):
@@ -140,7 +145,7 @@ def data_detail(request, pk):
     data.save()
 
     # 유사한 데이터 추천
-    des_emb = torch.load("data/des_embedding_SBERT.pt")
+    des_emb = torch.load("data/des_emb_SBERT.pt")
     distance = util.cos_sim(des_emb[pk], des_emb)
     sort_distance = distance[0].sort().indices[-6:-1].tolist()
 
