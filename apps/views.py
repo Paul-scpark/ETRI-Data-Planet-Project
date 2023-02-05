@@ -19,6 +19,9 @@ import environ
 env = environ.Env()
 environ.Env.read_env()
 
+import torch
+from sentence_transformers import SentenceTransformer, util
+
 # Create your views here.
 
 def main(request):
@@ -97,21 +100,39 @@ def search_category(request):
     )
 
 def search_detail(request):
-    data_list = Data.objects.all().order_by('pk')
-    paginator = Paginator(data_list, 5)
-    page = request.GET.get('page')
-    posts = paginator.get_page(page)
-    return render(
-        request,
-        'apps/search_detail.html',
-        {
-            'data': data_list,
-            'posts': posts
-        }
-    )
+    if request.method == 'GET':
+        data_list = Data.objects.all().order_by('pk')
+        paginator = Paginator(data_list, 5)
+        page = request.GET.get('page')
+        posts = paginator.get_page(page)
+        return render(
+            request,
+            'apps/search_detail.html',
+            {
+                'data': data_list,
+                'posts': posts
+            }
+        )
+    elif request.method == 'POST':
+        model = SentenceTransformer('snunlp/KR-SBERT-V40K-klueNLI-augSTS')
+        des_emb = torch.load("data/des_embedding_SBERT.pt")
+        search_value = request.POST['search']
+        emb = model.encode(search_value)
+        distance = util.cos_sim(emb, des_emb)
+        sort_distance = distance[0].sort().indices[-11:-1].tolist()
 
-import torch
-from sentence_transformers import util
+        search_data = []
+        [search_data.append(Data.objects.get(pk=i)) for i in sort_distance]
+
+        return render(
+            request,
+            'apps/search_detail.html',
+            {
+                'search_value': search_value,
+                'search_data': search_data,
+            }
+        )
+
 
 def data_detail(request, pk):
     data = Data.objects.get(pk=pk)
@@ -124,8 +145,8 @@ def data_detail(request, pk):
     sort_distance = distance[0].sort().indices[-6:-1].tolist()
 
     recommend = []
-    for i in sort_distance:
-        recommend.append(Data.objects.get(pk=i))
+    [recommend.append(Data.objects.get(pk=i)) for i in sort_distance]
+
 
     return render(
         request,
