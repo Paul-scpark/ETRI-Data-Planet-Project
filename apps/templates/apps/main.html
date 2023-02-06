@@ -27,6 +27,15 @@
     <link rel="stylesheet" href="{% static 'css/slicknav.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+
+    <!-- CSS style here -->
+    <style>
+      .menu {
+        color: white;
+        margin-right: 30px;
+      }
+    </style>
+
 </head>
 
 <body>
@@ -62,14 +71,30 @@
                         </div>
                         <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                             <div class="log_chat_area d-flex align-items-center">
+                              {% if request.session.user %}
+                                <div class="menu">
+                                  <li>{{ request.session.user }} 님 환영합니다.</li>
+                                  <i class="flaticon-user"></i>
+                                  <a href="/logout" style="color: white"> Log out</a>
+                                </div>
+                              {% else %}
                                 <a href="#log-in" class="login popup-with-form">
+                                  <i class="flaticon-user"></i>
+                                  <span>log in</span>
+                                </a>
+                              {% endif %}
+
+
+                                {% comment %} <a href="#log-in" class="login popup-with-form">
                                     <i class="flaticon-user"></i>
                                     {% if request.session.user %}
                                       <span>log out</span>
+                                      <a href="#log-in"></a>
                                     {% else %}
                                       <span>log in</span>
+                                      <a href="/logout"></a>
                                     {% endif %}
-                                </a>
+                                </a> {% endcomment %}
                                 <div class="live_chat_btn">
                                     <a class="boxed_btn_green" href="#">
                                         <i class="flaticon-chat"></i>
@@ -616,7 +641,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
           <div class="popup_inner">
               <div class="logo text-center">
                   <a href="#">
-                      <img src="{% static 'img/form-logo.png' %}" alt="">
+                      <img src="{% static 'img/new_logo_form.png' %}" alt="">
                   </a>
               </div>
               <h3>Sign in</h3>
@@ -647,7 +672,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
           <div class="popup_inner">
               <div class="logo text-center">
                   <a href="#">
-                      <img src="{% static 'img/form-logo.png' %}" alt="">
+                      <img src="{% static 'img/new_logo_form.png' %}" alt="">
                   </a>
               </div>
               <h3>Registration</h3>
