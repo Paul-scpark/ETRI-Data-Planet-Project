@@ -50,30 +50,68 @@
 
 <body>
 {% include 'apps/navbar.html' %}
-{% for data in posts %}
-    <hr/>
-    <span>data id: {{ data.data_id }}</span>
-    <h2><a href="{{ data.data_id }}">{{ data.title }}</a></h2>
-    <h3>{{ data.des }}</h3>
-    <h4>{{ data.type }}</h4>
-    <h4>{{ data.ori_source }}</h4>
-    <h4>{{ data.label }}</h4>
-{% endfor %}
 
-<br>
-{% if posts.has_previous %}
-    <a href="?page=1">맨 앞</a>
-    <a href="?page={{ posts.previous_page_number }}">이전</a>
-{% endif %}
-<span>{{ posts.number }}</span>
-<span>/</span>
-<span>{{ posts.paginator.num_pages }}</span>
-{% if posts.has_next %}
-    <a href="?page={{ posts.next_page_number }}">다음</a>
-    <a href="?page={{ posts.paginator.num_pages }}">맨 뒤</a>
-{% endif %}
+{% if search_data %}
+    <h2> "{{ search_value }}" 검색 결과</h2>
+    {% for data in search_data %}
+        <hr/>
+        <span>data id: {{ data.data_id }}</span>
+        <h2><a href="{{ data.data_id }}">{{ data.title }}</a></h2>
+        <h3>{{ data.des }}</h3>
+        <h4>{{ data.type }}</h4>
+        <h4>{{ data.ori_source }}</h4>
+        <h4>{{ data.label }}</h4>
+    {% endfor %}
 
-<!-- VISUAL -->
+    <form method="POST">
+        {% csrf_token %}
+        <br>
+        <input id="search" name="search" placeholder="검색어를 입력하세요">
+        <button type="submit">검색</button>
+    </form>
+
+    <br><br>
+    <a href="">돌아가기</a>
+    <br><br>
+
+{% else %}
+    {% for data in posts %}
+        <hr/>
+        <span>data id: {{ data.data_id }}</span>
+        <h2><a href="{{ data.data_id }}">{{ data.title }}</a></h2>
+        <h3>{{ data.des }}</h3>
+        <h4>{{ data.type }}</h4>
+        <h4>{{ data.ori_source }}</h4>
+        <h4>{{ data.label }}</h4>
+    {% endfor %}
+
+    <br>
+    {% if posts.has_previous %}
+        <a href="?page=1">맨 앞</a>
+        <a href="?page={{ posts.previous_page_number }}">이전</a>
+    {% endif %}
+    <span>{{ posts.number }}</span>
+    <span>/</span>
+    <span>{{ posts.paginator.num_pages }}</span>
+    {% if posts.has_next %}
+        <a href="?page={{ posts.next_page_number }}">다음</a>
+        <a href="?page={{ posts.paginator.num_pages }}">맨 뒤</a>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <input name="page_num" placeholder="페이지 번호 입력">
+        <input type="submit" value="페이지 이동">
+    </form>
+
+    <form method="POST">
+        {% csrf_token %}
+        <br>
+        <input name="search" placeholder="검색어를 입력하세요">
+        <button type="submit">검색</button>
+    </form>
+
+{% endif %}
 
 </body>
 

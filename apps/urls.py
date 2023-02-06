@@ -10,7 +10,7 @@ urlpatterns = [
     path('login/', views.login),
     path('logout/', views.logout),
     path('search/category/', views.search_category),
-    path('search/detail/', views.search_detail),
+    path('search/detail/', views.search_detail, name='search_detail'),
     path('search/detail/<int:pk>/', views.data_detail, name='data_detail'),
     path('search/detail/<int:pk>/like/', views.data_like, name='like'),
     path('search/detail/<int:pk>/dislike/', views.data_dislike, name='dislike'),
