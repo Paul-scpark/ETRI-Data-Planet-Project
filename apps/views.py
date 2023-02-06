@@ -15,17 +15,118 @@ from django.views import View
 from django.core.exceptions import ValidationError
 from django.core.paginator import Paginator
 
+import torch
+from sentence_transformers import util
+
 import environ
 env = environ.Env()
 environ.Env.read_env()
 
+import torch
+from sentence_transformers import SentenceTransformer, util
+
 # Create your views here.
 
 def main(request):
-    return render(
-        request,
-        'apps/main.html'
-    )
+    if request.method == 'POST':
+        ###### (1) 로그인
+        if request.POST.get('name') == None:
+            ### 1. 로그인 페이지에서 기입되는 정보들을 request.POST에 등록
+            input_email = request.POST['email']
+            input_password = request.POST['password']
+            
+            ## 모든 칸에 정보가 채워졌는지 확인
+            if not (input_email and input_password):
+                return HttpResponse(
+                    "<script>alert('올바르게 입력해주세요.');"
+                    "location.href='/';</script>"
+                ) 
+
+            ## DB에 이메일이 존재하는지 확인
+            if User.objects.filter(email=input_email).exists():
+                user = User.objects.get(email=input_email)
+            else:
+                return HttpResponse(
+                    "<script>alert('존재하지 않는 이메일입니다.');"
+                    "location.href='/';</script>"
+                )
+
+            ## 이메일 인증 여부를 확인
+            if user.is_authenticated == False:
+                return HttpResponse(
+                    "<script>alert('이메일 인증이 필요합니다.');"
+                    "location.href='/';</script>"
+                )
+
+            ## 패스워드 일치 여부 확인
+            if not bcrypt.checkpw(input_password.encode('utf-8'), user.password.encode('utf-8')):
+                return HttpResponse(
+                    "<script>alert('비밀번호 불일치!');"
+                    "location.href='/';</script>"
+                )
+            else:
+                request.session['user'] = user.name
+                request.session['email'] = user.email
+
+            return HttpResponse(
+                "<script>alert('로그인 성공.\\n메인 페이지로 돌아갑니다.');"
+                "location.href='/';</script>"
+            )
+
+        ###### (2) 회원가입
+        else:
+            ### 1. 회원가입 페이지에서 기입되는 정보들을 request.POST에 등록
+            name, email = request.POST.get('name'), request.POST.get('email')
+            password = request.POST.get('password')
+            password_check = request.POST.get('password_check')
+            
+            ## 아이디 (이메일) 중복 체크
+            if User.objects.filter(email=email).exists():
+                return HttpResponse(
+                    "<script>alert('이미 존재하는 이메일입니다.\\n회원 가입 페이지로 돌아갑니다.');"
+                    "location.href='/';</script>"
+                )
+
+            ## 정규표현식으로 아이디 (이메일) 형식 체크
+            regex_email = '^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9_-]+\.[a-zA-Z0-9-.]+$'
+            if not re.match(regex_email, email):
+                return HttpResponse(
+                    "<script>alert('이메일 형식에 일치하지 않습니다.\\n회원 가입 페이지로 돌아갑니다.');"
+                    "location.href='/';</script>"
+                )
+
+            ## 첫 번째, 두 번째 입력 패스워드가 일치하는지 확인
+            if password != password_check:
+                return HttpResponse(
+                    "<script>alert('비밀번호 불일치!\\n회원 가입 페이지로 돌아갑니다.');"
+                    "location.href='/';</script>"
+                )
+
+            ### 2. bcrypt를 통해 패스워드르 디코딩해서 DB에 저장하기
+            password_encode = password.encode('utf-8')
+            password_crypt = bcrypt.hashpw(password_encode, bcrypt.gensalt()).decode('utf-8')
+
+            ### 3. 입력 받은 정보들을 통해서 User를 create 하기
+            user = User.objects.create(name=name, email=email, password=password_crypt)
+
+            ### 4. 이메일 인증
+            current_site = get_current_site(request)
+            domain = current_site.domain
+            uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
+            token = account_activation_token.make_token(user)
+            message_data = message(domain, uidb64, token)
+
+            mail_title = "[DataPlanet] 회원가입 이메일 인증을 완료해주세요."
+            mail = EmailMessage(mail_title, message_data, to=[email])
+            mail.send()
+
+            ### 5. 회원가입 완료 (이메일 인증 후, 로그인 가능)
+            return HttpResponse(
+                "<script>alert('인증 메일이 발송되었습니다. 메일을 확인해주세요.\\n메인 페이지로 돌아갑니다.');"
+                "location.href='/';</script>"
+            )
+        
+    return render(request, 'apps/main.html')
 
 def overview(request):
     return render(
@@ -46,35 +147,36 @@ def overview_eda(request):
     )
 
 def login(request):
-    if request.method == "GET":
-        return render(request, 'apps/login.html')
+    pass
+    # if request.method == "GET":
+    #     return render(request, 'apps/login.html')
 
-    elif request.method == "POST":
-        input_email = request.POST['email']
-        input_password = request.POST['password']
+    # elif request.method == "POST":
+    #     input_email = request.POST['email']
+    #     input_password = request.POST['password']
         
-        # 모든 칸 채우기
-        if not (input_email and input_password):
-            return HttpResponse("<script>alert('올바르게 입력해주세요.'); location.href='/login';</script>")
+    #     # 모든 칸 채우기
+    #     if not (input_email and input_password):
+    #         return HttpResponse("<script>alert('올바르게 입력해주세요.'); location.href='/login';</script>")
 
-        # DB에 이메일이 존재하는지 확인
-        if User.objects.filter(email=input_email).exists():
-            user = User.objects.get(email=input_email)
-        else:
-            return HttpResponse("<script>alert('존재하지 않는 이메일입니다.'); location.href='/login';</script>")
+    #     # DB에 이메일이 존재하는지 확인
+    #     if User.objects.filter(email=input_email).exists():
+    #         user = User.objects.get(email=input_email)
+    #     else:
+    #         return HttpResponse("<script>alert('존재하지 않는 이메일입니다.'); location.href='/login';</script>")
 
-        if user.is_authenticated == False:
-            return HttpResponse("<script>alert('이메일 인증이 필요합니다.'); location.href='/login';</script>")
+    #     if user.is_authenticated == False:
+    #         return HttpResponse("<script>alert('이메일 인증이 필요합니다.'); location.href='/login';</script>")
 
-        # 패스워드 일치 여부 확인
-        if not bcrypt.checkpw(input_password.encode('utf-8'), user.password.encode('utf-8')):
-            return HttpResponse("<script>alert('비밀번호 불일치!'); location.href='/login';</script>")
-        else:
-            request.session['user'] = user.name
-            request.session['email'] = user.email
+    #     # 패스워드 일치 여부 확인
+    #     if not bcrypt.checkpw(input_password.encode('utf-8'), user.password.encode('utf-8')):
+    #         return HttpResponse("<script>alert('비밀번호 불일치!'); location.href='/login';</script>")
+    #     else:
+    #         request.session['user'] = user.name
+    #         request.session['email'] = user.email
 
-        return HttpResponse("<script>alert('로그인 성공.\\n메인 페이지로 돌아갑니다.');"
-                            "location.href='/';</script>")
+    #     return HttpResponse("<script>alert('로그인 성공.\\n메인 페이지로 돌아갑니다.');"
+    #                         "location.href='/';</script>")
 
 def logout(request):
     if request.session.get('user'):
@@ -97,21 +199,43 @@ def search_category(request):
     )
 
 def search_detail(request):
-    data_list = Data.objects.all().order_by('pk')
-    paginator = Paginator(data_list, 5)
-    page = request.GET.get('page')
-    posts = paginator.get_page(page)
-    return render(
-        request,
-        'apps/search_detail.html',
-        {
-            'data': data_list,
-            'posts': posts
-        }
-    )
+    if request.method == 'GET':
+        data_list = Data.objects.all().order_by('pk')
+        paginator = Paginator(data_list, 5)
+        page = request.GET.get('page')
+        posts = paginator.get_page(page)
+        return render(
+            request,
+            'apps/search_detail.html',
+            {
+                'data': data_list,
+                'posts': posts
+            }
+        )
+    elif request.method == 'POST':
+        if request.POST.get('page_num'):
+            page_num = int(request.POST['page_num'])
+            if page_num < 1: page_num = 1
+            return redirect(f'/search/detail/?page={page_num}')
+        else:
+            model = SentenceTransformer('snunlp/KR-SBERT-V40K-klueNLI-augSTS')
+            des_emb = torch.load("data/title_emb_SBERT.pt")
+            search_value = request.POST['search']
+            emb = model.encode(search_value)
+            distance = util.cos_sim(emb, des_emb)
+            sort_distance = distance[0].sort().indices[-11:-1].tolist()
 
-import torch
-from sentence_transformers import util
+            search_data = []
+            [search_data.append(Data.objects.get(pk=i)) for i in sort_distance]
+
+            return render(
+                request,
+                'apps/search_detail.html',
+                {
+                    'search_value': search_value,
+                    'search_data': search_data,
+                }
+            )
 
 def data_detail(request, pk):
     data = Data.objects.get(pk=pk)
@@ -119,13 +243,13 @@ def data_detail(request, pk):
     data.save()
 
     # 유사한 데이터 추천
-    des_emb = torch.load("data/des_embedding_SBERT.pt")
+    des_emb = torch.load("data/des_emb_SBERT.pt")
     distance = util.cos_sim(des_emb[pk], des_emb)
     sort_distance = distance[0].sort().indices[-6:-1].tolist()
 
     recommend = []
-    for i in sort_distance:
-        recommend.append(Data.objects.get(pk=i))
+    [recommend.append(Data.objects.get(pk=i)) for i in sort_distance]
+
 
     return render(
         request,
@@ -178,50 +302,51 @@ def support(request):
     )
 
 def signup(request):
-    if request.method == 'POST':
-        name = request.POST['name']
-        email = request.POST['email']
-        password = request.POST['password']
-        password_check = request.POST['password_check']
+    pass
+#     if request.method == 'POST':
+#         name = request.POST['name']
+#         email = request.POST['email']
+#         password = request.POST['password']
+#         password_check = request.POST['password_check']
 
-        if User.objects.filter(email=email).exists():
-            # return JsonResponse({'message': 'ALREADY_EXISTS'}, status=400)
-            return HttpResponse("<script>alert('이미 존재하는 이메일입니다.\\n회원 가입 페이지로 돌아갑니다.');"
-                                "location.href='/signup';</script>")
+#         if User.objects.filter(email=email).exists():
+#             # return JsonResponse({'message': 'ALREADY_EXISTS'}, status=400)
+#             return HttpResponse("<script>alert('이미 존재하는 이메일입니다.\\n회원 가입 페이지로 돌아갑니다.');"
+#                                 "location.href='/main';</script>")
 
-        regex_email = '^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9_-]+\.[a-zA-Z0-9-.]+$'
-        if not re.match(regex_email, email):
-            # return JsonResponse({'message': 'INVALID_EMAIL'}, status=400)
-            return HttpResponse("<script>alert('이메일 형식에 일치하지 않습니다.\\n회원 가입 페이지로 돌아갑니다.');"
-                                "location.href='/signup';</script>")
+#         regex_email = '^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9_-]+\.[a-zA-Z0-9-.]+$'
+#         if not re.match(regex_email, email):
+#             # return JsonResponse({'message': 'INVALID_EMAIL'}, status=400)
+#             return HttpResponse("<script>alert('이메일 형식에 일치하지 않습니다.\\n회원 가입 페이지로 돌아갑니다.');"
+#                                 "location.href='/main';</script>")
 
-        if password != password_check:
-            # return JsonResponse({'message': '비밀번호 불일치!'}, status=400)
-            return HttpResponse("<script>alert('비밀번호 불일치!\\n회원 가입 페이지로 돌아갑니다.');"
-                                "location.href='/signup';</script>")
+#         if password != password_check:
+#             # return JsonResponse({'message': '비밀번호 불일치!'}, status=400)
+#             return HttpResponse("<script>alert('비밀번호 불일치!\\n회원 가입 페이지로 돌아갑니다.');"
+#                                 "location.href='/main';</script>")
 
-        password_encode = password.encode('utf-8')
-        password_crypt = bcrypt.hashpw(password_encode, bcrypt.gensalt()).decode('utf-8')
+#         password_encode = password.encode('utf-8')
+#         password_crypt = bcrypt.hashpw(password_encode, bcrypt.gensalt()).decode('utf-8')
 
-        user = User.objects.create(name=name, email=email, password=password_crypt)
-        # return JsonResponse({'message': 'SUCCESS!'}, status=201)
+#         user = User.objects.create(name=name, email=email, password=password_crypt)
+#         # return JsonResponse({'message': 'SUCCESS!'}, status=201)
 
-        # 이메일 인증
-        current_site = get_current_site(request)
-        domain = current_site.domain
-        uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
-        token = account_activation_token.make_token(user)
-        message_data = message(domain, uidb64, token)
+#         # 이메일 인증
+#         current_site = get_current_site(request)
+#         domain = current_site.domain
+#         uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
+#         token = account_activation_token.make_token(user)
+#         message_data = message(domain, uidb64, token)
 
-        mail_title = "[DataPlanet] 회원가입 이메일 인증을 완료해주세요."
-        mail = EmailMessage(mail_title, message_data, to=[email])
-        mail.send()
+#         mail_title = "[DataPlanet] 회원가입 이메일 인증을 완료해주세요."
+#         mail = EmailMessage(mail_title, message_data, to=[email])
+#         mail.send()
 
-        return HttpResponse("<script>alert('인증 메일이 발송되었습니다.메일을 확인해주세요.\\n메인 페이지로 돌아갑니다.');"
-                            "location.href='/';</script>")
+#         return HttpResponse("<script>alert('인증 메일이 발송되었습니다.메일을 확인해주세요.\\n메인 페이지로 돌아갑니다.');"
+#                             "location.href='/';</script>")
 
-    elif request.method == 'GET':
-        return render(request, 'apps/signup.html')
+#     elif request.method == 'GET':
+#         return render(request, 'apps/signup.html')
 
 class activate(View):
     def get(self, request, uidb64, token):
