@@ -1,118 +1,344 @@
-<!DOCTYPE html>
 {% load static %}
 
-<html lang="ko">
+<!doctype html>
+<html class="no-js" lang="zxx">
 
 <head>
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}"/>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <!-- 오픈 그래프 : 카톡과 같은 메신저에서 띄워주는 정보 -->
-    <meta property="og:type" content="website"/>
-    <meta property="og:site_name" content="Data Planet"/>
-    <meta property="og:title" content="Data Planet"/>
-    <meta property="og:description" content="데이터 플래닛"/>
-    <!--  <meta property="og:image" content=" />-->
-    <!--  <meta property="og:url" content="" />-->
-
-    <!-- 트위터 카드 : 트위터와 같은 소셜 미디어로 공유될 때 우선적으로 활용되는 정보 -->
-    <meta property="twitter:card" content="summary"/>
-    <meta property="twitter:site" content="Data Planet"/>
-    <meta property="twitter:title" content="Data Planet"/>
-    <meta property="twitter:description" content="데이터 플래닛"/>
-    <!--  <meta property="twitter:image" content="" />-->
-    <!--  <meta property="twitter:url" content="" />-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Data Planet</title>
-    <!-- 아이콘을 고해상도 png파일로 띄울 때 link로 -->
-    <!-- 따로 링크를 걸어놓지 않으면 프로젝트의 루트 경로에서 favicon.ico를 찾아서 자동으로 띄움 -->
-    <!--  <link rel="icon" href="./favicon.png" />-->
-    <!-- reset css -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"/>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- 폰트 불러오기(google font) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.png' %}">
+    <!-- Place favicon.ico in the root directory -->
 
-    <!-- material icon을 사용할 수 있게 함 -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/gijgo.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slicknav.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 
-    <!-- main.css는 가급적 맨 밑에 위치하게 함 -->
-    <link rel="stylesheet" href="../CSS/common.css"/>
-    <link rel="stylesheet" href="../CSS/main.css"/>
-
-
-    <!-- defer : html이 준비가 되면 그때 실행 -->
-    <script defer src="../js/common.js"></script>
-    <script defer src="../js/main.js"></script>
+    <!-- CSS style here -->
+    <style>
+        .menu {
+            color: white;
+            margin-right: 30px;
+        }
+    </style>
 </head>
 
 <body>
-{% include 'apps/navbar.html' %}
+    <body>
+        <!--[if lte IE 9]>
+                <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+            <![endif]-->
+    
+        <!-- header-start -->
+        <header>
+            <div class="header-area ">
+                <div id="sticky-header" class="main-header-area">
+                    <div class="container-fluid p-0">
+                        <div class="row align-items-center no-gutters">
+                            <div class="col-xl-2 col-lg-2">
+                                <div class="logo-img">
+                                    <a href="/">
+                                        <img src="{% static 'img/new_logo.png' %}" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xl-7 col-lg-7">
+                                <div class="main-menu  d-none d-lg-block">
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li><a class="" href=""></a></li>
+                                            <li><a href="">Service</a></li>
+                                            <li><a href="/search/detail" class="active">Search</a></li>
+                                            <li><a href="">Community</a></li>
+                                            <li><a href="">Contact us</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                                <div class="log_chat_area d-flex align-items-center">
+                                    {% if request.session.user %}
+                                        <div class="menu">
+                                            <li>{{ request.session.user }} 님 환영합니다.</li>
+                                            <i class="flaticon-user"></i>
+                                            <a href="/logout" style="color: white"> Log out</a>
+                                        </div>
+                                    {% else %}
+                                        <a href="#log-in" class="login popup-with-form">
+                                            <i class="flaticon-user"></i>
+                                            <span>log in</span>
+                                        </a>
+                                    {% endif %}
+                                        <div class="live_chat_btn">
+                                            <a class="boxed_btn_green" href="#">
+                                                <i class="flaticon-chat"></i>
+                                                <span>Live Chat</span>
+                                            </a>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- header-end -->
+    
+        <!-- bradcam_area_start -->
+        <div class="bradcam_area breadcam_bg">
+            <h3>데이터 조회/검색하기</h3>
+        </div>
+        <!-- bradcam_area_end -->
 
-{% if search_data %}
-    <h2> "{{ search_value }}" 검색 결과</h2>
-    {% for data in search_data %}
-        <hr/>
-        <span>data id: {{ data.data_id }}</span>
-        <h2><a href="{{ data.data_id }}">{{ data.title }}</a></h2>
-        <h3>{{ data.des }}</h3>
-        <h4>{{ data.type }}</h4>
-        <h4>{{ data.ori_source }}</h4>
-        <h4>{{ data.label }}</h4>
-    {% endfor %}
+        <!--================ Data Area =================-->
+        <section class="blog_area section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mb-5 mb-lg-0">
+                        <div class="blog_left_sidebar">
+                            {% if search_data %}
+                                <h1 style="color:black;"> "{{ search_value }}" 검색 결과</h1>
+                                {% for data in search_data %}
+                                    <article class="blog_item">
+                                        <div class="blog_details">
+                                            <a class="d-inline-block" href="{{ data.data_id }}">
+                                                <h2>{{ data.title }}</h2>
+                                            </a>
+                                            <p>{{ data.des }}</p>
+                                            <ul class="blog-info-link">
+                                                <li>{{ data.ori_source }}</li>
+                                                <li>{{ data.source }}</li>
+                                                <li>{{ data.label }}</li>
+                                                <li>{{ data.type }}</li>
+                                            </ul>
+                                        </div>
+                                    </article>
+                                {% endfor %}
+                            {% else %}
+                                {% for data in posts %}
+                                    <article class="blog_item">
+                                        <div class="blog_details">
+                                            <a class="d-inline-block" href="{{ data.data_id }}">
+                                                <h2>{{ data.title }}</h2>
+                                            </a>
+                                            <p>{{ data.des }}</p>
+                                            <ul class="blog-info-link">
+                                                <li>{{ data.ori_source }}</li>
+                                                <li>{{ data.source }}</li>
+                                                <li>{{ data.label }}</li>
+                                                <li>{{ data.type }}</li>
+                                            </ul>
+                                        </div>
+                                    </article>
+                                {% endfor %}
+                                <nav class="blog-pagination justify-content-center d-flex">
+                                    <ul class="pagination">
+                                        {% if posts.has_previous %}
+                                            <li class="page-item">
+                                                <a href="?page=1" class="page-link">맨 앞</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href="?page={{ posts.previous_page_number }}" class="page-link">
+                                                    <i class="ti-angle-left"></i>
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                        <li class="page-item"><a class="page-link">{{ posts.number }}</a></li>
+                                        {% if posts.has_next %}
+                                            <li class="page-item">
+                                                <a href="?page={{ posts.next_page_number }}" class="page-link">
+                                                    <i class="ti-angle-right"></i>
+                                                </a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href="?page={{ posts.paginator.num_pages }}" class="page-link">맨 뒤</a>
+                                            </li>
+                                        {% endif %}
+                                    </ul>
+                                </nav>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="blog_right_sidebar">
+                            <aside class="single_sidebar_widget search_widget">
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <div class="input-group mb-3">
+                                            <input name="search" type="text" class="form-control" placeholder="검색어를 입력하세요">
+                                            <div class="input-group-append">
+                                                <button class="btn" type="submit"><i class="ti-search"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                        type="submit">Search</button>
+                                </form>
+                            </aside>
 
-    <form method="POST">
-        {% csrf_token %}
-        <br>
-        <input id="search" name="search" placeholder="검색어를 입력하세요">
-        <button type="submit">검색</button>
-    </form>
-
-    <br><br>
-    <a href="">돌아가기</a>
-    <br><br>
-
-{% else %}
-    {% for data in posts %}
-        <hr/>
-        <span>data id: {{ data.data_id }}</span>
-        <h2><a href="{{ data.data_id }}">{{ data.title }}</a></h2>
-        <h3>{{ data.des }}</h3>
-        <h4>{{ data.type }}</h4>
-        <h4>{{ data.ori_source }}</h4>
-        <h4>{{ data.label }}</h4>
-    {% endfor %}
-
-    <br>
-    {% if posts.has_previous %}
-        <a href="?page=1">맨 앞</a>
-        <a href="?page={{ posts.previous_page_number }}">이전</a>
-    {% endif %}
-    <span>{{ posts.number }}</span>
-    <span>/</span>
-    <span>{{ posts.paginator.num_pages }}</span>
-    {% if posts.has_next %}
-        <a href="?page={{ posts.next_page_number }}">다음</a>
-        <a href="?page={{ posts.paginator.num_pages }}">맨 뒤</a>
-    {% endif %}
-
-    <form method="POST">
-        {% csrf_token %}
-        <input name="page_num" placeholder="페이지 번호 입력">
-        <input type="submit" value="페이지 이동">
-    </form>
-
-    <form method="POST">
-        {% csrf_token %}
-        <br>
-        <input name="search" placeholder="검색어를 입력하세요">
-        <button type="submit">검색</button>
-    </form>
-
-{% endif %}
-
-</body>
-
+                            <aside class="single_sidebar_widget post_category_widget">
+                                <h4 class="widget_title">Category</h4>
+                                <ul class="list cat-list">
+                                    <li>
+                                        <a href="#" class="d-flex"><p>행정법률 (20,784)</p></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="d-flex"><p>경제금융 (17,157)</p></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="d-flex"><p>문화관광 (14,537)</p></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="d-flex"><p>환경기상 (13,667)</p></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="d-flex"><p>교통물류 (11,879)</p></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="d-flex"><p>제조소비 (11,271)</p></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="d-flex"><p>교육과학 (9,682)</p></a>
+                                    </li>
+                                </ul>
+                            </aside>
+                            <aside class="single_sidebar_widget tag_cloud_widget">
+                                <h4 class="widget_title">Tag Clouds</h4>
+                                <ul class="list">
+                                    <li><a href="#">자율주행</a></li>
+                                    <li><a href="#">지방세</a></li>
+                                    <li><a href="#">장애인</a></li>
+                                    <li><a href="#">도서관</a></li>
+                                    <li><a href="#">코로나</a></li>
+                                    <li><a href="#">제조업</a></li>
+                                    <li><a href="#">전기차</a></li>
+                                    <li><a href="#">교육</a></li>
+                                    <li><a href="#">세금</a></li>
+                                    <li><a href="#">전력</a></li>
+                                    <li><a href="#">가축</a></li>
+                                    <li><a href="#">병원</a></li>
+                                    <li><a href="#">공연</a></li>
+                                    <li><a href="#">농사</a></li>
+                                    <li><a href="#">법</a></li>
+                                </ul>
+                            </aside>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================ Data Area =================-->
+    
+        <!-- form itself end-->
+        <form id="log-in" class="white-popup-block mfp-hide" method="POST">
+            {% csrf_token %}
+            <div class="popup_box ">
+                <div class="popup_inner">
+                    <div class="logo text-center">
+                        <a href="/">
+                            <img src="{% static 'img/new_logo_form.png' %}" alt="">
+                        </a>
+                    </div>
+                    <h3>Sign in</h3>
+                    <form action="#">
+                        <div class="row">
+                            <div class="col-xl-12 col-md-12">
+                                <input type="text" name="email" placeholder="Enter email">
+                            </div>
+                            <div class="col-xl-12 col-md-12">
+                                <input type="password" name="password" placeholder="Enter Password">
+                            </div>
+                            <div class="col-xl-12">
+                                <button type="submit" class="boxed_btn_green">Sign in</button>
+                            </div>
+                        </div>
+                    </form>
+                    <p class="doen_have_acc">Don’t have an account? <a class="dont-hav-acc" href="#sign-up">Sign Up</a>
+                </div>
+            </div>
+        </form>
+        <!-- form itself end -->
+    
+        <!-- form itself end-->
+        <form id="sign-up" class="white-popup-block mfp-hide" method="POST">
+            {% csrf_token %}
+            <div class="popup_box ">
+                <div class="popup_inner">
+                    <div class="logo text-center">
+                        <a href="#">
+                            <img src="{% static 'img/new_logo_form.png' %}" alt="">
+                        </a>
+                    </div>
+                    <h3>Registration</h3>
+                    <form action="#">
+                        <div class="row">
+                            <div class="col-xl-12 col-md-12">
+                                <input type="text" name="name" placeholder="Enter your name">
+                            </div>
+                            <div class="col-xl-12 col-md-12">
+                                <input type="text" name="email" placeholder="Enter your email (ID)">
+                            </div>
+                            <div class="col-xl-12 col-md-12">
+                                <input type="password" name="password" placeholder="Enter your password">
+                            </div>
+                            <div class="col-xl-12 col-md-12">
+                                <input type="password" name="password_check" placeholder="Enter your password again">
+                            </div>                      
+                            <div class="col-xl-12">
+                                <button type="submit" class="boxed_btn_green">Sign Up</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </form>
+        <!-- form itself end -->
+    <!-- form itself end -->
+        <!-- JS here -->
+        <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+        <script src="js/vendor/jquery-1.12.4.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/isotope.pkgd.min.js"></script>
+        <script src="js/ajax-form.js"></script>
+        <script src="js/waypoints.min.js"></script>
+        <script src="js/jquery.counterup.min.js"></script>
+        <script src="js/imagesloaded.pkgd.min.js"></script>
+        <script src="js/scrollIt.js"></script>
+        <script src="js/jquery.scrollUp.min.js"></script>
+        <script src="js/wow.min.js"></script>
+        <script src="js/nice-select.min.js"></script>
+        <script src="js/jquery.slicknav.min.js"></script>
+        <script src="js/jquery.magnific-popup.min.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/gijgo.min.js"></script>
+    
+        <!--contact js-->
+        <script src="js/contact.js"></script>
+        <script src="js/jquery.ajaxchimp.min.js"></script>
+        <script src="js/jquery.form.js"></script>
+        <script src="js/jquery.validate.min.js"></script>
+        <script src="js/mail-script.js"></script>
+    
+        <script src="js/main.js"></script>
+    </body>
 </html>
