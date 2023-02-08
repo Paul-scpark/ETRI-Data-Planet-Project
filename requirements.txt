@@ -41,3 +41,4 @@ typing_extensions==4.4.0
 tzdata==2022.7
 urllib3==1.26.14
 wincertstore==0.2
+django-cors-headers==3.13.0
