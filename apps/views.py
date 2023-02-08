@@ -29,8 +29,29 @@ from sentence_transformers import SentenceTransformer, util
 
 def main(request):
     if request.method == 'POST':
-        ###### (1) 로그인
-        if request.POST.get('name') == None:
+        ###### (1) 검색바를 통한 데이터 검색
+        if request.POST.get("search") != None:
+            model = SentenceTransformer('snunlp/KR-SBERT-V40K-klueNLI-augSTS')
+            des_emb = torch.load("data/title_emb_SBERT.pt")
+            search_value = request.POST['search']
+            emb = model.encode(search_value)
+            distance = util.cos_sim(emb, des_emb)
+            sort_distance = distance[0].sort().indices[-11:-1].tolist()
+
+            search_data = []
+            [search_data.append(Data.objects.get(pk=i)) for i in sort_distance]
+            
+            return render(
+                request,
+                'apps/search_detail.html',
+                {
+                    'search_value': search_value,
+                    'search_data': search_data,
+                }
+            )
+            
+        ###### (2) 로그인
+        elif request.POST.get('name') == None:
             ### 1. 로그인 페이지에서 기입되는 정보들을 request.POST에 등록
             input_email = request.POST['email']
             input_password = request.POST['password']
@@ -73,7 +94,7 @@ def main(request):
                 "location.href='/';</script>"
             )
 
-        ###### (2) 회원가입
+        ###### (3) 회원가입
         else:
             ### 1. 회원가입 페이지에서 기입되는 정보들을 request.POST에 등록
             name, email = request.POST.get('name'), request.POST.get('email')
