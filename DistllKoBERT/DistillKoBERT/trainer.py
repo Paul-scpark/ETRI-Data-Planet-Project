@@ -1,17 +1,18 @@
 import torch
 from torch import nn
+
 from torch.utils.data import DataLoader
 import gluonnlp as nlp
 from tqdm import tqdm
 from sklearn.model_selection import train_test_split
 
-from koBERT.loader import koBERTDataset
-from koBERT.utils import data_preprocess, calc_accuracy
-from koBERT.koBERT_model.model import koBERTClassifier
-
+from DistillKoBERT.loader import BERTDataset, koBERTDataset
+from DistillKoBERT.utils import data_preprocess, calc_accuracy
+from DistillKoBERT.DistillKoBERT_model.model import DistillKoBERTClassifier
+# from .tokenization_kobert import KoBertTokenizer
 from kobert_tokenizer import KoBERTTokenizer
-from transformers import BertModel
-from transformers import AdamW
+
+from transformers import BertModel, DistilBertModel, DistilBertForSequenceClassification, AdamW
 from transformers.optimization import get_cosine_schedule_with_warmup
 
 
@@ -22,15 +23,19 @@ def train(config):
         else torch.device("cuda:%d" % config.gpu_id)
     )
 
+    
+    
     tokenizer = KoBERTTokenizer.from_pretrained("skt/kobert-base-v1")
-    tok = tokenizer.tokenize
-    bertmodel = BertModel.from_pretrained("skt/kobert-base-v1", return_dict=False)
+    tok = tokenizer._tokenize
+    # bertmodel = DistilBertForSequenceClassification.from_pretrained('monologg/distilkobert')
+    bertmodel = DistilBertModel.from_pretrained('monologg/distilkobert')
     vocab = nlp.vocab.BERTVocab.from_sentencepiece(
         tokenizer.vocab_file, padding_token="[PAD]"
     )
 
-    train_data, _ = data_preprocess("./train.csv")
-    valid_data, _ = data_preprocess("./valid.csv")
+    train_data, _ = data_preprocess("/home/augustin/project/AI-dev-course-prj/DistllKoBERT/train.csv")
+    valid_data, _ = data_preprocess("/home/augustin/project/AI-dev-course-prj/DistllKoBERT/valid.csv")
+
 
     train_dataset = koBERTDataset(
         train_data, 0, 1, tok, vocab, config.max_len, True, False
@@ -46,17 +51,17 @@ def train(config):
         valid_dataset, batch_size=config.batch_size, num_workers=5
     )
 
-    model = koBERTClassifier(bertmodel, dr_rate=config.dropout_p).to(device)
+    model = DistillKoBERTClassifier(bertmodel, dr_rate=config.dropout_p).to(device)
     if config.dropout_p:
         classifier = nn.Sequential(
             nn.Dropout(p=config.dropout_p),
             nn.Linear(768, 14)
-        )
+        ).to(device)
 
     else:
-        classifier = nn.Linear(768, 14)
-        
+        classifier = nn.Linear(768, 14).to(device)
     
+
     no_decay = ["bias", "LayerNorm.weight"]
     optimizer_grouped_parameters = [
         {
@@ -89,15 +94,17 @@ def train(config):
         train_acc = 0.0
         test_acc = 0.0
         model.train()
-        for batch_id, (token_ids, valid_length, segment_ids, label) in enumerate(
-            tqdm(train_dataloader)
+        for batch_id, (token_ids, valid_length, segment_ids, label) in enumerate(tqdm(train_dataloader)
         ):
             optimizer.zero_grad()
             token_ids = token_ids.long().to(device)
+            test_shape = token_ids.shape
             segment_ids = segment_ids.long().to(device)
-            valid_length = valid_length
+            valid_length = valid_length.long().to(device)
             label = label.long().to(device)
-            out = model(token_ids, valid_length, segment_ids)
+            
+            out = model(token_ids, valid_length)
+            out = classifier(out)
             loss = loss_fn(out, label)
             loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), config.max_grad_norm)
@@ -115,11 +122,12 @@ def train(config):
             segment_ids = segment_ids.long().to(device)
             valid_length = valid_length
             label = label.long().to(device)
-            out = model(token_ids, valid_length, segment_ids)
+            out = model(token_ids, valid_length)
+            out = classifier(out)
             test_acc += calc_accuracy(out, label)
         print("epoch {} valid acc {}".format(e + 1, test_acc / (batch_id + 1)))
 
-    PATH = "./koBERT/koBERT_model/"
+    PATH = "./DistillKoBERT/DistillKoBERT_model/"
     torch.save(model, PATH + "_" + config.model_name + ".pt")
     torch.save(model.state_dict(), PATH + "_" + config.model_name + "_state_dict.pt")
     torch.save(
