@@ -61,9 +61,8 @@
                                     <nav>
                                         <ul id="navigation">
                                             <li><a class="" href=""></a></li>
-                                            <li><a href="">Service</a></li>
+                                            <li><a href="/service">Service</a></li>
                                             <li><a href="/search/detail" class="active">Search</a></li>
-                                            <li><a href="">Community</a></li>
                                             <li><a href="">Contact us</a></li>
                                         </ul>
                                     </nav>
@@ -118,7 +117,7 @@
                                 {% for data in search_data %}
                                     <article class="blog_item">
                                         <div class="blog_details">
-                                            <a class="d-inline-block" href="{{ data.data_id }}">
+                                            <a class="d-inline-block" href="/search/detail/{{ data.data_id }}">
                                                 <h2>{{ data.title }}</h2>
                                             </a>
                                             <p>{{ data.des }}</p>
