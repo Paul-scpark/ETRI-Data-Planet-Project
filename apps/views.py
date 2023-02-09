@@ -316,11 +316,24 @@ def community_create(request):
         'apps/community_create.html'
     )
 
-def support(request):
-    return render(
-        request,
-        'apps/support.html'
-    )
+def contact(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        name = request.POST['name']
+        title = request.POST['title']
+        content = request.POST['content']
+
+        # 이메일 보내기
+        mail_title = f"{name}({email})님의 문의사항: {title}"
+        message_data = content
+        mail = EmailMessage(mail_title, message_data, to=['project.dataplanet@gmail.com'])
+        mail.send()
+
+        return HttpResponse("<script>alert('문의 내역이 전달되었습니다.\\n메인 페이지로 돌아갑니다.');"
+                            "location.href='/';</script>")
+    else:
+        return render(request, 'apps/contact.html')
+
 
 def signup(request):
     pass
