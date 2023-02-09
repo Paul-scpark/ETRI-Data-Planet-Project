@@ -1,0 +1,465 @@
+{% load static %}
+
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Data Planet</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.png' %}">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/gijgo.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slicknav.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+
+    <!-- CSS style here -->
+    <style>
+        .menu {
+            color: white;
+            margin-right: 30px;
+        }
+        .faq_area {
+            padding-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+    <!-- header-start -->
+    <header>
+        <div class="header-area ">
+            <div id="sticky-header" class="main-header-area">
+                <div class="container-fluid p-0">
+                    <div class="row align-items-center no-gutters">
+                        <div class="col-xl-2 col-lg-2">
+                            <div class="logo-img">
+                                <a href="/">
+                                    <img src="{% static 'img/new_logo.png' %}" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-7 col-lg-7">
+                            <div class="main-menu  d-none d-lg-block">
+                                <nav>
+                                    <ul id="navigation">
+                                        <li><a class="" href=""></a></li>
+                                        <li><a href="/service" class="active">Service</a></li>
+                                        <li><a href="/search/detail">Search</a></li>
+                                        <li><a href="">Contact us</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                            <div class="log_chat_area d-flex align-items-center">
+                                {% if request.session.user %}
+                                    <div class="menu">
+                                        <li>{{ request.session.user }} 님 환영합니다.</li>
+                                        <i class="flaticon-user"></i>
+                                        <a href="/logout" style="color: white"> Log out</a>
+                                    </div>
+                                {% else %}
+                                    <a href="#log-in" class="login popup-with-form">
+                                        <i class="flaticon-user"></i>
+                                        <span>log in</span>
+                                    </a>
+                                {% endif %}
+                                    <div class="live_chat_btn">
+                                        <a class="boxed_btn_green" href="#">
+                                            <i class="flaticon-chat"></i>
+                                            <span>Live Chat</span>
+                                        </a>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header-end -->
+
+    <!-- bradcam_area_start -->
+    <div class="bradcam_area breadcam_bg">
+        <h3>서비스 소개</h3>
+    </div>
+    <!-- bradcam_area_end -->
+
+    <!-- prising_area_start -->
+    <div class="prising_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="section_title text-center mb-100">
+                        <h3>
+                            데이터와 그 활용에 대한 관심도가 꾸준히 증가
+                        </h3>
+                        <br/>
+                        <p>최근 ChatGPT 등 국내외로 인공지능에 대한 관심도가 매우 증가한 가운데, <br/>
+                            정부 역시도 DNA (Data, Network, AI)를 기반으로 하는 '디지털 뉴딜 전략'을 추진하면서 <br/>
+                            더 많은 사람들이 쉽게 사용할 수 있도록 지자체를 중심으로 공공 데이터 관련 다양한 플랫폼을 제공하고 있습니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-3 col-md-6 col-lg-6">
+                    <div class="single_prising">
+                        <div class="prising_icon blue">
+                            <img src="https://cdn-icons-png.flaticon.com/512/925/925748.png" height="80px">
+                        </div>
+                        <h3>금융</h3>
+                        <p class="prising_text">
+                            < 금융 빅데이터 플랫폼 > <br/><br/>
+                            금융 관련 빅데이터를 편하게 <br/>
+                            이용 가능한 빅데이터 플랫폼
+                        </p>
+                        <br/>
+                        <a href="https://www.bigdata-finance.kr/main.do" class="boxed_btn_green2">홈페이지 바로가기</a>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 col-lg-6">
+                    <div class="single_prising">
+                        <div class="prising_icon blue">
+                            <img src="https://cdn-icons-png.flaticon.com/512/8868/8868589.png" height="80px">
+                        </div>
+                        <h3>통신</h3>
+                        <p class="prising_text">
+                            < KT 통신 빅데이터 플랫폼 > <br/><br/>
+                            데이터 공급자와 수요자가 직접 <br/>
+                            소통할 수 있는 통신 관련 플랫폼
+                        </p>
+                        <br/>
+                        <a href="https://bdp.kt.co.kr/invoke/SOKBP0000/?ver=3.0" class="boxed_btn_green2">홈페이지 바로가기</a>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 col-lg-6">
+                    <div class="single_prising">
+                        <div class="prising_icon blue">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2385/2385488.png" height="80px">
+                        </div>
+                        <h3>교통</h3>
+                        <p class="prising_text">
+                            < 국가 교통 DB > <br/><br/>
+                            21세기 교통 선진국을 향해 정보<br/>
+                            인프라를 구축하는 교통 플랫폼
+                        </p>
+                        <br/>
+                        <a href="https://www.ktdb.go.kr/www/index.do" class="boxed_btn_green2">홈페이지 바로가기</a>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 col-lg-6">
+                    <div class="single_prising">
+                        <div class="prising_icon blue">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2975/2975922.png" height="80px">
+                        </div>
+                        <h3>환경</h3>
+                        <p class="prising_text">
+                            < 환경 빅데이터 플랫폼 > <br/><br/>
+                            데이터 활용 및 생태계 촉진으로 <br/>
+                            관련된 산업을 돕는 환경 플랫폼
+                        </p>
+                        <p class="prising_text"></p>
+                        <br/>
+                        <a href="https://www.bigdata-environment.kr/user/main.do" class="boxed_btn_green2">홈페이지 바로가기</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-3 col-md-6 col-lg-6">
+                    <div class="single_prising">
+                        <div class="prising_icon blue">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2966/2966334.png" height="80px">
+                        </div>
+                        <h3>헬스케어</h3>
+                        <p class="prising_text">
+                            < 암 빅데이터 플랫폼 > <br/><br/>
+                            암 관련 데이터 조회 및 분석을<br/>
+                            돕기 위한 시각화 도구 지원
+                        </p>
+                        <br/>
+                        <a href="https://www.bigdata-cancer.kr/ncc/main.do" class="boxed_btn_green2">홈페이지 바로가기</a>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 col-lg-6">
+                    <div class="single_prising">
+                        <div class="prising_icon blue">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2319/2319265.png" height="80px">
+                        </div>
+                        <h3>소방안전</h3>
+                        <p class="prising_text">
+                            < 소방안전 빅데이터 플랫폼 > <br/><br/>
+                            양질의 특화된 소방안전 및<br/>
+                            관련 분야 빅데이터 서비스 제공
+                        </p>
+                        <br/>
+                        <a href="https://www.bigdata-119.kr/" class="boxed_btn_green2">홈페이지 바로가기</a>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 col-lg-6">
+                    <div class="single_prising">
+                        <div class="prising_icon blue">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2933/2933760.png" height="80px">
+                        </div>
+                        <h3>스마트 치안</h3>
+                        <p class="prising_text">
+                            < 스마트 치안 빅데이터 플랫폼 > <br/><br/>
+                            경찰, 공공, 민간이 협업하여<br/>
+                            스마트 치안 빅데이터 제공
+                        </p>
+                        <br/>
+                        <a href="https://www.bigdata-policing.kr/" class="boxed_btn_green2">홈페이지 바로가기</a>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 col-lg-6">
+                    <div class="single_prising">
+                        <div class="prising_icon blue">
+                            <img src="https://cdn-icons-png.flaticon.com/512/1553/1553148.png" height="80px">
+                        </div>
+                        <h3>산림</h3>
+                        <p class="prising_text">
+                            < 산림 빅데이터 거래소 > <br/><br/>
+                            서비스 개발, 데이터 분석 등<br/>
+                            산림과 관련한 데이터 제공
+                        </p>
+                        <br/>
+                        <a href="https://www.bigdata-forest.kr/" class="boxed_btn_green2">홈페이지 바로가기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- prising_area_end -->
+
+    <!-- core_features_start -->
+    <div class="core_features">
+        <div class="container">
+            <div class="border-bottm">
+                <div class="row">
+                    <div class="col-xl-6 col-md-6">
+                        <div class="featuures_heading">
+                            <h3>데이터 사용에 있어 어려운 점</h3>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-md-6">
+                        <div class="featurest_tabs ">
+                            <nav><div class="nav" id="nav-tab" role="tablist"><br/><br/><br/></div></nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home1" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <div class="single_features">
+                            <div class="icon">
+                                <img src="https://cdn-icons-png.flaticon.com/512/1524/1524714.png" height="50px">
+                            </div>
+                            <div class="features_info">
+                                <h4>데이터의 분산성</h4>
+                                <p>유형별, 지자체별로 데이터 플랫폼이 존재하여 각각 나눠서 데이터를 관리하고 있음</p>
+                            </div>
+                        </div><br/>
+                        <div class="single_features">
+                            <div class="icon pink"><div class="icon">
+                                <img src="https://cdn-icons-png.flaticon.com/512/4796/4796520.png" height="50px">
+                            </div></div>
+                            <div class="features_info">
+                                <h4>데이터의 독립성</h4>
+                                <p>데이터를 제공하는 원천이 모두 다르다 보니, 관련성이 높은 데이터들을 함께 찾기 힘듦</p>
+                            </div>
+                        </div><br/>
+                        <div class="single_features">
+                            <div class="icon yellow"><div class="icon">
+                                <img src="https://cdn-icons-png.flaticon.com/512/4882/4882536.png" height="50px">
+                            </div></div>
+                            <div class="features_info">
+                                <h4>데이터의 비구조화성</h4>
+                                <p>플랫폼 별로 데이터의 형태가 통일되어 있지 않고, 같은 데이터임에도 데이터의 유형 (Label)이 다른 경우도 존재</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-home2" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <div class="single_features">
+                            <div class="icon">
+                                <img src="https://cdn-icons-png.flaticon.com/512/1524/1524714.png" height="60px">
+                            </div>
+                            <div class="features_info">
+                                <h4>데이터의 분산성</h4>
+                                <p>유형별, 지자체별로 데이터 플랫폼이 존재하여 각각 나눠서 데이터를 관리하고 있음</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- core_features_end -->
+
+    <!-- faq_area_start -->
+    <div class="faq_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="accordion_heading">
+                        <h3>Data Planet 서비스의 기능</h3>
+                    </div>
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse"
+                                        data-target="" aria-expanded="false" aria-controls="collapseTwo">
+                                        <i class="flaticon-info"></i> 흩어진 데이터 취합 후, 각 데이터 스키마 통일
+                                    </button>
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse"
+                                        data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        <i class="flaticon-info"></i> 데이터 사이의 관계 분석으로 유사한 데이터 추천
+                                    </button>
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingThree">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse"
+                                        data-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree">
+                                        <i class="flaticon-info"></i> 데이터 설명을 기반으로 데이터의 유형을 자동 분류
+                                    </button>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <br/><br/><br/><br/><br/><br/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- faq_area_end -->
+    
+
+    <!-- form itself end-->
+    <form id="log-in" class="white-popup-block mfp-hide" method="POST">
+        {% csrf_token %}
+        <div class="popup_box ">
+            <div class="popup_inner">
+                <div class="logo text-center">
+                    <a href="/">
+                        <img src="{% static 'img/new_logo_form.png' %}" alt="">
+                    </a>
+                </div>
+                <h3>Sign in</h3>
+                <form action="#">
+                    <div class="row">
+                        <div class="col-xl-12 col-md-12">
+                            <input type="text" name="email" placeholder="Enter email">
+                        </div>
+                        <div class="col-xl-12 col-md-12">
+                            <input type="password" name="password" placeholder="Enter Password">
+                        </div>
+                        <div class="col-xl-12">
+                            <button type="submit" class="boxed_btn_green">Sign in</button>
+                        </div>
+                    </div>
+                </form>
+                <p class="doen_have_acc">Don’t have an account? <a class="dont-hav-acc" href="#sign-up">Sign Up</a>
+            </div>
+        </div>
+    </form>
+    <!-- form itself end -->
+
+    <!-- form itself end-->
+    <form id="sign-up" class="white-popup-block mfp-hide" method="POST">
+        {% csrf_token %}
+        <div class="popup_box ">
+            <div class="popup_inner">
+                <div class="logo text-center">
+                    <a href="#">
+                        <img src="{% static 'img/new_logo_form.png' %}" alt="">
+                    </a>
+                </div>
+                <h3>Registration</h3>
+                <form action="#">
+                    <div class="row">
+                        <div class="col-xl-12 col-md-12">
+                            <input type="text" name="name" placeholder="Enter your name">
+                        </div>
+                        <div class="col-xl-12 col-md-12">
+                            <input type="text" name="email" placeholder="Enter your email (ID)">
+                        </div>
+                        <div class="col-xl-12 col-md-12">
+                            <input type="password" name="password" placeholder="Enter your password">
+                        </div>
+                        <div class="col-xl-12 col-md-12">
+                            <input type="password" name="password_check" placeholder="Enter your password again">
+                        </div>                      
+                        <div class="col-xl-12">
+                            <button type="submit" class="boxed_btn_green">Sign Up</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </form>
+    <!-- form itself end -->
+<!-- form itself end -->
+    <!-- JS here -->
+    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/ajax-form.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/scrollIt.js"></script>
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/nice-select.min.js"></script>
+    <script src="js/jquery.slicknav.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/gijgo.min.js"></script>
+
+    <!--contact js-->
+    <script src="js/contact.js"></script>
+    <script src="js/jquery.ajaxchimp.min.js"></script>
+    <script src="js/jquery.form.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/mail-script.js"></script>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

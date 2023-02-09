@@ -149,6 +149,12 @@ def main(request):
         
     return render(request, 'apps/main.html')
 
+def service(request):
+    return render(
+        request,
+        'apps/service.html'
+    )
+
 def overview(request):
     return render(
         request,
