@@ -1,8 +1,9 @@
 import os, django
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Data_Planet.settings")
-django.setup()
+# 환경 error 발생 시 주석 풀고 진행
+# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Data_Planet.settings")
+# django.setup()
 
-from apps.models import DataPlatform, Data
+# from apps.models import DataPlatform, Data
 import pandas as pd
 from io import StringIO
 import psycopg2
@@ -23,7 +24,7 @@ def run():
     if cursor.fetchone() is None:
         buffer = StringIO()
         try:
-            data_platform = pd.read_csv('data_platform.csv') # FIXME: data_platform.csv 파일 경로 위치로 수정하기
+            data_platform = pd.read_csv('data/data_platform.csv') # FIXME: data_platform.csv 파일 경로 위치로 수정하기
             data_platform.to_csv(buffer, index=True, header=False)
             buffer.seek(0)
             cursor.copy_from(buffer, 'DataPlatform', sep=',')
@@ -40,7 +41,7 @@ def run():
     if cursor.fetchone() is None:
         buffer = StringIO()
         try:
-            data_platform = pd.read_csv('total_data.csv', lineterminator='\n') # FIXME: total_data.csv 파일 경로 위치로 수정하기
+            data_platform = pd.read_csv('data/total_data.csv', lineterminator='\n') # FIXME: total_data.csv 파일 경로 위치로 수정하기
             data_platform.to_csv(buffer, index=True, header=False)
             buffer.seek(0)
             cursor.copy_from(buffer, 'Data', sep=',')
