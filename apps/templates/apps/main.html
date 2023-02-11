@@ -122,7 +122,66 @@
             </div>
         </div>
     </div>
-    <!-- slider_area_end -->
+
+    <!--================ view 많은 =================-->
+    <section class="blog_area">
+      <div class="container">
+        <div class="comments-area">
+          <h3>< 조회 수가 가장 많은 데이터 ><br/><br/><br/></h3>
+          {% for data in best_view %}
+            <div class="comment-list">
+              <div class="single-comment justify-content-between d-flex">
+                  <div class="user justify-content-between d-flex">
+                      <div class="desc">
+                          <p class="comment">조회 수: {{ data.view }}</p>
+                          <p class="comment">{{ data.des }}</p>
+                          <div class="d-flex justify-content-between">
+                          <div class="d-flex align-items-center">
+                              <h5><a href="/search/detail/{{ data.data_id }}">{{ data.title }}</a></h5>
+                              <p class="date">
+                                  {{ data.ori_source }}  |  {{ data.source }}  |  {{ data.label }}  |  {{ data.type }}
+                              </p>
+                          </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section><br/><br/>
+    <!--================ view 많은 =================-->
+
+    <!--================ like 많은 =================-->
+    <section class="blog_area">
+      <div class="container">
+        <div class="comments-area">
+          <h3>< 좋아요 수가 가장 많은 데이터 ><br/><br/><br/></h3>
+          {% for data in best_like %}
+            <div class="comment-list">
+              <div class="single-comment justify-content-between d-flex">
+                  <div class="user justify-content-between d-flex">
+                      <div class="desc">
+                          <p class="comment">좋아요 수: {{ data.like }}</p>
+                          <p class="comment">{{ data.des }}</p>
+                          <div class="d-flex justify-content-between">
+                          <div class="d-flex align-items-center">
+                              <h5><a href="/search/detail/{{ data.data_id }}">{{ data.title }}</a></h5>
+                              <p class="date">
+                                  {{ data.ori_source }}  |  {{ data.source }}  |  {{ data.label }}  |  {{ data.type }}
+                              </p>
+                          </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section><br/><br/><br/>
+    <!--================ like 많은 =================-->
 
     <!-- form itself end-->
     <form id="log-in" class="white-popup-block mfp-hide" method="POST">

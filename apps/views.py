@@ -146,8 +146,16 @@ def main(request):
                 "<script>alert('인증 메일이 발송되었습니다. 메일을 확인해주세요.\\n메인 페이지로 돌아갑니다.');"
                 "location.href='/';</script>"
             )
-        
-    return render(request, 'apps/main.html')
+            
+    best_view = Data.objects.all().order_by('-view')[:5]
+    best_like = Data.objects.all().order_by('-like')[:5]
+    
+    return render(
+        request, 'apps/main.html', {
+            'best_view': best_view, 
+            'best_like': best_like
+        }
+    )
 
 def service(request):
     return render(
@@ -213,17 +221,18 @@ def logout(request):
     return redirect('/')
 
 def search_category(request):
-    best_view = Data.objects.all().order_by('-view')[:5]
-    best_like = Data.objects.all().order_by('-like')[:5]
-
-    return render(
-        request,
-        'apps/search_category.html',
-        {
-            'best_view': best_view,
-            'best_like': best_like
-        }
-    )
+    pass
+    # best_view = Data.objects.all().order_by('-view')[:5]
+    # best_like = Data.objects.all().order_by('-like')[:5]
+    
+    # return render(
+    #     request,
+    #     'apps/search_category.html',
+    #     {
+    #         'best_view': best_view,
+    #         'best_like': best_like
+    #     }
+    # )
 
 def search_detail(request):
     if request.method == 'GET':
