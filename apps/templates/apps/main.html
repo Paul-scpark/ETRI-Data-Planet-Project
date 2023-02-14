@@ -117,65 +117,94 @@
         </div>
     </div>
 
-    <!--================ view 많은 =================-->
-    <section class="blog_area">
-      <div class="container">
-        <div class="comments-area">
-          <h3>< 조회 수가 가장 많은 데이터 ><br/><br/><br/></h3>
-          {% for data in best_view %}
-            <div class="comment-list">
-              <div class="single-comment justify-content-between d-flex">
-                  <div class="user justify-content-between d-flex">
-                      <div class="desc">
-                          <p class="comment">조회 수: {{ data.view }}</p>
-                          <p class="comment">{{ data.des }}</p>
-                          <div class="d-flex justify-content-between">
-                          <div class="d-flex align-items-center">
-                              <h5><a href="/search/detail/{{ data.data_id }}">{{ data.title }}</a></h5>
-                              <p class="date">
-                                  {{ data.ori_source }}  |  {{ data.source }}  |  {{ data.label }}  |  {{ data.type }}
-                              </p>
-                          </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-            </div>
-          {% endfor %}
+    <section class="blog_area" style="margin-top: 50px; margin-bottom: 25px;">
+        <div class="container">
+            <h2>카테고리별 추천 목록</h2>
         </div>
-      </div>
-    </section><br/><br/>
-    <!--================ view 많은 =================-->
+    </section>
+    <!--================ view 많은 데이터 보여주기 =================== -->
+    <section class="blog_area" style="margin-top: 50px; margin-bottom: 100px;">
+        <div class="container">
+            <div class="comment-area">
+                <a href="#view_data" data-toggle="collapse" data-target="#view_data" role="button"
+                aria-expanded="false" aria-controls="view_data">
+                    <h3>▼ 조회 수가 가장 많은 데이터 확인하기</h3>
+                </a>
+                <div class="collapse" id="view_data">
+                    <div class="card card-body">
+                        {% for data in best_view %}
+                            <div class="comment-list">
+                                <div class="single-comment justify-content-between d-flex">
+                                    <div class="user justify-content-between d-flex">
+                                        <div class="desc">
+                                            <p style="color: #9933ff; font-weight: bold; font-size: 120%;">{{ data.title }}</p>
+                                            <p style="font-weight: bold; color:#b266ff;">조회 수: {{ data.view }}</p>
+                                            <p style="color: black;">[데이터 설명]</p>
+                                            <p class="comment">{{ data.des | truncatechars:150 }}</p>
+                                            <p style="color: black;">[데이터 바로가기]</p>
+                                            <h5>
+                                                <a href="/search/detail/{{ data.data_id }}"> >>> {{ data.title }}</a>
+                                            </h5>
+                                            <p class="date">
+                                                {{ data.ori_source }} | {{ data.source }} | {{ data.label }}
+                                                | {{ data.type }}
+                                            </p>
+                                            <br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================ view 많은 데이터 보여주기 =================== -->
 
-    <!--================ like 많은 =================-->
-    <section class="blog_area">
-      <div class="container">
-        <div class="comments-area">
-          <h3>< 좋아요 수가 가장 많은 데이터 ><br/><br/><br/></h3>
-          {% for data in best_like %}
-            <div class="comment-list">
-              <div class="single-comment justify-content-between d-flex">
-                  <div class="user justify-content-between d-flex">
-                      <div class="desc">
-                          <p class="comment">좋아요 수: {{ data.like }}</p>
-                          <p class="comment">{{ data.des }}</p>
-                          <div class="d-flex justify-content-between">
-                          <div class="d-flex align-items-center">
-                              <h5><a href="/search/detail/{{ data.data_id }}">{{ data.title }}</a></h5>
-                              <p class="date">
-                                  {{ data.ori_source }}  |  {{ data.source }}  |  {{ data.label }}  |  {{ data.type }}
-                              </p>
-                          </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
+    <!--================ 좋아요 많은 데이터 보여주기 =================== -->
+    <section class="blog_area" style="margin-top: 50px; margin-bottom: 100px;">
+        <div class="container">
+            <div class="comment-area">
+                <a href="#like_data" data-toggle="collapse" data-target="#like_data" role="button"
+                aria-expanded="false" aria-controls="like_data">
+                    <h3>▼ 좋아요 수가 가장 많은 데이터 확인하기</h3>
+                </a>
+                <div class="collapse" id="like_data">
+                    <div class="card card-body">
+                        {% for data in best_like %}
+                            <div class="comment-list">
+                                <div class="single-comment justify-content-between d-flex">
+                                    <div class="user justify-content-between d-flex">
+                                        <div class="desc">
+                                            <p style="color: #9933ff; font-weight: bold; font-size: 120%;">{{ data.title }}</p>
+                                            <p style="font-weight: bold; color:#b266ff;">좋아요 수: {{ data.like }}</p>
+                                            <p style="color: black;">[데이터 설명]</p>
+                                            <p class="comment">{{ data.des | truncatechars:150 }}</p>
+                                            <p style="color: black;">[데이터 바로가기]</p>
+                                            <h5>
+                                                <a href="/search/detail/{{ data.data_id }}"> >>> {{ data.title }}</a>
+                                            </h5>
+                                            <p class="date">
+                                                {{ data.ori_source }} | {{ data.source }} | {{ data.label }}
+                                                | {{ data.type }}
+                                            </p>
+                                            <br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
-          {% endfor %}
         </div>
-      </div>
-    </section><br/><br/><br/>
-    <!--================ like 많은 =================-->
+    </section>
+    <!--================ 좋아요 많은 데이터 보여주기 =================== -->
+    <br><br><br><br><br><br><br><br><br><br>
+
+
+
 
     <!-- form itself end-->
     <form id="log-in" class="white-popup-block mfp-hide" method="POST">
