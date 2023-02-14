@@ -82,12 +82,7 @@
                                             <span>log in</span>
                                         </a>
                                     {% endif %}
-                                        <div class="live_chat_btn">
-                                            <a class="boxed_btn_green" href="#">
-                                                <i class="flaticon-chat"></i>
-                                                <span>Live Chat</span>
-                                            </a>
-                                        </div>
+
                                 </div>
                             </div>
                             <div class="col-12">
@@ -194,49 +189,154 @@
                             </aside>
 
                             <aside class="single_sidebar_widget post_category_widget">
-                                <h4 class="widget_title">Category</h4>
+                                <h4 class="widget_title">Category Count</h4>
                                 <ul class="list cat-list">
                                     <li>
-                                        <a href="#" class="d-flex"><p>행정법률 (20,784)</p></a>
+                                        <p style="margin-bottom: 0px;">행정법률 (20,784)</p>
                                     </li>
                                     <li>
-                                        <a href="#" class="d-flex"><p>경제금융 (17,157)</p></a>
+                                        <p style="margin-bottom: 0px;">경제금융 (17,157)</p>
                                     </li>
                                     <li>
-                                        <a href="#" class="d-flex"><p>문화관광 (14,537)</p></a>
+                                        <p style="margin-bottom: 0px;">문화관광 (14,537)</p>
                                     </li>
                                     <li>
-                                        <a href="#" class="d-flex"><p>환경기상 (13,667)</p></a>
+                                        <p style="margin-bottom: 0px;">환경기상 (13,667)</p>
                                     </li>
                                     <li>
-                                        <a href="#" class="d-flex"><p>교통물류 (11,879)</p></a>
+                                        <p style="margin-bottom: 0px;">교통물류 (11,879)</p>
                                     </li>
                                     <li>
-                                        <a href="#" class="d-flex"><p>제조소비 (11,271)</p></a>
+                                        <p style="margin-bottom: 0px;">제조소비 (11,271)</p>
                                     </li>
                                     <li>
-                                        <a href="#" class="d-flex"><p>교육과학 (9,682)</p></a>
+                                        <p style="margin-bottom: 0px;">교육과학 (9,682)</p>
                                     </li>
                                 </ul>
                             </aside>
                             <aside class="single_sidebar_widget tag_cloud_widget">
-                                <h4 class="widget_title">Tag Clouds</h4>
+                                <h4 class="widget_title">Tag Clouds (검색제공)</h4>
                                 <ul class="list">
-                                    <li><a href="#">자율주행</a></li>
-                                    <li><a href="#">지방세</a></li>
-                                    <li><a href="#">장애인</a></li>
-                                    <li><a href="#">도서관</a></li>
-                                    <li><a href="#">코로나</a></li>
-                                    <li><a href="#">제조업</a></li>
-                                    <li><a href="#">전기차</a></li>
-                                    <li><a href="#">교육</a></li>
-                                    <li><a href="#">세금</a></li>
-                                    <li><a href="#">전력</a></li>
-                                    <li><a href="#">가축</a></li>
-                                    <li><a href="#">병원</a></li>
-                                    <li><a href="#">공연</a></li>
-                                    <li><a href="#">농사</a></li>
-                                    <li><a href="#">법</a></li>
+                                    <li style="margin: 5px 5px 5px 5px;">
+                                    <form method="POST">
+                                    {% csrf_token %}
+                                        <button type="submit" style="background: #ffffff; border: none;">자율주행</button>
+                                        <input name="search" value="자율주행" hidden>
+                                    </form>
+                                    </li>
+
+                                    <li style="margin: 5px 5px 5px 5px;">
+                                    <form method="POST">
+                                    {% csrf_token %}
+                                        <button type="submit" style="background: #ffffff; border: none;">지방세</button>
+                                        <input name="search" value="지방세" hidden>
+                                    </form>
+                                    </li>
+
+                                    <li style="margin: 5px 5px 5px 5px;">
+                                    <form method="POST">
+                                    {% csrf_token %}
+                                        <button type="submit" style="background: #ffffff; border: none;">장애인</button>
+                                        <input name="search" value="장애인" hidden>
+                                    </form>
+                                    </li>
+
+                                    <li style="margin: 5px 5px 5px 5px;">
+                                    <form method="POST">
+                                    {% csrf_token %}
+                                        <button type="submit" style="background: #ffffff; border: none;">도서관</button>
+                                        <input name="search" value="도서관" hidden>
+                                    </form>
+                                    </li>
+
+                                    <li style="margin: 5px 5px 5px 5px;">
+                                    <form method="POST">
+                                    {% csrf_token %}
+                                        <button type="submit" style="background: #ffffff; border: none;">코로나</button>
+                                        <input name="search" value="코로나" hidden>
+                                    </form>
+                                    </li>
+
+                                    <li style="margin: 5px 5px 5px 5px;">
+                                    <form method="POST">
+                                    {% csrf_token %}
+                                        <button type="submit" style="background: #ffffff; border: none;">제조업</button>
+                                        <input name="search" value="제조업" hidden>
+                                    </form>
+                                    </li>
+
+                                    <li style="margin: 5px 5px 5px 5px;">
+                                    <form method="POST">
+                                    {% csrf_token %}
+                                        <button type="submit" style="background: #ffffff; border: none;">전기차</button>
+                                        <input name="search" value="전기차" hidden>
+                                    </form>
+                                    </li>
+
+                                    <li style="margin: 5px 5px 5px 5px;">
+                                    <form method="POST">
+                                    {% csrf_token %}
+                                        <button type="submit" style="background: #ffffff; border: none;">교육</button>
+                                        <input name="search" value="교육" hidden>
+                                    </form>
+                                    </li>
+
+                                    <li style="margin: 5px 5px 5px 5px;">
+                                    <form method="POST">
+                                    {% csrf_token %}
+                                        <button type="submit" style="background: #ffffff; border: none;">세금</button>
+                                        <input name="search" value="세금" hidden>
+                                    </form>
+                                    </li>
+
+                                    <li style="margin: 5px 5px 5px 5px;">
+                                    <form method="POST">
+                                    {% csrf_token %}
+                                        <button type="submit" style="background: #ffffff; border: none;">전력</button>
+                                        <input name="search" value="전력" hidden>
+                                    </form>
+                                    </li>
+
+                                    <li style="margin: 5px 5px 5px 5px;">
+                                    <form method="POST">
+                                    {% csrf_token %}
+                                        <button type="submit" style="background: #ffffff; border: none;">가축</button>
+                                        <input name="search" value="가축" hidden>
+                                    </form>
+                                    </li>
+
+                                    <li style="margin: 5px 5px 5px 5px;">
+                                    <form method="POST">
+                                    {% csrf_token %}
+                                        <button type="submit" style="background: #ffffff; border: none;">병원</button>
+                                        <input name="search" value="병원" hidden>
+                                    </form>
+                                    </li>
+
+                                    <li style="margin: 5px 5px 5px 5px;">
+                                    <form method="POST">
+                                    {% csrf_token %}
+                                        <button type="submit" style="background: #ffffff; border: none;">공연</button>
+                                        <input name="search" value="공연" hidden>
+                                    </form>
+                                    </li>
+
+                                    <li style="margin: 5px 5px 5px 5px;">
+                                    <form method="POST">
+                                    {% csrf_token %}
+                                        <button type="submit" style="background: #ffffff; border: none;">농사</button>
+                                        <input name="search" value="농사" hidden>
+                                    </form>
+                                    </li>
+
+                                    <li style="margin: 5px 5px 5px 5px;">
+                                    <form method="POST">
+                                    {% csrf_token %}
+                                        <button type="submit" style="background: #ffffff; border: none;">법</button>
+                                        <input name="search" value="법" hidden>
+                                    </form>
+                                    </li>
+
                                 </ul>
                             </aside>
                         </div>
