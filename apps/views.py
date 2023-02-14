@@ -37,7 +37,7 @@ def main(request):
             
             ## roBERTa
             model = torch.load("data/model_roberta_base_finetuned_sts.pt")
-            des_emb = torch.load("data/title_emb_SBERT.pt")            
+            des_emb = torch.load("data/tit_embedding_roberta_base_finetuned_sts.pt")            
             
             search_value = request.POST['search']
             emb = model.encode(search_value)
@@ -264,7 +264,7 @@ def search_detail(request):
             # des_emb = torch.load("data/title_emb_SBERT.pt")
             ## roBERTa
             model = torch.load("data/model_roberta_base_finetuned_sts.pt")
-            des_emb = torch.load("data/title_emb_SBERT.pt")
+            des_emb = torch.load("data/tit_embedding_roberta_base_finetuned_sts.pt")
 
             search_value = request.POST['search']
             emb = model.encode(search_value)
