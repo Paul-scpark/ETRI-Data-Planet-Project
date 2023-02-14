@@ -34,6 +34,8 @@
   - 흩어진 데이터를 취합하고, 수집한 데이터들의 스키마를 통일시키기
   - 데이터 사이의 관계를 분석하여 유사한 데이터를 추천하기
   - 데이터의 설명을 기반으로 하여 데이터의 유형 (Label)을 자동으로 분류하기
+- 서비스 아키텍쳐 <br/><br/>
+![서비스 아키텍쳐](https://github.com/Paul-scpark/Data-planet/blob/main/apps/static/img/architecture.png)
   
 ## 🖇  Process
 - 데이터 수집: 공공데이터 포털, 빅데이터 지도, AI Hub 등 데이터 플랫폼에서 데이터 크롤링
