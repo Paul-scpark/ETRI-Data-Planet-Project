@@ -94,7 +94,13 @@
             </div>
         </header>
         <!-- header-end -->
-    
+
+        <!-- 죻아요, 싫어요 알람기능 -->
+        {% if messages %}
+            {% for message in messages %}
+                <script>alert('{{ message }}');</script>
+            {% endfor %}
+        {% endif %}
         <!-- bradcam_area_start -->
         <div class="bradcam_area breadcam_bg">
             <h3>세부 데이터 조회</h3>
@@ -122,46 +128,37 @@
                             </div>
                         </div>
                         <p class="excert">
-                            <a href="{{ data.url }}">>> 데이터 출처 바로가기</a>
+                            <a href="{{ data.url }}" target="_blank">>> 데이터 출처 바로가기</a>
                         </p>
                         <br/><br/><br/>
                         </div>
                     </div>
                     <div class="navigation-top">
-                        <div class="d-sm-flex justify-content-between text-center">
+                        <div class="d-sm-flex text-center">
                             {% if request.session.user %}
-                                <form action="{% url 'like' data.pk %}" method="post">
+                                <form action="{% url 'like' data.pk %}" method="post" style="margin: 0px 10px 0px 0px;">
                                     {% csrf_token %}
                                     <input type="submit" value="👍 좋아요">
                                 </form>
-                                <form action="{% url 'dislike' data.pk %}" method="post">
+                                <form action="{% url 'dislike' data.pk %}" method="post" style="margin: 0px 0px 0px 10px;">
                                     {% csrf_token %}
                                     <input type="submit" value="👎 싫어요">
                                 </form>
                             {% endif %}
-                            <p class="like-info"><span class="align-middle"></p>
-                            <p class="like-info"><span class="align-middle"></p>
-                            <p class="like-info"><span class="align-middle"></p>
-                        <ul class="social-icons">
-                            <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                        </ul>
                         </div>
                     </div>
-                    <div class="comments-area">
+                    <div class="comments-area" style="margin-top: 20px;">
                         <h4>< 유사한 데이터 추천 ></h4>
                         {% for rec in recommend %}
                             <div class="comment-list">
                                 <div class="single-comment justify-content-between d-flex">
                                     <div class="user justify-content-between d-flex">
-                                        <div class="desc">
+                                        <div class="desc" style="background: #F7F3F7">
                                             <p class="comment">{{ rec.des }}</p>
                                             <div class="d-flex justify-content-between">
                                             <div class="d-flex align-items-center">
                                                 <h5>
-                                                    <a href="/search/detail/{{ rec.data_id }}">
+                                                    <a href="/search/detail/{{ rec.data_id }}" target="_blank">
                                                         {{ rec.title }}
                                                     </a>
                                                 </h5>
@@ -181,7 +178,7 @@
                 <div class="col-lg-4">
                     <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget search_widget">
-                            <form method="POST">
+                            <form method="POST" action="/search/detail/">
                                 {% csrf_token %}
                                 <div class="form-group">
                                     <div class="input-group mb-3">
@@ -197,49 +194,154 @@
                         </aside>
 
                         <aside class="single_sidebar_widget post_category_widget">
-                            <h4 class="widget_title">Category</h4>
+                            <h4 class="widget_title">Category Count</h4>
                             <ul class="list cat-list">
                                 <li>
-                                    <a href="#" class="d-flex"><p>행정법률 (20,784)</p></a>
+                                    <p style="margin-bottom: 0px;">행정법률 (20,784)</p>
                                 </li>
                                 <li>
-                                    <a href="#" class="d-flex"><p>경제금융 (17,157)</p></a>
+                                    <p style="margin-bottom: 0px;">경제금융 (17,157)</p>
                                 </li>
                                 <li>
-                                    <a href="#" class="d-flex"><p>문화관광 (14,537)</p></a>
+                                    <p style="margin-bottom: 0px;">문화관광 (14,537)</p>
                                 </li>
                                 <li>
-                                    <a href="#" class="d-flex"><p>환경기상 (13,667)</p></a>
+                                    <p style="margin-bottom: 0px;">환경기상 (13,667)</p>
                                 </li>
                                 <li>
-                                    <a href="#" class="d-flex"><p>교통물류 (11,879)</p></a>
+                                    <p style="margin-bottom: 0px;">교통물류 (11,879)</p>
                                 </li>
                                 <li>
-                                    <a href="#" class="d-flex"><p>제조소비 (11,271)</p></a>
+                                    <p style="margin-bottom: 0px;">제조소비 (11,271)</p>
                                 </li>
                                 <li>
-                                    <a href="#" class="d-flex"><p>교육과학 (9,682)</p></a>
+                                    <p style="margin-bottom: 0px;">교육과학 (9,682)</p>
                                 </li>
                             </ul>
                         </aside>
                         <aside class="single_sidebar_widget tag_cloud_widget">
-                            <h4 class="widget_title">Tag Clouds</h4>
+                            <h4 class="widget_title">Tag Clouds (검색제공)</h4>
                             <ul class="list">
-                                <li><a href="#">자율주행</a></li>
-                                <li><a href="#">지방세</a></li>
-                                <li><a href="#">장애인</a></li>
-                                <li><a href="#">도서관</a></li>
-                                <li><a href="#">코로나</a></li>
-                                <li><a href="#">제조업</a></li>
-                                <li><a href="#">전기차</a></li>
-                                <li><a href="#">교육</a></li>
-                                <li><a href="#">세금</a></li>
-                                <li><a href="#">전력</a></li>
-                                <li><a href="#">가축</a></li>
-                                <li><a href="#">병원</a></li>
-                                <li><a href="#">공연</a></li>
-                                <li><a href="#">농사</a></li>
-                                <li><a href="#">법</a></li>
+                                <li style="margin: 5px 5px 5px 5px;">
+                                    <form method="POST" action="/search/detail/">
+                                        {% csrf_token %}
+                                        <button type="submit" style="background: #ffffff; border: none;">자율주행</button>
+                                        <input name="search" value="자율주행" hidden>
+                                    </form>
+                                </li>
+
+                                <li style="margin: 5px 5px 5px 5px;">
+                                    <form method="POST" action="/search/detail/">
+                                        {% csrf_token %}
+                                        <button type="submit" style="background: #ffffff; border: none;">지방세</button>
+                                        <input name="search" value="지방세" hidden>
+                                    </form>
+                                </li>
+
+                                <li style="margin: 5px 5px 5px 5px;">
+                                    <form method="POST" action="/search/detail/">
+                                        {% csrf_token %}
+                                        <button type="submit" style="background: #ffffff; border: none;">장애인</button>
+                                        <input name="search" value="장애인" hidden>
+                                    </form>
+                                </li>
+
+                                <li style="margin: 5px 5px 5px 5px;">
+                                    <form method="POST" action="/search/detail/">
+                                        {% csrf_token %}
+                                        <button type="submit" style="background: #ffffff; border: none;">도서관</button>
+                                        <input name="search" value="도서관" hidden>
+                                    </form>
+                                </li>
+
+                                <li style="margin: 5px 5px 5px 5px;">
+                                    <form method="POST" action="/search/detail/">
+                                        {% csrf_token %}
+                                        <button type="submit" style="background: #ffffff; border: none;">코로나</button>
+                                        <input name="search" value="코로나" hidden>
+                                    </form>
+                                </li>
+
+                                <li style="margin: 5px 5px 5px 5px;">
+                                    <form method="POST" action="/search/detail/">
+                                        {% csrf_token %}
+                                        <button type="submit" style="background: #ffffff; border: none;">제조업</button>
+                                        <input name="search" value="제조업" hidden>
+                                    </form>
+                                </li>
+
+                                <li style="margin: 5px 5px 5px 5px;">
+                                    <form method="POST" action="/search/detail/">
+                                        {% csrf_token %}
+                                        <button type="submit" style="background: #ffffff; border: none;">전기차</button>
+                                        <input name="search" value="전기차" hidden>
+                                    </form>
+                                </li>
+
+                                <li style="margin: 5px 5px 5px 5px;">
+                                    <form method="POST" action="/search/detail/">
+                                        {% csrf_token %}
+                                        <button type="submit" style="background: #ffffff; border: none;">교육</button>
+                                        <input name="search" value="교육" hidden>
+                                    </form>
+                                </li>
+
+                                <li style="margin: 5px 5px 5px 5px;">
+                                    <form method="POST" action="/search/detail/">
+                                        {% csrf_token %}
+                                        <button type="submit" style="background: #ffffff; border: none;">세금</button>
+                                        <input name="search" value="세금" hidden>
+                                    </form>
+                                </li>
+
+                                <li style="margin: 5px 5px 5px 5px;">
+                                    <form method="POST" action="/search/detail/">
+                                        {% csrf_token %}
+                                        <button type="submit" style="background: #ffffff; border: none;">전력</button>
+                                        <input name="search" value="전력" hidden>
+                                    </form>
+                                </li>
+
+                                <li style="margin: 5px 5px 5px 5px;">
+                                    <form method="POST" action="/search/detail/">
+                                        {% csrf_token %}
+                                        <button type="submit" style="background: #ffffff; border: none;">가축</button>
+                                        <input name="search" value="가축" hidden>
+                                    </form>
+                                </li>
+
+                                <li style="margin: 5px 5px 5px 5px;">
+                                    <form method="POST" action="/search/detail/">
+                                        {% csrf_token %}
+                                        <button type="submit" style="background: #ffffff; border: none;">병원</button>
+                                        <input name="search" value="병원" hidden>
+                                    </form>
+                                </li>
+
+                                <li style="margin: 5px 5px 5px 5px;">
+                                    <form method="POST" action="/search/detail/">
+                                        {% csrf_token %}
+                                        <button type="submit" style="background: #ffffff; border: none;">공연</button>
+                                        <input name="search" value="공연" hidden>
+                                    </form>
+                                </li>
+
+                                <li style="margin: 5px 5px 5px 5px;">
+                                    <form method="POST" action="/search/detail/">
+                                        {% csrf_token %}
+                                        <button type="submit" style="background: #ffffff; border: none;">농사</button>
+                                        <input name="search" value="농사" hidden>
+                                    </form>
+                                </li>
+
+                                <li style="margin: 5px 5px 5px 5px;">
+                                    <form method="POST" action="/search/detail/">
+                                        {% csrf_token %}
+                                        <button type="submit" style="background: #ffffff; border: none;">법</button>
+                                        <input name="search" value="법" hidden>
+                                    </form>
+                                </li>
+
                             </ul>
                         </aside>
                     </div>
@@ -250,7 +352,7 @@
         <!--================ Blog Area end =================-->
 
         <!-- form itself end-->
-        <form id="log-in" class="white-popup-block mfp-hide" method="POST">
+        <form id="log-in" class="white-popup-block mfp-hide" method="POST" action="/login/">
             {% csrf_token %}
             <div class="popup_box ">
                 <div class="popup_inner">
@@ -315,32 +417,32 @@
         <!-- form itself end -->
     <!-- form itself end -->
         <!-- JS here -->
-        <script src="js/vendor/modernizr-3.5.0.min.js"></script>
-        <script src="js/vendor/jquery-1.12.4.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/owl.carousel.min.js"></script>
-        <script src="js/isotope.pkgd.min.js"></script>
-        <script src="js/ajax-form.js"></script>
-        <script src="js/waypoints.min.js"></script>
-        <script src="js/jquery.counterup.min.js"></script>
-        <script src="js/imagesloaded.pkgd.min.js"></script>
-        <script src="js/scrollIt.js"></script>
-        <script src="js/jquery.scrollUp.min.js"></script>
-        <script src="js/wow.min.js"></script>
-        <script src="js/nice-select.min.js"></script>
-        <script src="js/jquery.slicknav.min.js"></script>
-        <script src="js/jquery.magnific-popup.min.js"></script>
-        <script src="js/plugins.js"></script>
-        <script src="js/gijgo.min.js"></script>
-    
+        <script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+        <script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+        <script src="{% static 'js/popper.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+        <script src="{% static 'js/ajax-form.js' %}"></script>
+        <script src="{% static 'js/waypoints.min.js' %}"></script>
+        <script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+        <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+        <script src="{% static 'js/scrollIt.js' %}"></script>
+        <script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+        <script src="{% static 'js/wow.min.js' %}"></script>
+        <script src="{% static 'js/nice-select.min.js' %}"></script>
+        <script src="{% static 'js/jquery.slicknav.min.js' %}"></script>
+        <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+        <script src="{% static 'js/plugins.js' %}"></script>
+        <script src="{% static 'js/gijgo.min.js' %}"></script>
+
         <!--contact js-->
-        <script src="js/contact.js"></script>
-        <script src="js/jquery.ajaxchimp.min.js"></script>
-        <script src="js/jquery.form.js"></script>
-        <script src="js/jquery.validate.min.js"></script>
-        <script src="js/mail-script.js"></script>
-    
-        <script src="js/main.js"></script>
+        <script src="{% static 'js/contact.js' %}"></script>
+        <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+        <script src="{% static 'js/jquery.form.js' %}"></script>
+        <script src="{% static 'js/jquery.validate.min.js' %}"></script>
+        <script src="{% static 'js/mail-script.js' %}"></script>
+
+        <script src="{% static 'js/main.js' %}"></script>
     </body>
 </html>

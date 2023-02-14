@@ -47,7 +47,7 @@
 
     <!-- header-start -->
     <header>
-        <div class="header-area ">
+        <div class="header-area "  style="margin-top:0px;">
             <div id="sticky-header" class="main-header-area">
                 <div class="container-fluid p-0">
                     <div class="row align-items-center no-gutters">
@@ -134,7 +134,7 @@
                             <br><br><br><br>
                         </p>
                         <div style="position: absolute; bottom: 5%;">
-                        <a href="https://www.bigdata-finance.kr/main.do" class="boxed_btn_green2">홈페이지 바로가기</a>
+                        <a href="https://www.bigdata-finance.kr/main.do" class="boxed_btn_green2" target="_blank">홈페이지 바로가기</a>
                         </div>
                     </div>
                 </div>
@@ -152,7 +152,7 @@
                         </p>
                         <br/>
                         <div style="position: absolute; bottom: 5%;">
-                        <a href="https://bdp.kt.co.kr/invoke/SOKBP0000/?ver=3.0" class="boxed_btn_green2">홈페이지 바로가기</a>
+                        <a href="https://bdp.kt.co.kr/invoke/SOKBP0000/?ver=3.0" class="boxed_btn_green2" target="_blank">홈페이지 바로가기</a>
                         </div>
                     </div>
                 </div>
@@ -170,7 +170,7 @@
                         </p>
                         <br/>
                         <div style="position: absolute; bottom: 5%;">
-                        <a href="https://www.ktdb.go.kr/www/index.do" class="boxed_btn_green2">홈페이지 바로가기</a>
+                        <a href="https://www.ktdb.go.kr/www/index.do" class="boxed_btn_green2" target="_blank">홈페이지 바로가기</a>
                         </div>
                     </div>
                 </div>
@@ -189,7 +189,7 @@
                         <p class="prising_text"></p>
                         <br/>
                         <div style="position: absolute; bottom: 5%;">
-                        <a href="https://www.bigdata-environment.kr/user/main.do" class="boxed_btn_green2">홈페이지 바로가기</a>
+                        <a href="https://www.bigdata-environment.kr/user/main.do" class="boxed_btn_green2" target="_blank">홈페이지 바로가기</a>
                         </div>
                     </div>
                 </div>
@@ -209,7 +209,7 @@
                         </p>
                         <br/>
                         <div style="position: absolute; bottom: 5%">
-                        <a href="https://www.bigdata-cancer.kr/ncc/main.do" class="boxed_btn_green2">홈페이지 바로가기</a>
+                        <a href="https://www.bigdata-cancer.kr/ncc/main.do" class="boxed_btn_green2" target="_blank">홈페이지 바로가기</a>
                         </div>
                     </div>
                 </div>
@@ -227,7 +227,7 @@
                         </p>
                         <br/>
                         <div style="position: absolute; bottom: 5%">
-                        <a href="https://www.bigdata-119.kr/" class="boxed_btn_green2">홈페이지 바로가기</a>
+                        <a href="https://www.bigdata-119.kr/" class="boxed_btn_green2" target="_blank">홈페이지 바로가기</a>
                         </div>
                     </div>
                 </div>
@@ -245,7 +245,7 @@
                         </p>
                         <br/>
                         <div style="position: absolute; bottom: 5%">
-                        <a href="https://www.bigdata-policing.kr/" class="boxed_btn_green2">홈페이지 바로가기</a>
+                        <a href="https://www.bigdata-policing.kr/" class="boxed_btn_green2" target="_blank">홈페이지 바로가기</a>
                         </div>
                     </div>
                 </div>
@@ -263,7 +263,7 @@
                         </p>
                         <br/>
                         <div style="position: absolute; bottom: 5%">
-                        <a href="https://www.bigdata-forest.kr/" class="boxed_btn_green2">홈페이지 바로가기</a>
+                        <a href="https://www.bigdata-forest.kr/" class="boxed_btn_green2" target="_blank">홈페이지 바로가기</a>
                         </div>
                     </div>
                 </div>
@@ -387,14 +387,12 @@
 
 
     <!-- form itself end-->
-    <form id="log-in" class="white-popup-block mfp-hide" method="POST">
+    <form id="log-in" class="white-popup-block mfp-hide" method="POST" action="/login/">
         {% csrf_token %}
         <div class="popup_box ">
             <div class="popup_inner">
                 <div class="logo text-center">
-                    <a href="/">
-                        <img src="{% static 'img/new_logo_form.png' %}" alt="">
-                    </a>
+                    <img src="{% static 'img/new_logo_form.png' %}" alt="">
                 </div>
                 <h3>Sign in</h3>
                 <form action="#">
@@ -452,32 +450,32 @@
     <!-- form itself end -->
 <!-- form itself end -->
     <!-- JS here -->
-    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
-    <script src="js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/isotope.pkgd.min.js"></script>
-    <script src="js/ajax-form.js"></script>
-    <script src="js/waypoints.min.js"></script>
-    <script src="js/jquery.counterup.min.js"></script>
-    <script src="js/imagesloaded.pkgd.min.js"></script>
-    <script src="js/scrollIt.js"></script>
-    <script src="js/jquery.scrollUp.min.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/nice-select.min.js"></script>
-    <script src="js/jquery.slicknav.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/gijgo.min.js"></script>
+    <script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+    <script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/ajax-form.js' %}"></script>
+    <script src="{% static 'js/waypoints.min.js' %}"></script>
+    <script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+    <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/scrollIt.js' %}"></script>
+    <script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+    <script src="{% static 'js/wow.min.js' %}"></script>
+    <script src="{% static 'js/nice-select.min.js' %}"></script>
+    <script src="{% static 'js/jquery.slicknav.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/gijgo.min.js' %}"></script>
 
     <!--contact js-->
-    <script src="js/contact.js"></script>
-    <script src="js/jquery.ajaxchimp.min.js"></script>
-    <script src="js/jquery.form.js"></script>
-    <script src="js/jquery.validate.min.js"></script>
-    <script src="js/mail-script.js"></script>
+    <script src="{% static 'js/contact.js' %}"></script>
+    <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+    <script src="{% static 'js/jquery.form.js' %}"></script>
+    <script src="{% static 'js/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'js/mail-script.js' %}"></script>
 
-    <script src="js/main.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>
