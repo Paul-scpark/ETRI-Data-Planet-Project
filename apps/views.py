@@ -296,6 +296,29 @@ def data_detail(request, pk):
         }
     )
 
+def data_detail_distilbert(request, pk):
+    data = Data.objects.get(pk=pk)
+    data.view = data.view + 1
+    data.save()
+
+    # 유사한 데이터 추천
+    des_emb = torch.load("data/des_emb_distilBERT.pt")
+    distance = util.cos_sim(des_emb[pk], des_emb)
+    sort_distance = distance[0].sort().indices[-6:-1].tolist()
+
+    recommend = []
+    [recommend.append(Data.objects.get(pk=i)) for i in sort_distance]
+
+
+    return render(
+        request,
+        'apps/data_detail.html',
+        {
+            'data': data,
+            'recommend': recommend,
+        }
+    )
+
 def data_like(request, pk):
     if request.method == 'POST' and request.session.get('user'):
         data = Data.objects.get(pk=pk)
