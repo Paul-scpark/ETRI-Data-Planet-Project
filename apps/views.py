@@ -333,6 +333,10 @@ def community_create(request):
 
 def contact(request):
     if request.method == 'POST':
+        if not request.session.get('user'):
+            return HttpResponse("<script>alert('로그인이 필요한 서비스입니다.');"
+                                "location.href='/contact/';</script>")
+
         email = request.POST['email']
         name = request.POST['name']
         title = request.POST['title']
