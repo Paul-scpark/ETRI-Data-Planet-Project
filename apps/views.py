@@ -31,10 +31,18 @@ def main(request):
     if request.method == 'POST':
         ###### (1) 검색바를 통한 데이터 검색
         if request.POST.get("search") != None:
-            model = SentenceTransformer('snunlp/KR-SBERT-V40K-klueNLI-augSTS')
-            des_emb = torch.load("data/title_emb_SBERT.pt")
-            # distilbert
-            distil_des_emb = torch.load("data/title_emb_distilBERT.pt")
+
+            ## SBERT
+            # model = SentenceTransformer('snunlp/KR-SBERT-V40K-klueNLI-augSTS')
+            # des_emb = torch.load("data/title_emb_SBERT.pt")
+            
+            ## roBERTa
+            model = torch.load("data/model_roberta_base_finetuned_sts.pt")
+            des_emb = torch.load("data/tit_embedding_roberta_base_finetuned_sts.pt")            
+            
+            ## distilbert
+            # distil_des_emb = torch.load("data/title_emb_distilBERT.pt")
+
             search_value = request.POST['search']
             emb = model.encode(search_value)
             distance = util.cos_sim(emb, des_emb)
@@ -255,15 +263,21 @@ def search_detail(request):
             if page_num < 1: page_num = 1
             return redirect(f'/search/detail/?page={page_num}')
         else:
-            model = SentenceTransformer('snunlp/KR-SBERT-V40K-klueNLI-augSTS')
-            des_emb = torch.load("data/title_emb_SBERT.pt")
+
+            # model = SentenceTransformer('snunlp/KR-SBERT-V40K-klueNLI-augSTS')
+            # des_emb = torch.load("data/title_emb_SBERT.pt")
+            ## roBERTa
+            model = torch.load("data/model_roberta_base_finetuned_sts.pt")
+            des_emb = torch.load("data/tit_embedding_roberta_base_finetuned_sts.pt")
+
             # distilbert
             # distil_des_emb = torch.load("data/title_emb_distilBERT.pt")
+
             search_value = request.POST['search']
             emb = model.encode(search_value)
             distance = util.cos_sim(emb, des_emb)
             # distilbert
-            # distil_distance = util.cos_sim(emb, distil_des_emb)
+            # distil_distance = util.cos_sim(emb, des_emb)
             sort_distance = distance[0].sort().indices[-11:-1].tolist()
 
             search_data = []
@@ -284,7 +298,10 @@ def data_detail(request, pk):
     data.save()
 
     # 유사한 데이터 추천
-    des_emb = torch.load("data/des_emb_SBERT.pt")
+    # des_emb = torch.load("data/des_emb_SBERT.pt")
+    ## roBERTa
+    des_emb = torch.load("data/des_embedding_roberta_base_finetuned_sts.pt")
+
     distance = util.cos_sim(des_emb[pk], des_emb)
     sort_distance = distance[0].sort().indices[-6:-1].tolist()
     
