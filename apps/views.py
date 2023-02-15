@@ -33,6 +33,8 @@ def main(request):
         if request.POST.get("search") != None:
             model = SentenceTransformer('snunlp/KR-SBERT-V40K-klueNLI-augSTS')
             des_emb = torch.load("data/title_emb_SBERT.pt")
+            # distilbert
+            distil_des_emb = torch.load("data/title_emb_distilBERT.pt")
             search_value = request.POST['search']
             emb = model.encode(search_value)
             distance = util.cos_sim(emb, des_emb)
@@ -255,9 +257,13 @@ def search_detail(request):
         else:
             model = SentenceTransformer('snunlp/KR-SBERT-V40K-klueNLI-augSTS')
             des_emb = torch.load("data/title_emb_SBERT.pt")
+            # distilbert
+            # distil_des_emb = torch.load("data/title_emb_distilBERT.pt")
             search_value = request.POST['search']
             emb = model.encode(search_value)
             distance = util.cos_sim(emb, des_emb)
+            # distilbert
+            # distil_distance = util.cos_sim(emb, distil_des_emb)
             sort_distance = distance[0].sort().indices[-11:-1].tolist()
 
             search_data = []
@@ -281,13 +287,17 @@ def data_detail(request, pk):
     des_emb = torch.load("data/des_emb_SBERT.pt")
     distance = util.cos_sim(des_emb[pk], des_emb)
     sort_distance = distance[0].sort().indices[-6:-1].tolist()
+    
+    # distilbert
+    # des_distil_emb = torch.load("data/des_emb_distilBERT.pt")
+    # distil_distance = util.cos_sim(des_emb[pk], des_emb)
+    # distil_sort_distance = distance[0].sort().indices[-6:-1].tolist()
 
     recommend = []
     [recommend.append(Data.objects.get(pk=i)) for i in sort_distance]
 
 
-    return render(
-        request,
+    return render(        request,
         'apps/data_detail.html',
         {
             'data': data,
@@ -295,28 +305,6 @@ def data_detail(request, pk):
         }
     )
 
-def data_detail_distilbert(request, pk):
-    data = Data.objects.get(pk=pk)
-    data.view = data.view + 1
-    data.save()
-
-    # 유사한 데이터 추천
-    des_emb = torch.load("data/des_emb_distilBERT.pt")
-    distance = util.cos_sim(des_emb[pk], des_emb)
-    sort_distance = distance[0].sort().indices[-6:-1].tolist()
-
-    recommend = []
-    [recommend.append(Data.objects.get(pk=i)) for i in sort_distance]
-
-
-    return render(
-        request,
-        'apps/data_detail.html',
-        {
-            'data': data,
-            'recommend': recommend,
-        }
-    )
 
 def data_like(request, pk):
     if request.method == 'POST' and request.session.get('user'):
