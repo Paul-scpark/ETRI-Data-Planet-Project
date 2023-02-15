@@ -160,7 +160,7 @@
                                                     {{ rec.ori_source }}  |  {{ rec.source }}  |  {{ rec.label }}  |  {{ rec.type }}
                                                 </p>
                                             </div>
-                                            <p class="comment">{{ rec.des }}</p>
+                                            <p class="comment">{{ rec.des | truncatechars:200  }}</p>
                                         </div>
                                     </div>
                                 </div>
