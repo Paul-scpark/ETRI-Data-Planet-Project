@@ -154,7 +154,7 @@
                                 <div class="single-comment justify-content-between d-flex">
                                     <div class="user justify-content-between d-flex">
                                         <div class="desc" style="background: #F7F3F7">
-                                            <p class="comment">{{ rec.des }}</p>
+                                            <p class="comment">{{ rec.des | truncatechars:200 }}</p>
                                             <div class="d-flex justify-content-between">
                                             <div class="d-flex align-items-center">
                                                 <h5>
