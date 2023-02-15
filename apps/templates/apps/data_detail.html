@@ -133,19 +133,17 @@
                         <br/><br/><br/>
                         </div>
                     </div>
-                    <div class="navigation-top">
-                        <div class="d-sm-flex text-center">
-                            {% if request.session.user %}
-                                <form action="{% url 'like' data.pk %}" method="post" style="margin: 0px 10px 0px 0px;">
-                                    {% csrf_token %}
-                                    <input type="submit" value="👍 좋아요">
-                                </form>
-                                <form action="{% url 'dislike' data.pk %}" method="post" style="margin: 0px 0px 0px 10px;">
-                                    {% csrf_token %}
-                                    <input type="submit" value="👎 싫어요">
-                                </form>
-                            {% endif %}
-                        </div>
+                    <div class="d-sm-flex text-center">
+                        {% if request.session.user %}
+                            <form action="{% url 'like' data.pk %}" method="post" style="margin: 0px 10px 0px 0px;">
+                                {% csrf_token %}
+                                <input type="submit" value="👍 좋아요">
+                            </form>
+                            <form action="{% url 'dislike' data.pk %}" method="post" style="margin: 0px 0px 0px 10px;">
+                                {% csrf_token %}
+                                <input type="submit" value="👎 싫어요">
+                            </form>
+                        {% endif %}
                     </div>
                     <div class="comments-area" style="margin-top: 20px;">
                         <h4>< 유사한 데이터 추천 ></h4>
@@ -153,20 +151,16 @@
                             <div class="comment-list">
                                 <div class="single-comment justify-content-between d-flex">
                                     <div class="user justify-content-between d-flex">
-                                        <div class="desc" style="background: #F7F3F7">
-                                            <p class="comment">{{ rec.des }}</p>
-                                            <div class="d-flex justify-content-between">
+                                        <div class="desc">
                                             <div class="d-flex align-items-center">
                                                 <h5>
-                                                    <a href="/search/detail/{{ rec.data_id }}" target="_blank">
-                                                        {{ rec.title }}
-                                                    </a>
-                                                </h5>
+                                                    <a href="/search/detail/{{ rec.data_id }}">{{ rec.title }}</a>
+                                                </h5><br/><br/>
                                                 <p class="date">
                                                     {{ rec.ori_source }}  |  {{ rec.source }}  |  {{ rec.label }}  |  {{ rec.type }}
                                                 </p>
                                             </div>
-                                            </div>
+                                            <p class="comment">{{ rec.des }}</p>
                                         </div>
                                     </div>
                                 </div>
