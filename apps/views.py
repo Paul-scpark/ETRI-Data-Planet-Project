@@ -31,6 +31,7 @@ def main(request):
     if request.method == 'POST':
         ###### (1) 검색바를 통한 데이터 검색
         if request.POST.get("search") != None:
+
             ## SBERT
             # model = SentenceTransformer('snunlp/KR-SBERT-V40K-klueNLI-augSTS')
             # des_emb = torch.load("data/title_emb_SBERT.pt")
@@ -39,6 +40,9 @@ def main(request):
             model = torch.load("data/model_roberta_base_finetuned_sts.pt")
             des_emb = torch.load("data/tit_embedding_roberta_base_finetuned_sts.pt")            
             
+            ## distilbert
+            # distil_des_emb = torch.load("data/title_emb_distilBERT.pt")
+
             search_value = request.POST['search']
             emb = model.encode(search_value)
             distance = util.cos_sim(emb, des_emb)
@@ -188,36 +192,35 @@ def overview_eda(request):
     )
 
 def login(request):
-    pass
-    # if request.method == "GET":
-    #     return render(request, 'apps/login.html')
+    if request.method == "GET":
+        return render(request, 'apps/login.html')
 
-    # elif request.method == "POST":
-    #     input_email = request.POST['email']
-    #     input_password = request.POST['password']
+    elif request.method == "POST":
+        input_email = request.POST['email']
+        input_password = request.POST['password']
         
-    #     # 모든 칸 채우기
-    #     if not (input_email and input_password):
-    #         return HttpResponse("<script>alert('올바르게 입력해주세요.'); location.href='/login';</script>")
+        # 모든 칸 채우기
+        if not (input_email and input_password):
+            return HttpResponse("<script>alert('올바르게 입력해주세요.'); location.href='/login';</script>")
 
-    #     # DB에 이메일이 존재하는지 확인
-    #     if User.objects.filter(email=input_email).exists():
-    #         user = User.objects.get(email=input_email)
-    #     else:
-    #         return HttpResponse("<script>alert('존재하지 않는 이메일입니다.'); location.href='/login';</script>")
+        # DB에 이메일이 존재하는지 확인
+        if User.objects.filter(email=input_email).exists():
+            user = User.objects.get(email=input_email)
+        else:
+            return HttpResponse("<script>alert('존재하지 않는 이메일입니다.'); location.href='/login';</script>")
 
-    #     if user.is_authenticated == False:
-    #         return HttpResponse("<script>alert('이메일 인증이 필요합니다.'); location.href='/login';</script>")
+        if user.is_authenticated == False:
+            return HttpResponse("<script>alert('이메일 인증이 필요합니다.'); location.href='/login';</script>")
 
-    #     # 패스워드 일치 여부 확인
-    #     if not bcrypt.checkpw(input_password.encode('utf-8'), user.password.encode('utf-8')):
-    #         return HttpResponse("<script>alert('비밀번호 불일치!'); location.href='/login';</script>")
-    #     else:
-    #         request.session['user'] = user.name
-    #         request.session['email'] = user.email
+        # 패스워드 일치 여부 확인
+        if not bcrypt.checkpw(input_password.encode('utf-8'), user.password.encode('utf-8')):
+            return HttpResponse("<script>alert('비밀번호 불일치!'); location.href='/login';</script>")
+        else:
+            request.session['user'] = user.name
+            request.session['email'] = user.email
 
-    #     return HttpResponse("<script>alert('로그인 성공.\\n메인 페이지로 돌아갑니다.');"
-    #                         "location.href='/';</script>")
+        return HttpResponse("<script>alert('로그인 성공.\\n메인 페이지로 돌아갑니다.');"
+                            "location.href='/';</script>")
 
 def logout(request):
     if request.session.get('user'):
@@ -260,15 +263,21 @@ def search_detail(request):
             if page_num < 1: page_num = 1
             return redirect(f'/search/detail/?page={page_num}')
         else:
+
             # model = SentenceTransformer('snunlp/KR-SBERT-V40K-klueNLI-augSTS')
             # des_emb = torch.load("data/title_emb_SBERT.pt")
             ## roBERTa
             model = torch.load("data/model_roberta_base_finetuned_sts.pt")
             des_emb = torch.load("data/tit_embedding_roberta_base_finetuned_sts.pt")
 
+            # distilbert
+            # distil_des_emb = torch.load("data/title_emb_distilBERT.pt")
+
             search_value = request.POST['search']
             emb = model.encode(search_value)
             distance = util.cos_sim(emb, des_emb)
+            # distilbert
+            # distil_distance = util.cos_sim(emb, des_emb)
             sort_distance = distance[0].sort().indices[-11:-1].tolist()
 
             search_data = []
@@ -295,19 +304,24 @@ def data_detail(request, pk):
 
     distance = util.cos_sim(des_emb[pk], des_emb)
     sort_distance = distance[0].sort().indices[-6:-1].tolist()
+    
+    # distilbert
+    # des_distil_emb = torch.load("data/des_emb_distilBERT.pt")
+    # distil_distance = util.cos_sim(des_emb[pk], des_emb)
+    # distil_sort_distance = distance[0].sort().indices[-6:-1].tolist()
 
     recommend = []
     [recommend.append(Data.objects.get(pk=i)) for i in sort_distance]
 
 
-    return render(
-        request,
+    return render(        request,
         'apps/data_detail.html',
         {
             'data': data,
             'recommend': recommend,
         }
     )
+
 
 def data_like(request, pk):
     if request.method == 'POST' and request.session.get('user'):
@@ -346,6 +360,10 @@ def community_create(request):
 
 def contact(request):
     if request.method == 'POST':
+        if not request.session.get('user'):
+            return HttpResponse("<script>alert('로그인이 필요한 서비스입니다.');"
+                                "location.href='/contact/';</script>")
+
         email = request.POST['email']
         name = request.POST['name']
         title = request.POST['title']
