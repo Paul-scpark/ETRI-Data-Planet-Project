@@ -33,12 +33,12 @@ def main(request):
         if request.POST.get("search") != None:
 
             ## SBERT
-            # model = SentenceTransformer('snunlp/KR-SBERT-V40K-klueNLI-augSTS')
-            # des_emb = torch.load("data/title_emb_SBERT.pt")
+            model = SentenceTransformer('snunlp/KR-SBERT-V40K-klueNLI-augSTS')
+            des_emb = torch.load("data/title_emb_SBERT.pt")
             
             ## roBERTa
-            model = torch.load("data/model_roberta_base_finetuned_sts.pt")
-            des_emb = torch.load("data/tit_embedding_roberta_base_finetuned_sts.pt")            
+            # model = torch.load("data/model_roberta_base_finetuned_sts.pt")
+            # des_emb = torch.load("data/tit_embedding_roberta_base_finetuned_sts.pt")
             
             ## distilbert
             # distil_des_emb = torch.load("data/title_emb_distilBERT.pt")
@@ -173,24 +173,6 @@ def service(request):
         'apps/service.html'
     )
 
-def overview(request):
-    return render(
-        request,
-        'apps/overview.html'
-    )
-
-def overview_platform(request):
-    return render(
-        request,
-        'apps/overview_platform.html'
-    )
-
-def overview_eda(request):
-    return render(
-        request,
-        'apps/overview_eda.html'
-    )
-
 def login(request):
     if request.method == "GET":
         return render(request, 'apps/login.html')
@@ -229,20 +211,6 @@ def logout(request):
 
     return redirect('/')
 
-def search_category(request):
-    pass
-    # best_view = Data.objects.all().order_by('-view')[:5]
-    # best_like = Data.objects.all().order_by('-like')[:5]
-    
-    # return render(
-    #     request,
-    #     'apps/search_category.html',
-    #     {
-    #         'best_view': best_view,
-    #         'best_like': best_like
-    #     }
-    # )
-
 def search_detail(request):
     if request.method == 'GET':
         data_list = Data.objects.all().order_by('pk')
@@ -264,11 +232,11 @@ def search_detail(request):
             return redirect(f'/search/detail/?page={page_num}')
         else:
 
-            # model = SentenceTransformer('snunlp/KR-SBERT-V40K-klueNLI-augSTS')
-            # des_emb = torch.load("data/title_emb_SBERT.pt")
+            model = SentenceTransformer('snunlp/KR-SBERT-V40K-klueNLI-augSTS')
+            des_emb = torch.load("data/title_emb_SBERT.pt")
             ## roBERTa
-            model = torch.load("data/model_roberta_base_finetuned_sts.pt")
-            des_emb = torch.load("data/tit_embedding_roberta_base_finetuned_sts.pt")
+            # model = torch.load("data/model_roberta_base_finetuned_sts.pt")
+            # des_emb = torch.load("data/tit_embedding_roberta_base_finetuned_sts.pt")
 
             # distilbert
             # distil_des_emb = torch.load("data/title_emb_distilBERT.pt")
@@ -298,17 +266,19 @@ def data_detail(request, pk):
     data.save()
 
     # 유사한 데이터 추천
+
+    ## SBERT
     # des_emb = torch.load("data/des_emb_SBERT.pt")
-    ## roBERTa
+
+    # roBERTa
     des_emb = torch.load("data/des_embedding_roberta_base_finetuned_sts.pt")
+
+    ## distilbert
+    # des_emb = torch.load("data/des_emb_distilBERT.pt")
 
     distance = util.cos_sim(des_emb[pk], des_emb)
     sort_distance = distance[0].sort().indices[-6:-1].tolist()
-    
-    # distilbert
-    # des_distil_emb = torch.load("data/des_emb_distilBERT.pt")
-    # distil_distance = util.cos_sim(des_emb[pk], des_emb)
-    # distil_sort_distance = distance[0].sort().indices[-6:-1].tolist()
+    sort_distance = sort_distance[::-1]
 
     recommend = []
     [recommend.append(Data.objects.get(pk=i)) for i in sort_distance]
@@ -339,25 +309,6 @@ def data_dislike(request, pk):
         messages.warning(request, "싫어요를 눌렀습니다.")
         return redirect('data_detail', data.pk)
 
-
-def profile(request):
-    return render(
-        request,
-        'apps/profile.html'
-    )
-
-def community(request):
-    return render(
-        request,
-        'apps/community.html'
-    )
-
-def community_create(request):
-    return render(
-        request,
-        'apps/community_create.html'
-    )
-
 def contact(request):
     if request.method == 'POST':
         if not request.session.get('user'):
@@ -379,7 +330,6 @@ def contact(request):
                             "location.href='/';</script>")
     else:
         return render(request, 'apps/contact.html')
-
 
 def signup(request):
     pass
@@ -427,7 +377,6 @@ def signup(request):
 
 #     elif request.method == 'GET':
 #         return render(request, 'apps/signup.html')
-
 class activate(View):
     def get(self, request, uidb64, token):
         try:
