@@ -3,6 +3,9 @@
 [프로그래머스 인공지능 데브코스](https://school.programmers.co.kr/learn/courses/16276/16276-5%EA%B8%B0-k-digital-training-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%EB%8D%B0%EB%B8%8C-%EC%BD%94%EC%8A%A4)에서 AI와 관련된 다양한 수업들을 수강한 후, 최종 프로젝트를 진행합니다. <br/>
 이 프로젝트와 연계하여 [2022 ETRI OPEN API 활용사례 공모전](https://aiopen.etri.re.kr/viewNotice?id=106)에 참여하여 `우수상 (ETRI 원장상)`을 수상했습니다.
 
+- [발표 자료 - 구글 드라이브](https://drive.google.com/file/d/18YtfNEWf0UYck2ratVXb_L1vPpdcnIna/view?usp=sharing)
+- [발표 영상 - 유튜브](https://www.youtube.com/watch?v=eFhy143FoWI)
+
 ---
 
 ## ⌨️  코드 실행
@@ -43,6 +46,12 @@
 - 데이터 유형 (Label) 분류기 모델 만들기: BERT 모델을 통해 데이터 Label 분류 모델 제작
 - 유사 데이터 추천 모델 만들기: 코사인 유사도를 기반으로 유사한 데이터 추천 모델 개발
 - 위 기능들을 포함한 웹사이트 형태의 플랫폼 만들기: [부트스트랩](https://themewagon.github.io/hostza/index.html)을 기반으로 웹 프로토타입 제작
+
+## 📍  Web Prototype
+![프로토타입](https://github.com/Paul-scpark/Data-planet/blob/main/apps/static/img/prototype1.png)
+![프로토타입](https://github.com/Paul-scpark/Data-planet/blob/main/apps/static/img/prototype2.png)
+![프로토타입](https://github.com/Paul-scpark/Data-planet/blob/main/apps/static/img/prototype3.png)
+
 
 ## 👨‍👩‍👧‍👦  Makers
 - 고은별, 박성찬, 송민석, 이상암, (이지윤, 하영아)
